@@ -1,0 +1,438 @@
+/*------------- Generales -------------------*/
+
+*
+{
+	margin: 0;
+	padding: 0;
+}
+
+body
+{
+	background: #fafafa;
+	color: #444;
+	font-family: Helvetica, Arial;
+	font-size: 16px;
+}
+
+a
+{
+	color: rgb(7, 111, 224);
+	font-weight: bold;
+	text-decoration: none;
+}
+
+img
+{
+	border: 0;
+}
+
+ul
+{
+	list-style: none;
+	padding-left: 30px;
+}
+
+label, input, textarea
+{
+	border-radius: 0.4em;
+	color: chocolate;
+	font-weight: bold;
+	margin: 0.3em;
+	padding: 0.5em;
+	vertical-align: top;
+	width: 200px;
+}
+
+input[type=text], input[type=password], input[type=reset], 
+input[type=submit], input[type=number], textarea
+{
+	border: 1px solid #e0e0e0;
+}
+
+input[type=reset], input[type=submit]
+{
+	cursor: pointer;
+	font-size: 1em;
+	padding: 0.5em;
+}
+
+input[type=reset]:hover, input[type=submit]:hover
+{
+	background: #d0d0d0;
+}
+
+input[type=number]
+{
+	width: 50px;
+}
+
+p
+{
+	margin-bottom: 0.3em;
+	padding: 0.2em;
+	/*text-align: left;*/
+}
+
+/*------------- /Generales -------------------*/
+
+/*------------- Layout -------------------*/
+
+#container
+{
+	background: #fff;
+	border-radius: 1em;
+	box-shadow: 0 0 3px #444;
+	margin: 0 auto;
+	width: 960px;
+}
+
+#content
+{
+	min-height: 450px;
+	padding: 0.4;
+}
+
+header, footer
+{
+	background: #212F3C;
+	border-radius: 0.5em;
+	color: #fff;
+	padding: 0.5em;
+	position: relative;
+}
+
+header
+{
+}
+
+header h1
+{
+	background: url("../images/logold2.png") no-repeat;
+	text-indent: -9999px;
+}
+
+header h1 a
+{
+	display: block;
+	height: 100px;
+	width: 250px;
+}
+
+footer
+{
+	text-align: right;
+}
+
+/*------------- /Layout -------------------*/
+
+/*------------- Menu Principal -------------------*/
+
+#menu
+{
+	background: #1F618D;
+	border-radius: 0.5em;
+	color: #fff;
+	margin: 0.5em;
+	position: relative;
+}
+
+#menu ul
+{
+	list-style: none;
+}
+
+#menu ul li
+{
+	display: inline-block;
+	margin: 0.2em;
+	padding: 0.2em;
+}
+
+#menu ul li a
+{
+	border-radius: 0.5em;
+	color: #fff;
+	font-weight: bold;
+	padding: 0.2em;
+	text-decoration: none;
+}
+
+#menu ul li a:hover
+{
+	background: #fff;
+	color: orange;
+}
+
+/*------------- /Menu Principal -------------------*/
+
+/*------------- Catalogo -------------------*/
+
+#productos
+{
+	background: rgb(253, 223, 168);
+	border-radius: 1em;
+	box-shadow: 0 0 1px orange;
+	margin: 1em;
+	padding: 0.5em;
+	text-align: center;
+}
+
+.item
+{
+	background: #fff;
+	border-radius: 1em;
+	display: inline-block;
+	margin: 0.5em;
+	vertical-align: top;
+	width: 40%;
+}
+
+.item h3
+{
+	border-bottom: 1px dotted #d0d0d0;
+	margin: 0.2em;
+	padding: 0.2em;
+}
+
+#menu_catalogo
+{
+	background: #f0f0f0;
+	padding: 0.3em;
+	text-align: center;
+}
+
+#menu_catalogo li
+{
+	display: inline-block;
+	margin-left: 0.3em;
+}
+
+#menu_catalogo li a
+{
+	border-radius: 0.2em;
+	padding: 0.2em;
+}
+
+#menu_catalogo li a:hover
+{
+	background: #fff;
+}
+
+.current_item
+{
+	background: #f0f0f0;
+	color: #444 !important;
+}
+
+/*------------- /Catalogo -------------------*/
+
+/*------------ Detalle Producto ---------------*/
+#detalle_producto
+{
+	background: #fafafa;
+	border-radius: 1em;
+	box-shadow: 0 0 10px #777;
+	margin: 20px auto;
+	text-align: center;
+	width: 80%;
+}
+
+#detalle_producto h3
+{
+	background: #f0f0f0;
+	padding: 0.3em;
+	text-shadow: 1px 1px 1px orange;
+}
+
+#info_producto
+{
+	display: inline-block;
+	padding: 0.5em;
+	text-align: left;
+	vertical-align: top;
+	width: 45%;
+}
+
+#info_producto form fieldset
+{
+	border: none;
+	border-radius: 0.7em;
+	margin: 0.3em;
+	padding: 0.5em;
+	text-align: center;
+}
+
+/*------------ /Detalle Producto ---------------*/
+
+
+/*------------- Carrito -------------------*/
+
+.tabla1
+{
+	background: #fafafa;
+	border-radius: 1em;
+	box-shadow: 0 0 10px #777;
+	margin: 20px auto;
+	padding: 0.5em;
+	text-align: center;
+	width: 80%;
+}
+
+.tabla tr td
+{
+	border: 1px solid #d0d0d0;
+	border-radius: 0.2em;
+}
+
+#widget_carrito
+{
+	color: #fff;
+	font-size: 0.8em;
+	position: absolute;
+	right: 3em;
+	top: 0.5em;
+}
+
+/*------------- /Carrito -------------------*/
+
+/*----------- Detalle del Pedido ----------*/
+.bloque_detalle_pedido
+{
+	font-size: 0.9em;
+	display: inline-block;
+	max-width: 33%;
+}
+
+.bloque_detalle_pedido h3
+{
+	background: rgb(253, 223, 168);
+}
+
+.tabla2
+{
+	background: #fafafa;
+	border-radius: 1em;
+	box-shadow: 0 0 10px #777;
+	margin: 20px auto;
+	min-height: 200px;
+	padding: 0.5em;
+	text-align: center;
+}
+/*----------- /Detalle del Pedido ----------*/
+
+/*------------ Login -------------------*/
+
+#form_login
+{
+	background: #fafafa;
+	border-radius: 1em;
+	box-shadow: 0 0 10px #777;
+	margin: 20px auto;
+	text-align: center;
+	width: 600px;
+}
+
+#form_login h2
+{
+	border-bottom: 1px dotted #c0c0c0;
+	padding: 0.3em;
+	text-shadow: 1px 1px 1px orange;
+}
+
+#form_login ul
+{
+	padding-right: 100px;
+}
+
+/*------------ /Login -------------------*/
+
+
+/*------------- Slider ---------------------*/
+
+.banner { position: relative; overflow: auto; background: #000; min-height: 300px; max-height: 320px;}
+.banner li { list-style: none; }
+.banner ul li { float: left; }
+
+/*------------- /Slider ---------------------*/
+
+/*---------- Widgets home -------------*/
+
+#widgets
+{
+	
+}
+
+.widget
+{
+	background: #f0f0f0;
+	border-radius: 0.5em;
+	box-shadow: 0 0 3px #444;
+	display: inline-block;
+	margin: 1em;
+	padding: 0.3em;
+	vertical-align: top;
+	width: 28%;
+}
+
+.widget h3
+{
+	background: #fff;
+	border-radius: 0.5em;
+	font-size: 1em;
+	margin: 0.3em;
+}
+
+/*---------- /Widgets home -------------*/
+
+/*---------- Mensajes ----------------*/
+#msg
+{
+	background: rgb(210, 255, 210);
+	padding: 1em;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-align: center;
+}
+/*---------- /Mensajes ----------------*/
+
+/*------------ Clases -------------------*/
+.boton1
+{
+	background: orange;
+	border: none;
+	border-radius: 0.3em;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 1em;
+	font-weight: bold;
+	margin: 0.2em;
+	padding: 0.5em;
+	text-decoration: none;
+}
+
+.boton1:hover
+{
+	background: rgb(218, 142, 3);
+}
+
+.link_login
+{
+	position: absolute;
+	right: 1em;
+	top: 0.5em;
+}
+
+.error
+{
+	background: rgb(238, 223, 223);
+	color: #f00;
+	padding: 0.2em;
+	margin: 0.2em;
+}
+
+/*------------ /Clases -------------------*/
+
+
+
+
