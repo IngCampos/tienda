@@ -26,7 +26,7 @@
 		$descripcion = $_POST['descripcion_queja'];
 		$usuario = $this->session->userdata("usuario");
 		try {
-			$conexion = new PDO('mysql:host=localhost; dbname=ldstore2;','root','');
+			$conexion = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore2;','root','');
 			if($usuario){
 				$sql = "INSERT INTO quejas_sugerencias ( usuario, apellidos, correo, titulo, descripcion) 
 				VALUES ( '$usuario->nombre', '$usuario->apellidos', '$usuario->correo', 'malos precios', ' $descripcion')";

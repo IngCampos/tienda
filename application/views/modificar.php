@@ -38,7 +38,7 @@
 	
 	$id = $_GET['id'];
 	try {
-		$conexion = new PDO('mysql:host=localhost; dbname=ldstore2;','root','');
+		$conexion = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore2;','root','');
 		$sql = "select * from productos where id=$id";
 
 		$statement = $conexion->prepare($sql);

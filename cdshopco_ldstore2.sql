@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-03-2019 a las 13:51:43
+-- Tiempo de generación: 18-03-2019 a las 18:04:53
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.3.0
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `ldstore2`
+-- Base de datos: `cdshopco_ldstore2`
 --
 
 -- --------------------------------------------------------
@@ -90,9 +90,7 @@ INSERT INTO `detalle_pedidos` (`id`, `cantidad`, `precio`, `Pedidos_id`, `Produc
 (9, 2, 825, 9, 8),
 (10, 2, 978, 9, 9),
 (11, 1, 785, 10, 11),
-(14, 1, 977, 13, 3),
 (15, 1, 1125, 14, 4),
-(18, 2, 977, 17, 3),
 (20, 3, 750, 19, 6),
 (21, 1, 825, 20, 8),
 (23, 4, 978, 22, 9),
@@ -105,7 +103,9 @@ INSERT INTO `detalle_pedidos` (`id`, `cantidad`, `precio`, `Pedidos_id`, `Produc
 (37, 1, 150, 32, 9),
 (39, 2, 120, 34, 13),
 (42, 1, 150, 37, 4),
-(55, 1, 300, 50, 29);
+(55, 1, 300, 50, 29),
+(56, 1, 160, 51, 39),
+(57, 1, 150, 51, 4);
 
 -- --------------------------------------------------------
 
@@ -168,7 +168,8 @@ INSERT INTO `pedidos` (`id`, `fecha`, `tipo_pago`, `total`, `comentario`, `Clien
 (47, '2017-11-09', 1, 120, '', 5),
 (48, '2017-11-09', 1, 120, '', 5),
 (49, '2017-11-09', 1, 120, '', 5),
-(50, '2019-03-04', 1, 300, '', 9);
+(50, '2019-03-04', 1, 300, '', 9),
+(51, '2019-03-08', 2, 310, '', 9);
 
 -- --------------------------------------------------------
 
@@ -190,7 +191,6 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `imagen`, `Categorias_id`) VALUES
-(3, 'Tell me you love me', 'Álbum 7, Demi Lovato ', 130, '03.png', 1),
 (4, 'A year without rain', 'Álbum 2, Selena Gomez', 150, '04.png', 1),
 (6, 'Raphael', 'Álbum Musical', 100, '05.png', 4),
 (7, 'Frozen', 'Película Infantil ', 110, '06.png', 2),
@@ -336,13 +336,13 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT de la tabla `detalle_pedidos`
 --
 ALTER TABLE `detalle_pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
