@@ -222,7 +222,7 @@ class Principal extends CI_Controller
 		$this->email->initialize($config);
 
 		$this->email->from($usuario->correo, $usuario->nombre . " " . $usuario->apellidos);
-		$this->email->to('kar_jazz_glzll@hotmail.com'); 
+		$this->email->to('cdshopags@gmail.com'); 
 
 		$this->email->subject('Pedido de prueba ' . $id_pedido);
 		//$this->email->message("<p>Este es un <strong>pedido de prueba...</strong><p>");
@@ -234,7 +234,7 @@ class Principal extends CI_Controller
 		$this->email->send();
 
 		// Enviamos correo al Cliente
-		$this->email->from('kar_jazz_glzll@hotmail.com', "Demo tienda online");
+		$this->email->from('cdshopags@gmail.com', "Demo tienda online");
 		$this->email->to($usuario->correo);
 
 		$this->email->subject('Pedido de prueba ' . $id_pedido);
