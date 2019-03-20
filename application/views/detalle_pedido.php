@@ -123,4 +123,6 @@ $usuario = $this->session->userdata("usuario");
 		<?php echo anchor('principal/catalogo', '<< Continuar comprando', 'title="Regresar al Catalogo"'); ?>
 		<?php //echo anchor('principal/enviar_pedido', 'Enviar pedido >>', 'title="Enviar el pedido"'); ?>
 	</p>
+	<br>Te invitamos a realizar una encuesta para darte un mejor servicio
+	<br><a href='https://docs.google.com/forms/d/e/1FAIpQLSeC3toM7hiU7ncRjxs5KR0WXqLJQWteMF2hxZkbx6utUnSLoA/viewform' target='_blank'>Click aqui</a>
 </div>
