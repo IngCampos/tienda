@@ -20,6 +20,9 @@
 		<?php $usuario = $this->session->userdata("usuario"); ?>
 		<?php if($usuario->nombre=="admin1"){ ?>
 		<?php echo '<li><a href="http://localhost/tienda/principal/administrar">Administrar<a/></li>'?>
+		<?php echo '<li><a href="http://localhost/tienda/principal/estadisticas">Estadisticas<a/></li>'?>
+		<?php echo '<li><a href="http://localhost/tienda/principal/buzon">Buzon<a/></li>'?>
+
 		<?php } }?>
 
 	</ul>

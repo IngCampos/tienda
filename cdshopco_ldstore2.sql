@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-03-2019 a las 18:04:53
+-- Tiempo de generación: 21-03-2019 a las 16:42:18
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.3.0
 
@@ -223,8 +223,7 @@ INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `imagen`, `Cat
 (43, 'The Fall', 'Álbum, Imagine Dragons', 140, '33.png', 1),
 (44, 'Riot!', 'Álbum, Paramore', 110, '34.png', 1),
 (47, 'Prism', 'Álbum, Katy Perry', 140, '35.png', 1),
-(50, 'Breakout', 'Álbum, Miley Cyrus', 120, '36.png', 1),
-(51, 'Eso', 'Pelicula de terror', 123, '81.jpg', 1);
+(50, 'Breakout', 'Álbum, Miley Cyrus', 120, '36.png', 1);
 
 -- --------------------------------------------------------
 
