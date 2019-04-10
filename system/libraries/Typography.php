@@ -86,7 +86,7 @@ class CI_Typography {
 		{
 			if (preg_match_all("#(<!\-\-.*?\-\->)#s", $str, $matches))
 			{
-				for ($i = 0, $total = count($matches[0]); $i < $total; $i++)
+				for ($i = 0, $total['total'] = count($matches[0]); $i < $total['total']; $i++)
 				{
 					$html_comments[] = $matches[0][$i];
 					$str = str_replace($matches[0][$i], '{@HC'.$i.'}', $str);
@@ -181,7 +181,7 @@ class CI_Typography {
 		$str = $this->format_characters($str);
 
 		// restore HTML comments
-		for ($i = 0, $total = count($html_comments); $i < $total; $i++)
+		for ($i = 0, $total['total'] = count($html_comments); $i < $total['total']; $i++)
 		{
 			// remove surrounding paragraph tags, but only if there's an opening paragraph tag
 			// otherwise HTML comments at the ends of paragraphs will have the closing tag removed

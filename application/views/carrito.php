@@ -25,7 +25,16 @@
 			</tr>
 		<?php endforeach; ?>
 		<tr>
-			<td colspan="7" align="right"><strong>Total: $ <?php echo number_format($total,2); ?></strong></td>
+			<td colspan="7" align="right"><strong>Subtotal: $ <?php echo number_format($total['subtotal'],2); ?></strong></td>
+		</tr>
+		<tr>
+			<td colspan="7" align="right"><strong>IVA: $ <?php echo number_format($total['iva'],2); ?></strong></td>
+		</tr>
+		<tr>
+			<td colspan="7" align="right"><strong>ISR: $ <?php echo number_format($total['isr'],2); ?></strong></td>
+		</tr>
+		<tr>
+			<td colspan="7" align="right"><strong>Total: $ <?php echo number_format($total['total'],2); ?></strong></td>
 		</tr>
 	</table>
 	<p align="center">

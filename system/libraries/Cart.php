@@ -373,7 +373,7 @@ class CI_Cart {
 		unset($this->_cart_contents['cart_total']);
 
 		// Lets add up the individual prices and set the cart sub-total
-		$total = 0;
+		$total['total'] = 0;
 		$items = 0;
 		foreach ($this->_cart_contents as $key => $val)
 		{
@@ -383,7 +383,7 @@ class CI_Cart {
 				continue;
 			}
 
-			$total += ($val['price'] * $val['qty']);
+			$total['total'] += ($val['price'] * $val['qty']);
 			$items += $val['qty'];
 
 			// Set the subtotal
@@ -392,7 +392,7 @@ class CI_Cart {
 
 		// Set the cart total and total items.
 		$this->_cart_contents['total_items'] = $items;
-		$this->_cart_contents['cart_total'] = $total;
+		$this->_cart_contents['cart_total'] = $total['total'];
 
 		// Is our cart empty?  If so we delete it from the session
 		if (count($this->_cart_contents) <= 2)
