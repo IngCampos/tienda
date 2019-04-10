@@ -1075,7 +1075,7 @@ class CI_DB_active_record extends CI_DB_driver {
 		}
 
 		// Batch this baby
-		for ($i = 0, $total = count($this->ar_set); $i < $total; $i = $i + 100)
+		for ($i = 0, $total['total'] = count($this->ar_set); $i < $total['total']; $i = $i + 100)
 		{
 
 			$sql = $this->_insert_batch($this->_protect_identifiers($table, TRUE, NULL, FALSE), $this->ar_keys, array_slice($this->ar_set, $i, 100));
@@ -1362,7 +1362,7 @@ class CI_DB_active_record extends CI_DB_driver {
 		}
 
 		// Batch this baby
-		for ($i = 0, $total = count($this->ar_set); $i < $total; $i = $i + 100)
+		for ($i = 0, $total['total'] = count($this->ar_set); $i < $total['total']; $i = $i + 100)
 		{
 			$sql = $this->_update_batch($this->_protect_identifiers($table, TRUE, NULL, FALSE), array_slice($this->ar_set, $i, 100), $this->_protect_identifiers($index), $this->ar_where);
 

@@ -59,13 +59,24 @@ class Carrito
 	{
 		if(!get_instance()->session->userdata("carrito")) return 0;
 		
-		$total = 0;
+		$total = [
+			"subtotal" => 0.0,
+			"iva" => 0.0,
+			"isr" => 0.0,
+			"total" => 0.0
+		];
 
 		$carrito = get_instance()->session->userdata("carrito");
 
 		foreach ($carrito as $item) {
-			$total += ($item["precio"] * $item["cantidad"]);
+			$total['subtotal'] += ($item["precio"] * $item["cantidad"]);
 		}
+		//calculo de IVA
+		$total['iva'] = $total['subtotal']*.16;
+		//calculo de ISR
+		$total['isr'] = $total['subtotal']*.20;
+		//calculo del total
+		$total['total'] = $total['subtotal']+$total['iva']+$total['isr'];
 
 		return $total;
 	}
