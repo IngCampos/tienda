@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-03-2019 a las 16:42:18
+-- Tiempo de generación: 10-04-2019 a las 15:25:39
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.3.0
 
@@ -249,21 +249,6 @@ INSERT INTO `quejas_sugerencias` (`id`, `usuario`, `apellidos`, `correo`, `titul
 (16, 'admin1', 'admin1', 'admin1@gmail.com', 'Malos precios', ' Muchos bugs'),
 (17, 'Martin', 'Campos', 'admin1@gmail.com', 'malos precios', ' myt caros');
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuarios`
---
-
-CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(45) DEFAULT NULL,
-  `apellidos` varchar(45) DEFAULT NULL,
-  `usuario` varchar(15) DEFAULT NULL,
-  `password` varchar(32) DEFAULT NULL,
-  `nivel` tinyint(4) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 --
 -- Índices para tablas volcadas
 --
@@ -310,12 +295,6 @@ ALTER TABLE `quejas_sugerencias`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -354,12 +333,6 @@ ALTER TABLE `productos`
 --
 ALTER TABLE `quejas_sugerencias`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
