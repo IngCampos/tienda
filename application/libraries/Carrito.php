@@ -62,7 +62,6 @@ class Carrito
 		$total = [
 			"subtotal" => 0.0,
 			"iva" => 0.0,
-			"isr" => 0.0,
 			"total" => 0.0
 		];
 
@@ -73,10 +72,8 @@ class Carrito
 		}
 		//calculo de IVA
 		$total['iva'] = $total['subtotal']*.16;
-		//calculo de ISR
-		$total['isr'] = $total['subtotal']*.20;
 		//calculo del total
-		$total['total'] = $total['subtotal']+$total['iva']+$total['isr'];
+		$total['total'] = $total['subtotal']+$total['iva'];
 
 		return $total;
 	}
