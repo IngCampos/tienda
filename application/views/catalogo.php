@@ -8,7 +8,7 @@
 	</ul>
 	<?php 
 $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-$postPorPagina = 4;
+$postPorPagina = 10;
 $articulosMostrar = [];
 $inicio = ($pagina > 1) ? ($pagina * $postPorPagina - $postPorPagina) : 0 ;
 $totalArticulos = 0;
