@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-04-2019 a las 04:44:44
--- Versión del servidor: 10.1.37-MariaDB
--- Versión de PHP: 7.3.0
+-- Tiempo de generación: 14-04-2019 a las 00:14:40
+-- Versión del servidor: 10.1.38-MariaDB
+-- Versión de PHP: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,18 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `actor_atrib`
---
-
-CREATE TABLE `actor_atrib` (
-  `ID_ACTOR` int(11) NOT NULL,
-  `NOMBRE_ACTOR` int(11) NOT NULL,
-  `ID_PAIS` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `album_atrib`
 --
 
@@ -52,19 +40,20 @@ CREATE TABLE `album_atrib` (
   `ID_DISQUERA` int(11) NOT NULL,
   `ID_FORMATO` int(11) NOT NULL,
   `ID_PRODUCTOR` int(11) NOT NULL,
+  `ESTAD_PROD` int(11) NOT NULL,
   `CARATULA` varchar(70) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `artista_atrib`
+-- Estructura de tabla para la tabla `busquedas`
 --
 
-CREATE TABLE `artista_atrib` (
-  `ID_ARTISTA` int(11) NOT NULL,
-  `NOMBRE_ARTISTA` varchar(45) NOT NULL,
-  `ID_PAIS` int(11) NOT NULL
+CREATE TABLE `busquedas` (
+  `ID_BUSQUEDA` int(11) NOT NULL,
+  `ID_USUARIO` int(11) NOT NULL,
+  `TERMINO` varchar(120) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -92,18 +81,6 @@ CREATE TABLE `cancion_atrib` (
 CREATE TABLE `casa_productora_atrib` (
   `ID_CASA_PRODUCTORA` int(11) NOT NULL,
   `CASA_PRODUCTORA` varchar(45) NOT NULL,
-  `ID_PAIS` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `compositor_atrib`
---
-
-CREATE TABLE `compositor_atrib` (
-  `ID_COMPOSITOR` int(11) NOT NULL,
-  `NOMBRE_COMPOSITOR` varchar(45) NOT NULL,
   `ID_PAIS` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -145,6 +122,17 @@ CREATE TABLE `disquera_atrib` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `estad_paginas`
+--
+
+CREATE TABLE `estad_paginas` (
+  `NOMBRE_PAGINA` varchar(70) NOT NULL,
+  `ESTAD_PAGINA` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `estilo`
 --
 
@@ -163,6 +151,21 @@ CREATE TABLE `formato` (
   `ID_FORMATO` int(11) NOT NULL,
   `FORMATO` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `formato`
+--
+
+INSERT INTO `formato` (`ID_FORMATO`, `FORMATO`) VALUES
+(1, 'CD'),
+(2, 'DVD'),
+(3, 'DVD 3D'),
+(4, 'Blu Ray'),
+(5, 'Blu Ray 3D'),
+(6, 'Cassette'),
+(7, 'Disco Vinyl 30 cm'),
+(8, 'Disco Vinyl 25 cm'),
+(9, 'Disco Vinyl 17.5 cm');
 
 -- --------------------------------------------------------
 
@@ -213,32 +216,46 @@ CREATE TABLE `pelicula_atrib` (
   `ID_CASA_PRODUCTORA` int(11) NOT NULL,
   `ID_FORMATO` int(11) NOT NULL,
   `ID_PRODUCTOR` int(11) NOT NULL,
-  `CARATULA_PELICULA` varchar(70) NOT NULL
+  `CARATULA_PELICULA` varchar(70) NOT NULL,
+  `ESTAD_PELICULA` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `productor_atrib`
+-- Estructura de tabla para la tabla `personas_atrib`
 --
 
-CREATE TABLE `productor_atrib` (
-  `ID_PRODUCTOR` int(11) NOT NULL,
-  `NOMBRE_PRODUCTOR` varchar(45) NOT NULL,
-  `ID_PAIS` int(11) NOT NULL
+CREATE TABLE `personas_atrib` (
+  `ID_PERSONA` int(11) NOT NULL,
+  `NOMBRE` varchar(45) NOT NULL,
+  `APELLIDO` varchar(45) NOT NULL,
+  `FECHA_NAC` date NOT NULL,
+  `ID_PAIS` int(11) NOT NULL,
+  `BIO` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `token`
+-- Estructura de tabla para la tabla `relacion_roles_personas`
 --
 
-CREATE TABLE `token` (
-  `ID_TOKEN` int(11) NOT NULL,
-  `ID_USUARIO` int(11) NOT NULL,
-  `TOKEN` int(11) NOT NULL,
-  `USED` tinyint(1) NOT NULL DEFAULT '0'
+CREATE TABLE `relacion_roles_personas` (
+  `ID_RELACION` int(11) NOT NULL,
+  `ID_PERSONA` int(11) NOT NULL,
+  `ID_ROL` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `roles`
+--
+
+CREATE TABLE `roles` (
+  `ID_ROL` int(11) NOT NULL,
+  `ROL` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -264,18 +281,37 @@ CREATE TABLE `usuarios_atrib` (
   `PASSWORD` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `val_album`
+--
+
+CREATE TABLE `val_album` (
+  `ID_VAL_ALBUM` int(11) NOT NULL,
+  `ID_USUARIO` int(11) NOT NULL,
+  `ID_ALBUM` int(11) NOT NULL,
+  `VALORACION_ALBUM` smallint(6) NOT NULL,
+  `COMENTARIOS` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `val_peliculas`
+--
+
+CREATE TABLE `val_peliculas` (
+  `ID_VAL_PELICULA` int(11) NOT NULL,
+  `ID_USUARIO` int(11) NOT NULL,
+  `ID_PELICULA` int(11) NOT NULL,
+  `VALORACION_PELICULA` smallint(6) NOT NULL,
+  `COMENTARIOS` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `actor_atrib`
---
-ALTER TABLE `actor_atrib`
-  ADD PRIMARY KEY (`ID_ACTOR`),
-  ADD KEY `ID_PAIS` (`ID_PAIS`),
-  ADD KEY `ID_PAIS_2` (`ID_PAIS`),
-  ADD KEY `ID_ACTOR` (`ID_ACTOR`);
 
 --
 -- Indices de la tabla `album_atrib`
@@ -293,13 +329,11 @@ ALTER TABLE `album_atrib`
   ADD KEY `ID_FORMATO` (`ID_FORMATO`);
 
 --
--- Indices de la tabla `artista_atrib`
+-- Indices de la tabla `busquedas`
 --
-ALTER TABLE `artista_atrib`
-  ADD PRIMARY KEY (`ID_ARTISTA`),
-  ADD KEY `ID_ARTISTA` (`ID_ARTISTA`,`ID_PAIS`),
-  ADD KEY `ID_ARTISTA_2` (`ID_ARTISTA`,`ID_PAIS`),
-  ADD KEY `ID_PAIS` (`ID_PAIS`);
+ALTER TABLE `busquedas`
+  ADD PRIMARY KEY (`ID_BUSQUEDA`),
+  ADD KEY `ID_USUARIO` (`ID_USUARIO`);
 
 --
 -- Indices de la tabla `cancion_atrib`
@@ -307,10 +341,10 @@ ALTER TABLE `artista_atrib`
 ALTER TABLE `cancion_atrib`
   ADD PRIMARY KEY (`ID_CANCION`),
   ADD KEY `ID_CANCION` (`ID_CANCION`,`ID_ARTISTA`,`ID_COMPOSITOR`,`ID_GENERO`,`ID_ALBUM`),
-  ADD KEY `ID_COMPOSITOR` (`ID_COMPOSITOR`),
   ADD KEY `ID_GENERO` (`ID_GENERO`),
+  ADD KEY `ID_ALBUM` (`ID_ALBUM`),
   ADD KEY `ID_ARTISTA` (`ID_ARTISTA`),
-  ADD KEY `ID_ALBUM` (`ID_ALBUM`);
+  ADD KEY `ID_COMPOSITOR` (`ID_COMPOSITOR`);
 
 --
 -- Indices de la tabla `casa_productora_atrib`
@@ -318,14 +352,6 @@ ALTER TABLE `cancion_atrib`
 ALTER TABLE `casa_productora_atrib`
   ADD PRIMARY KEY (`ID_CASA_PRODUCTORA`),
   ADD KEY `ID_CASA_PRODUCTORA` (`ID_CASA_PRODUCTORA`,`ID_PAIS`),
-  ADD KEY `ID_PAIS` (`ID_PAIS`);
-
---
--- Indices de la tabla `compositor_atrib`
---
-ALTER TABLE `compositor_atrib`
-  ADD PRIMARY KEY (`ID_COMPOSITOR`),
-  ADD KEY `ID_COMPOSITOR` (`ID_COMPOSITOR`,`ID_PAIS`),
   ADD KEY `ID_PAIS` (`ID_PAIS`);
 
 --
@@ -377,29 +403,37 @@ ALTER TABLE `pais`
 --
 ALTER TABLE `pelicula_atrib`
   ADD PRIMARY KEY (`ID_PELICULA`),
-  ADD KEY `ID_ACTOR1` (`ID_ACTOR1`,`ID_ACTOR2`,`ID_GENERO`,`ID_ESTILO`,`ID_PAIS`,`ID_CASA_PRODUCTORA`,`ID_FORMATO`,`ID_PRODUCTOR`),
-  ADD KEY `ID_PAIS` (`ID_PAIS`),
-  ADD KEY `ID_PRODUCTOR` (`ID_PRODUCTOR`),
-  ADD KEY `ID_ESTILO` (`ID_ESTILO`),
+  ADD UNIQUE KEY `ID_ESTILO` (`ID_ESTILO`),
+  ADD UNIQUE KEY `ID_PAIS` (`ID_PAIS`),
+  ADD KEY `ID_ACTOR1` (`ID_ACTOR1`),
   ADD KEY `ID_ACTOR2` (`ID_ACTOR2`),
   ADD KEY `ID_GENERO` (`ID_GENERO`),
   ADD KEY `ID_CASA_PRODUCTORA` (`ID_CASA_PRODUCTORA`),
-  ADD KEY `ID_FORMATO` (`ID_FORMATO`);
+  ADD KEY `ID_FORMATO` (`ID_FORMATO`),
+  ADD KEY `ID_PRODUCTOR` (`ID_PRODUCTOR`);
 
 --
--- Indices de la tabla `productor_atrib`
+-- Indices de la tabla `personas_atrib`
 --
-ALTER TABLE `productor_atrib`
-  ADD PRIMARY KEY (`ID_PRODUCTOR`),
-  ADD KEY `ID_PRODUCTOR` (`ID_PRODUCTOR`,`ID_PAIS`),
+ALTER TABLE `personas_atrib`
+  ADD PRIMARY KEY (`ID_PERSONA`),
+  ADD KEY `ID_PERSONA` (`ID_PERSONA`),
   ADD KEY `ID_PAIS` (`ID_PAIS`);
 
 --
--- Indices de la tabla `token`
+-- Indices de la tabla `relacion_roles_personas`
 --
-ALTER TABLE `token`
-  ADD PRIMARY KEY (`ID_TOKEN`),
-  ADD KEY `ID_USUARIO` (`ID_USUARIO`);
+ALTER TABLE `relacion_roles_personas`
+  ADD PRIMARY KEY (`ID_RELACION`),
+  ADD KEY `ID_PERSONA` (`ID_PERSONA`),
+  ADD KEY `ID_ROL` (`ID_ROL`);
+
+--
+-- Indices de la tabla `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`ID_ROL`),
+  ADD KEY `ID_ROL` (`ID_ROL`);
 
 --
 -- Indices de la tabla `usuarios_atrib`
@@ -409,26 +443,30 @@ ALTER TABLE `usuarios_atrib`
   ADD KEY `ID_PAIS` (`ID_PAIS`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- Indices de la tabla `val_album`
 --
+ALTER TABLE `val_album`
+  ADD PRIMARY KEY (`ID_VAL_ALBUM`),
+  ADD KEY `ID_USUARIO` (`ID_USUARIO`),
+  ADD KEY `ID_ALBUM` (`ID_ALBUM`);
 
 --
--- AUTO_INCREMENT de la tabla `actor_atrib`
+-- Indices de la tabla `val_peliculas`
 --
-ALTER TABLE `actor_atrib`
-  MODIFY `ID_ACTOR` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `val_peliculas`
+  ADD PRIMARY KEY (`ID_VAL_PELICULA`),
+  ADD KEY `ID_USUARIO` (`ID_USUARIO`),
+  ADD KEY `ID_PELICULA` (`ID_PELICULA`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
 
 --
 -- AUTO_INCREMENT de la tabla `album_atrib`
 --
 ALTER TABLE `album_atrib`
   MODIFY `ID_ALBUM` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `artista_atrib`
---
-ALTER TABLE `artista_atrib`
-  MODIFY `ID_ARTISTA` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `cancion_atrib`
@@ -441,12 +479,6 @@ ALTER TABLE `cancion_atrib`
 --
 ALTER TABLE `casa_productora_atrib`
   MODIFY `ID_CASA_PRODUCTORA` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `compositor_atrib`
---
-ALTER TABLE `compositor_atrib`
-  MODIFY `ID_COMPOSITOR` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `datagen`
@@ -470,7 +502,7 @@ ALTER TABLE `estilo`
 -- AUTO_INCREMENT de la tabla `formato`
 --
 ALTER TABLE `formato`
-  MODIFY `ID_FORMATO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_FORMATO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `genero`
@@ -485,66 +517,54 @@ ALTER TABLE `pais`
   MODIFY `ID_PAIS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `productor_atrib`
+-- AUTO_INCREMENT de la tabla `personas_atrib`
 --
-ALTER TABLE `productor_atrib`
-  MODIFY `ID_PRODUCTOR` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `personas_atrib`
+  MODIFY `ID_PERSONA` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `token`
+-- AUTO_INCREMENT de la tabla `roles`
 --
-ALTER TABLE `token`
-  MODIFY `ID_TOKEN` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `roles`
+  MODIFY `ID_ROL` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `actor_atrib`
---
-ALTER TABLE `actor_atrib`
-  ADD CONSTRAINT `actor_atrib_ibfk_1` FOREIGN KEY (`ID_PAIS`) REFERENCES `pais` (`ID_PAIS`);
-
---
 -- Filtros para la tabla `album_atrib`
 --
 ALTER TABLE `album_atrib`
   ADD CONSTRAINT `album_atrib_ibfk_1` FOREIGN KEY (`ID_PAIS`) REFERENCES `pais` (`ID_PAIS`),
+  ADD CONSTRAINT `album_atrib_ibfk_10` FOREIGN KEY (`ID_COMPOSITOR`) REFERENCES `personas_atrib` (`ID_PERSONA`),
+  ADD CONSTRAINT `album_atrib_ibfk_11` FOREIGN KEY (`ID_PRODUCTOR`) REFERENCES `personas_atrib` (`ID_PERSONA`),
   ADD CONSTRAINT `album_atrib_ibfk_2` FOREIGN KEY (`ID_DISQUERA`) REFERENCES `disquera_atrib` (`ID_DISQUERA`),
-  ADD CONSTRAINT `album_atrib_ibfk_3` FOREIGN KEY (`ID_PRODUCTOR`) REFERENCES `productor_atrib` (`ID_PRODUCTOR`),
-  ADD CONSTRAINT `album_atrib_ibfk_4` FOREIGN KEY (`ID_ARTISTA`) REFERENCES `artista_atrib` (`ID_ARTISTA`),
-  ADD CONSTRAINT `album_atrib_ibfk_5` FOREIGN KEY (`ID_COMPOSITOR`) REFERENCES `compositor_atrib` (`ID_COMPOSITOR`),
   ADD CONSTRAINT `album_atrib_ibfk_6` FOREIGN KEY (`ID_GENERO`) REFERENCES `genero` (`ID_GENERO`),
   ADD CONSTRAINT `album_atrib_ibfk_7` FOREIGN KEY (`ID_ESTILO`) REFERENCES `estilo` (`ID_ESTILO`),
-  ADD CONSTRAINT `album_atrib_ibfk_8` FOREIGN KEY (`ID_FORMATO`) REFERENCES `formato` (`ID_FORMATO`);
+  ADD CONSTRAINT `album_atrib_ibfk_8` FOREIGN KEY (`ID_FORMATO`) REFERENCES `formato` (`ID_FORMATO`),
+  ADD CONSTRAINT `album_atrib_ibfk_9` FOREIGN KEY (`ID_ARTISTA`) REFERENCES `personas_atrib` (`ID_PERSONA`);
 
 --
--- Filtros para la tabla `artista_atrib`
+-- Filtros para la tabla `busquedas`
 --
-ALTER TABLE `artista_atrib`
-  ADD CONSTRAINT `artista_atrib_ibfk_1` FOREIGN KEY (`ID_PAIS`) REFERENCES `pais` (`ID_PAIS`);
+ALTER TABLE `busquedas`
+  ADD CONSTRAINT `busquedas_ibfk_1` FOREIGN KEY (`ID_USUARIO`) REFERENCES `usuarios_atrib` (`ID_USUARIO`);
 
 --
 -- Filtros para la tabla `cancion_atrib`
 --
 ALTER TABLE `cancion_atrib`
-  ADD CONSTRAINT `cancion_atrib_ibfk_1` FOREIGN KEY (`ID_COMPOSITOR`) REFERENCES `compositor_atrib` (`ID_COMPOSITOR`),
   ADD CONSTRAINT `cancion_atrib_ibfk_2` FOREIGN KEY (`ID_GENERO`) REFERENCES `genero` (`ID_GENERO`),
-  ADD CONSTRAINT `cancion_atrib_ibfk_3` FOREIGN KEY (`ID_ARTISTA`) REFERENCES `artista_atrib` (`ID_ARTISTA`),
-  ADD CONSTRAINT `cancion_atrib_ibfk_4` FOREIGN KEY (`ID_ALBUM`) REFERENCES `album_atrib` (`ID_ALBUM`);
+  ADD CONSTRAINT `cancion_atrib_ibfk_4` FOREIGN KEY (`ID_ALBUM`) REFERENCES `album_atrib` (`ID_ALBUM`),
+  ADD CONSTRAINT `cancion_atrib_ibfk_5` FOREIGN KEY (`ID_ARTISTA`) REFERENCES `personas_atrib` (`ID_PERSONA`),
+  ADD CONSTRAINT `cancion_atrib_ibfk_6` FOREIGN KEY (`ID_COMPOSITOR`) REFERENCES `personas_atrib` (`ID_PERSONA`);
 
 --
 -- Filtros para la tabla `casa_productora_atrib`
 --
 ALTER TABLE `casa_productora_atrib`
   ADD CONSTRAINT `casa_productora_atrib_ibfk_1` FOREIGN KEY (`ID_PAIS`) REFERENCES `pais` (`ID_PAIS`);
-
---
--- Filtros para la tabla `compositor_atrib`
---
-ALTER TABLE `compositor_atrib`
-  ADD CONSTRAINT `compositor_atrib_ibfk_1` FOREIGN KEY (`ID_PAIS`) REFERENCES `pais` (`ID_PAIS`);
 
 --
 -- Filtros para la tabla `datagen`
@@ -562,32 +582,47 @@ ALTER TABLE `disquera_atrib`
 -- Filtros para la tabla `pelicula_atrib`
 --
 ALTER TABLE `pelicula_atrib`
-  ADD CONSTRAINT `pelicula_atrib_ibfk_1` FOREIGN KEY (`ID_PAIS`) REFERENCES `pais` (`ID_PAIS`),
-  ADD CONSTRAINT `pelicula_atrib_ibfk_2` FOREIGN KEY (`ID_PRODUCTOR`) REFERENCES `productor_atrib` (`ID_PRODUCTOR`),
-  ADD CONSTRAINT `pelicula_atrib_ibfk_3` FOREIGN KEY (`ID_ESTILO`) REFERENCES `estilo` (`ID_ESTILO`),
-  ADD CONSTRAINT `pelicula_atrib_ibfk_4` FOREIGN KEY (`ID_ACTOR1`) REFERENCES `actor_atrib` (`ID_ACTOR`),
-  ADD CONSTRAINT `pelicula_atrib_ibfk_5` FOREIGN KEY (`ID_ACTOR2`) REFERENCES `actor_atrib` (`ID_ACTOR`),
+  ADD CONSTRAINT `pelicula_atrib_ibfk_1` FOREIGN KEY (`ID_CASA_PRODUCTORA`) REFERENCES `casa_productora_atrib` (`ID_CASA_PRODUCTORA`),
+  ADD CONSTRAINT `pelicula_atrib_ibfk_2` FOREIGN KEY (`ID_FORMATO`) REFERENCES `formato` (`ID_FORMATO`),
+  ADD CONSTRAINT `pelicula_atrib_ibfk_3` FOREIGN KEY (`ID_ACTOR1`) REFERENCES `personas_atrib` (`ID_PERSONA`),
+  ADD CONSTRAINT `pelicula_atrib_ibfk_4` FOREIGN KEY (`ID_ACTOR2`) REFERENCES `personas_atrib` (`ID_PERSONA`),
+  ADD CONSTRAINT `pelicula_atrib_ibfk_5` FOREIGN KEY (`ID_PRODUCTOR`) REFERENCES `personas_atrib` (`ID_PERSONA`),
   ADD CONSTRAINT `pelicula_atrib_ibfk_6` FOREIGN KEY (`ID_GENERO`) REFERENCES `genero` (`ID_GENERO`),
-  ADD CONSTRAINT `pelicula_atrib_ibfk_7` FOREIGN KEY (`ID_CASA_PRODUCTORA`) REFERENCES `casa_productora_atrib` (`ID_CASA_PRODUCTORA`),
-  ADD CONSTRAINT `pelicula_atrib_ibfk_8` FOREIGN KEY (`ID_FORMATO`) REFERENCES `formato` (`ID_FORMATO`);
+  ADD CONSTRAINT `pelicula_atrib_ibfk_7` FOREIGN KEY (`ID_ESTILO`) REFERENCES `estilo` (`ID_ESTILO`),
+  ADD CONSTRAINT `pelicula_atrib_ibfk_8` FOREIGN KEY (`ID_PAIS`) REFERENCES `pais` (`ID_PAIS`);
 
 --
--- Filtros para la tabla `productor_atrib`
+-- Filtros para la tabla `personas_atrib`
 --
-ALTER TABLE `productor_atrib`
-  ADD CONSTRAINT `productor_atrib_ibfk_1` FOREIGN KEY (`ID_PAIS`) REFERENCES `pais` (`ID_PAIS`);
+ALTER TABLE `personas_atrib`
+  ADD CONSTRAINT `personas_atrib_ibfk_1` FOREIGN KEY (`ID_PAIS`) REFERENCES `pais` (`ID_PAIS`);
 
 --
--- Filtros para la tabla `token`
+-- Filtros para la tabla `relacion_roles_personas`
 --
-ALTER TABLE `token`
-  ADD CONSTRAINT `token_ibfk_1` FOREIGN KEY (`ID_USUARIO`) REFERENCES `usuarios_atrib` (`ID_USUARIO`);
+ALTER TABLE `relacion_roles_personas`
+  ADD CONSTRAINT `relacion_roles_personas_ibfk_2` FOREIGN KEY (`ID_ROL`) REFERENCES `roles` (`ID_ROL`),
+  ADD CONSTRAINT `relacion_roles_personas_ibfk_3` FOREIGN KEY (`ID_PERSONA`) REFERENCES `personas_atrib` (`ID_PERSONA`);
 
 --
 -- Filtros para la tabla `usuarios_atrib`
 --
 ALTER TABLE `usuarios_atrib`
   ADD CONSTRAINT `usuarios_atrib_ibfk_1` FOREIGN KEY (`ID_PAIS`) REFERENCES `pais` (`ID_PAIS`);
+
+--
+-- Filtros para la tabla `val_album`
+--
+ALTER TABLE `val_album`
+  ADD CONSTRAINT `val_album_ibfk_1` FOREIGN KEY (`ID_USUARIO`) REFERENCES `usuarios_atrib` (`ID_USUARIO`),
+  ADD CONSTRAINT `val_album_ibfk_2` FOREIGN KEY (`ID_ALBUM`) REFERENCES `album_atrib` (`ID_ALBUM`);
+
+--
+-- Filtros para la tabla `val_peliculas`
+--
+ALTER TABLE `val_peliculas`
+  ADD CONSTRAINT `val_peliculas_ibfk_1` FOREIGN KEY (`ID_PELICULA`) REFERENCES `pelicula_atrib` (`ID_PELICULA`),
+  ADD CONSTRAINT `val_peliculas_ibfk_2` FOREIGN KEY (`ID_USUARIO`) REFERENCES `usuarios_atrib` (`ID_USUARIO`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
