@@ -14,8 +14,8 @@ class Principal extends CI_Controller
 	{
 		$data["menu_current"] = "index";
 		$data["total"] = $this->carrito->get_total();
-		$data["recientes"] = $this->Tienda_model->get_productos_recientes(8);
-		$data["aleatorios"] = $this->Tienda_model->get_productos_aleatorios(3);
+		$data["recientes"] = $this->Tienda_model->get_productos_recientes(5);
+		$data["aleatorios"] = $this->Tienda_model->get_productos_aleatorios(9);
 		$data["content"] = "home";
 		$this->load->view("template", $data);
 	}
