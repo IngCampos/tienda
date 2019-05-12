@@ -3,12 +3,12 @@
 </center>
 <div class="row">
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
-        Fecha inicial<input type="date" name="f-inicial" value="<?php if(!isset($_POST['f-inicial'])) echo date('Y').'-'.date('m').'-01';  else echo $_POST['f-inicial'];?>" max="<?php echo date('Y').'-'.date('m').'-'.date('d');?>" required>
-        Fecha final<input type="date" name="f-final" value="<?php if(!isset($_POST['f-final'])) echo date('Y').'-'.date('m').'-'.date('d'); else echo $_POST['f-final'];?>" max="<?php echo date('Y').'-'.date('m').'-'.date('d');?>" required>
+        Fecha y hora inicial<input type="datetime-local" name="f-inicial" value="<?php if(!isset($_POST['f-inicial'])) echo date('Y').'-'.date('m').'-01T00:00';  else echo $_POST['f-inicial'];?>" max="<?php echo date('Y').'-'.date('m').'-'.date('d').'T23:59';?>" required>
+        Fecha y hora final<input type="datetime-local" name="f-final" value="<?php if(!isset($_POST['f-final'])) echo date('Y').'-'.date('m').'-'.date('d').'T'.date('H').':'.date('i'); else echo $_POST['f-final'];?>" max="<?php echo date('Y').'-'.date('m').'-'.date('d').'T23:59';?>" required>
         <input type="submit" value="Generar reporte">
     </form>
 </div>
-<?php if($_SERVER['REQUEST_METHOD']=='POST'): ?>
+<?php if(isset($_POST['f-inicial']) && isset($_POST['f-final']) && $_POST['f-inicial']<$_POST['f-final']): ?>
 <?php 	
 $inicio = $_POST['f-inicial'];
 $final = $_POST['f-final'];
@@ -184,5 +184,9 @@ $final = $_POST['f-final'];
             </p>
         </div>
     </div>
+</div>
+<?php else:?>
+<div class="row">
+    <div class='col-12'><h4>La fecha y hora inicial debe ser menor y no igual a la final.</div>
 </div>
 <?php endif; ?>
