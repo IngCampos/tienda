@@ -1,6 +1,6 @@
+		<center><h1>Crear cuenta de usuario</h1></center>
 <div id="content" align="center">
 	<div id="form_login">
-		<h2>Crear cuenta de usuario</h2>
 		<p>Por favor proporcione los siguientes datos:</p>
 		<?php $this->form_validation->set_error_delimiters('<div class="error">', '</div>'); ?>
 		<?php echo validation_errors(); ?>

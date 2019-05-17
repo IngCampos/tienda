@@ -1,6 +1,6 @@
+		<center><h1>Inicio de sesión</h1></center>
 <div id="content" align="center">
 	<div id="form_login">
-		<h2>Inicio de sesión</h2>
 		<p>Para continuar es necesario que inicie sesión:</p>
 		<?php $this->form_validation->set_error_delimiters('<div class="error">', '</div>'); ?>
 		<?php echo validation_errors(); ?>
@@ -28,7 +28,7 @@
 				?>
 			</li>
 			<li>
-				<?php echo form_submit("aceptttar", "Aceptar"); ?>
+				<?php echo form_submit("aceptttar btn", "Aceptar"); ?>
 				<?php echo form_reset("cancelar", "Cancelar"); ?>
 			</li>
 		</ul>

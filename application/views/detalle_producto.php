@@ -1,9 +1,9 @@
 <div id="content">
-	<h2 align="center">DETALLE DEL PRODUCTO</h2>
-	<div id="detalle_producto">
-		<h3><?php echo $producto->nombre; ?></h3>
-		<img src="<?php echo base_url(); ?>images/<?php echo $producto->imagen; ?>" width="300" alt="texto">
-		<div id="info_producto">
+	<div id="detalle_producto" class="jumbotron">
+		<h3 class="col-12">Detalle del producto: <?php echo $producto->nombre; ?></h3>
+
+		<img class="col-sm-12 col-md-6 col-lg-6 col-xl-6" src="<?php echo base_url(); ?>images/<?php echo $producto->imagen; ?>" width="300" alt="texto">
+		<div id="info_producto" class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
 			<p><strong>Precio: </strong>$ <?php echo number_format($producto->precio, 2); ?></p>
 			<p><strong>Descripción: </strong><?php echo $producto->descripcion; ?></p>
 			<p><strong>Categoría: </strong><?php echo $producto->categoria; ?></p>
@@ -21,7 +21,7 @@
               'name' 	=> 'btn_add_item',
               'id'      => 'btn_add_item',
               'value'   => 'Agregar al carrito',
-              'class'	=> 'boton1'
+              'class'	=> 'boton1 btn btn-primary'
             );
 			echo form_submit($data);
 			echo form_fieldset_close();

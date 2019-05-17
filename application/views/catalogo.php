@@ -1,5 +1,5 @@
+	<h1 align="center">CATÁLOGO DE PRODUCTOS</h1>
 <div id="content">
-	<h2 align="center">CATÁLOGO DE PRODUCTOS</h2>
 	<ul id="menu_catalogo">
 		<li><?php echo anchor("principal/catalogo", "Todos"); ?></li>
 		<?php foreach($categorias as $cat): ?>
@@ -23,7 +23,7 @@ $numeroPaginas = ceil($totalArticulos / $postPorPagina);// con ceil se redondea 
 		<?php 
 		//echo print_r($productos[0]);
 		foreach($articulosMostrar as $p): ?>
-		<div class="item">
+		<div class="item col-sm-12 col-md-4 col-lg-4 col-xl-4">
 			<h3><?php echo $p->nombre; ?></h3>
 			<div class="datos">
 				<img src="<?php echo base_url(); ?>images/<?php echo $p->imagen; ?>" width="100" height="100" alt="">

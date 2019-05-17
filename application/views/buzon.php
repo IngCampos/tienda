@@ -10,9 +10,15 @@ if (isset($_POST['eliminar'])){
 		$statement->execute();
 }
 ?>
-<h1>Buzon de quejas y sugerencias</h1>
+<center><h1>Buzon de quejas y sugerencias</h1></center>
+<div class="row jumbotron">
 <?php foreach($quejasSugerencias as $qs): ?>
-<?php echo "<h4> Id_Queja " . $qs['id'].": "; if($qs['usuario']!=""){
-    echo $qs['usuario']." "; echo $qs['apellidos']."("; echo $qs['correo'].")";} echo "</h4>"?>
+<div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+<h5> Id_Queja 
+<?php " ". $qs['id'].": "; if($qs['usuario']!=""){
+    echo $qs['usuario']." "; echo $qs['apellidos']."("; echo $qs['correo'].")";}?>
+	</h5>
 <?php echo $qs['titulo'].": "; echo $qs['descripcion']; ?>
+</div>
 <?php endforeach; ?><br>
+</div>

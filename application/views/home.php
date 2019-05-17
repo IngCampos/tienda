@@ -15,10 +15,10 @@
 	</div>
 	<p>Bienvenido a la pagina de inicio de <strong>CD Shop</strong>, disfruten su estancia.</p>
 	
-	<div id="widgets">
+	<div id="widgets row">
 	<h3>Top 9 de CDs mas vendidos</h3>
 		<?php foreach($aleatorios as $a): ?>
-			<div class="widget">
+			<div class="widget col-sm-12 col-md-4 col-lg-3 col-xl-2">
 				<h3><?php echo $a->nombre; ?></h3>
 				<a href="<?php echo base_url(); ?>principal/detalle_producto/<?php echo $a->id; ?>" 
 					title="Ver en catalogo">
@@ -28,7 +28,7 @@
 		<?php endforeach; ?>
 		<h3>Top 9 de DVDs mas vendidos</h3>
 		<?php foreach($aleatorios as $a): ?>
-			<div class="widget">
+			<div class="widget col-sm-12 col-md-4 col-lg-3 col-xl-2">
 				<h3><?php echo $a->nombre; ?></h3>
 				<a href="<?php echo base_url(); ?>principal/detalle_producto/<?php echo $a->id; ?>" 
 					title="Ver en catalogo">
@@ -38,7 +38,7 @@
 		<?php endforeach; ?>
 		<h3>Top 9 de BLU-RAY mas vendidos</h3>
 		<?php foreach($aleatorios as $a): ?>
-			<div class="widget">
+			<div class="widget col-sm-12 col-md-4 col-lg-3 col-xl-2">
 				<h3><?php echo $a->nombre; ?></h3>
 				<a href="<?php echo base_url(); ?>principal/detalle_producto/<?php echo $a->id; ?>" 
 					title="Ver en catalogo">
