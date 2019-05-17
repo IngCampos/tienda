@@ -1,8 +1,6 @@
-<div id="content" align="center">
-	
-	<h2>CARRITO DE COMPRAS</h2>
+	<center><h1>CARRITO DE COMPRAS</h1></center>
+<div align="center" class="jumbotron">
 	<p>Mostramos los contenidos del carrito:</p>
-
 	<table class="tabla1">
 		<tr>
 			<th>#</th><th>Imagen</th><th>Producto</th><th>Precio</th><th>Piezas</th><th>Subtotal</th><th></th>

@@ -1,36 +1,3 @@
-<style type="text/css">
-	textarea{
-		resize: none;
-		resize: vertical;
-	}
-	input,button{
-		display: block;
-	}
-	.btn{
-		padding: 10px;
-		background-color: black;
-		color: white;
-		border-radius: 15px;
-		border: none;
-		margin-top: 20px;
-		margin-left: 400px;
-	}
-	#content{
-		margin-left: 150px;
-		margin-top: 150px;
-	}
-	textarea{
-		width: 450px;
-		height: 50px;
-	}
-	select{
-		display: inline-block;
-	}
-	input[type="file"]{
-		width: 400px;
-		color: black;
-	}
-</style>
 <?php 
 	if ($_SERVER['REQUEST_METHOD']=='POST') {
 		$nombre = $_POST['nombre'];
@@ -58,21 +25,36 @@
 
 		}
  ?>
-<div id="content">
-	<h2>Agregar artículo</h2>
+	<center><h1>Agregar artículo</h1></center>
 	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" name="nuevo_producto">
-	<input type="text" name="nombre" ID='nombre' placeholder="Nombre del artículo">
-	<input type="text" name="precio" id='precio' placeholder="Precio">
-	<textarea name="descripcion" placeholder="Descripción"></textarea>
-	<br>
+<div id="content" class="form-row jumbotron">
+	<div class="form-group col-sm-12 col-md-6 col-lg-6 col-xl-4">
+	<label for="nombre">Nombre del artículo</label>
+	<input class="form-control" type="text" name="nombre" ID='nombre'>
+	</div>
+	<div class="form-group col-sm-12 col-md-6 col-lg-6 col-xl-2">
+	<label for="precio">Precio</label>
+	<input class="form-control" type="text" name="precio" id='precio'>
+	</div>
+	<div class="form-group col-sm-12 col-md-6 col-lg-6 col-xl-2">
 	<label for="categoria"> Categoría</label>
-	<select id="categoria" name="categoria">
+	<select class="form-control" id="categoria" name="categoria">
 		<option value="1">CD</option>
 		<option value="3">BLURAY</option>
 		<option value="2">DVD</option>
 		<option value="4">VINIL</option>
 	</select>
-	<input type="file" name="imagen" id='imagen'>
-	<button type="submit" class="btn">Crear</button>
-	</form>
+	</div>
+	<div class="form-group col-sm-12 col-md-6 col-lg-6 col-xl-4">
+	<label for="imagen">Imagen</label>
+	<input class="form-control" type="file" name="imagen" id='imagen'>
+	</div>
+	<div class="form-group col-12">
+	<label for="descripcion">Descripción</label>
+	<textarea class="form-control" name="descripcion" id="descripcion"></textarea>
+	</div>
+	<div class="form-group col-12">
+	<button type="submit" class="form-control btn btn-primary">Crear</button>
+	</div>
 </div>
+	</form>

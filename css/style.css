@@ -11,7 +11,7 @@ body
 	background: #fafafa;
 	color: #444;
 	font-family: 'Didact Gothic', sans-serif;
-	font-size: 16px;
+	font-size: 19px;
 }
 
 a
@@ -26,6 +26,15 @@ img
 	border: 0;
 }
 
+ul.menuprincipal li
+{
+	padding-top: 3px;
+}
+
+#input-buscar{
+	margin-left: 45px;
+	padding: 10px;
+}
 ul
 {
 	list-style: none;
@@ -83,7 +92,7 @@ p
 	border-radius: 1em;
 	box-shadow: 0 0 3px #444;
 	margin: 0 auto;
-	width: 960px;
+	width: 1200px;
 }
 
 #content
@@ -103,12 +112,14 @@ header, footer
 
 header
 {
+
 }
 
 header h1
 {
 	background: url("../images/logo.png") no-repeat;
 	text-indent: -9999px;
+	padding-top: -50px;
 }
 
 header h1 a
@@ -173,9 +184,9 @@ footer
 
 #productos
 {
-	background: #A9CCE3  ;
+	background: #f0f0f0  ;
 	border-radius: 1em;
-	box-shadow: 0 0 1px orange;
+	box-shadow: 0 0 1px  #212F3C ;
 	margin: 1em;
 	padding: 0.5em;
 	text-align: center;
