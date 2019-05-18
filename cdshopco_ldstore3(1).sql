@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-05-2019 a las 05:43:23
+-- Tiempo de generación: 18-05-2019 a las 17:37:50
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.3
 
@@ -203,6 +203,28 @@ CREATE TABLE `estadisticas_paginas` (
   `ID_PAGINA` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `estadisticas_paginas`
+--
+
+INSERT INTO `estadisticas_paginas` (`ID_VISITA`, `ID_USUARIO`, `FECHA`, `ID_PAGINA`) VALUES
+(1, 1, '2019-03-12', 1),
+(2, 20, '2018-12-18', 4),
+(3, 10, '2019-04-30', 2),
+(4, 11, '2019-05-06', 1),
+(5, 8, '2019-04-30', 1),
+(6, 9, '2019-05-06', 2),
+(7, 1, '2019-05-06', 3),
+(8, 4, '2019-05-01', 1),
+(9, 6, '2019-05-01', 2),
+(10, 5, '2019-05-01', 4),
+(11, 7, '2019-05-06', 2),
+(12, 7, '2019-05-02', 1),
+(13, 9, '2019-05-02', 2),
+(14, 1, '2019-05-03', 1),
+(15, 1, '2019-05-03', 2),
+(16, 1, '2019-05-03', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -211,7 +233,7 @@ CREATE TABLE `estadisticas_paginas` (
 
 CREATE TABLE `estad_catalogo` (
   `ID_ESTAD` int(11) NOT NULL,
-  `FECHA` date NOT NULL,
+  `FECHA` datetime NOT NULL,
   `ID_USUARIO` int(11) NOT NULL,
   `ID_PRODUCTO` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -722,6 +744,14 @@ CREATE TABLE `val_album` (
   `DATE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `val_album`
+--
+
+INSERT INTO `val_album` (`ID_VAL_ALBUM`, `ID_USUARIO`, `ID_ALBUM`, `VALORACION_ALBUM`, `COMENTARIOS`, `DATE`) VALUES
+(1, 3, 8, 0, 'Me cae mal Pésimo álbum', '2019-05-07 11:14:14'),
+(2, 4, 8, 0, 'No me agrada', '2019-05-02 00:14:14');
+
 -- --------------------------------------------------------
 
 --
@@ -972,6 +1002,18 @@ ALTER TABLE `disquera_atrib`
   MODIFY `ID_DISQUERA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT de la tabla `estadisticas_paginas`
+--
+ALTER TABLE `estadisticas_paginas`
+  MODIFY `ID_VISITA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT de la tabla `estad_catalogo`
+--
+ALTER TABLE `estad_catalogo`
+  MODIFY `ID_ESTAD` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `estad_paginas`
 --
 ALTER TABLE `estad_paginas`
@@ -1030,6 +1072,12 @@ ALTER TABLE `roles`
 --
 ALTER TABLE `usuarios_atrib`
   MODIFY `ID_USUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `val_album`
+--
+ALTER TABLE `val_album`
+  MODIFY `ID_VAL_ALBUM` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
