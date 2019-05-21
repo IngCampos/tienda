@@ -8,7 +8,7 @@ $usuario = $this->session->userdata("usuario");
 		<?php $this->form_validation->set_error_delimiters('<div class="error">', '</div>'); ?>
 		<?php echo validation_errors(); ?>
 		<div id="form-login">
-			<form action ="http://localhost/tienda/login/actualizar" method="post">
+			<form action ="http://www.cdshop.com.mx/login/actualizar" method="post">
 				<label for="nombre">Nombre: </label>
 				<input type ="text" name ="nombre" value="<?php echo $usuario->nombre;?>" /><br>
 				<label for="apellidos">Apellidos: </label>

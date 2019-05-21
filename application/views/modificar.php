@@ -38,7 +38,7 @@
 	
 	$id = $_GET['id'];
 	try {
-		$conexion = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore2;','root','');
+		$conexion = new PDO('mysql:host=159.65.185.149 ;port=3306; dbname=cdshopco_ldstore2;','cdshopco_admi','L@_G$J8pvGq,');
 		$sql = "select * from productos where id=$id";
 
 		$statement = $conexion->prepare($sql);
@@ -60,7 +60,7 @@
  	?>
 <div id="content">
 	<h2>Modificar artículo</h2>
-	<form action="http://localhost/tienda/principal/modificar_exito?id=<?php echo $id?>" method="POST" name="modificar_producto">
+	<form action="http://www.cdshop.com.mx/principal/modificar_exito?id=<?php echo $id?>" method="POST" name="modificar_producto">
 	<input type="text" name="nombre" ID='nombre' value="<?php echo $nombre?>" placeholder="Nombre del artículo">
 	<input type="text" name="precio" id='precio' value="<?php echo $precio?>" placeholder="Precio">
 	<textarea name="descripcion" placeholder="Descripción"><?php echo $descripcion?></textarea>

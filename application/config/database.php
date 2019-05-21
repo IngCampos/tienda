@@ -48,9 +48,9 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root'; //'lduser'; 
-$db['default']['password'] = ''; //'Hub+2013/'; 
+$db['default']['hostname'] = '159.65.185.149';
+$db['default']['username'] = 'cdshopco_admi'; //'lduser'; 
+$db['default']['password'] = 'L@_G$J8pvGq,'; //'Hub+2013/'; 
 $db['default']['database'] = 'cdshopco_ldstore2'; //'tiendahubld'; 
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';

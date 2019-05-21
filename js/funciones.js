@@ -1,4 +1,4 @@
-var url_base = "http://localhost/tienda/";
+var url_base = "http://www.cdshop.com.mx/";
 //var url_base = "http://lab.linkdesigns.com/tienda/";
 
 $("document").ready(function(){

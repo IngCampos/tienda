@@ -46,7 +46,7 @@
 	if ($_SERVER['REQUEST_METHOD']=='POST') {
 	try {
 			$idv = $_GET['id'];
-			$conexion = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore2;','root','');
+			$conexion = new PDO('mysql:host=159.65.185.149 ;port=3306; dbname=cdshopco_ldstore2;','cdshopco_admi','L@_G$J8pvGq,');
 			$sql = "select * from productos where id=$idv";
 
 			$statement = $conexion->prepare($sql);
@@ -73,7 +73,7 @@
 
 			$categoriav = $_POST['categoria'];
 
-			$conexion = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore2;','root','');
+			$conexion = new PDO('mysql:host=159.65.185.149 ;port=3306; dbname=cdshopco_ldstore2;','cdshopco_admi','L@_G$J8pvGq,');
 			$sql = "update productos set nombre = '$nombrev',descripcion = '$descripcionv',precio = $preciov, imagen = '$imgv', Categorias_id = $categoriav where id = $idv ";
 			
 			$statement = $conexion->prepare($sql);

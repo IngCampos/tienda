@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/tienda/';
+$config['base_url']	= 'http://www.cdshop.com.mx/';
 //$config['base_url']	= 'http://lab.linkdesigns.com/tienda/';
 
 /*

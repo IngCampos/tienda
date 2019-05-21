@@ -4,7 +4,7 @@
 		<?php $this->form_validation->set_error_delimiters('<div class="error">', '</div>'); ?>
 		<?php echo validation_errors(); ?>
 		<div id="form-login">
-			<form action ="http://localhost/principal/detalle_pedido"
+			<form action ="http://www.cdshop.com.mx/principal/detalle_pedido"
 				<label for="nombre">Nombre: </label>
 				<input type ="text" name ="nombre" value="<?php echo $usuario->nombre;?>" />
 				<label for="apellidos">Apellidos: </label>

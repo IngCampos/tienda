@@ -1,10 +1,10 @@
 <?php 
-$conexion2 = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore2;','root','');
+$conexion2 = new PDO('mysql:host=159.65.185.149 ;port=3306; dbname=cdshopco_ldstore2;','cdshopco_admi','L@_G$J8pvGq,');
 $statement2 = $conexion2->prepare("SELECT * FROM quejas_sugerencias");
 $statement2->execute();
 $quejasSugerencias = $statement2->fetchAll();
 if (isset($_POST['eliminar'])){
-		$conexion = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore2;','root','');
+		$conexion = new PDO('mysql:host=159.65.185.149 ;port=3306; dbname=cdshopco_ldstore2;','cdshopco_admi','L@_G$J8pvGq,');
 		$sql = "DElETE * FROM quejas_sugerencias";
 		$statement = $conexion->prepare($sql);
 		$statement->execute();

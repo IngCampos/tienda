@@ -1889,7 +1889,7 @@ class CI_Email {
 	 */
 	protected function _get_hostname()
 	{
-		return (isset($_SERVER['SERVER_NAME'])) ? $_SERVER['SERVER_NAME'] : 'localhost.localdomain';
+		return (isset($_SERVER['SERVER_NAME'])) ? $_SERVER['SERVER_NAME'] : 'http://www.cdshop.com.mx';
 	}
 
 	// --------------------------------------------------------------------

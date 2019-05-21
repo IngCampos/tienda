@@ -12,7 +12,7 @@
 		move_uploaded_file($img, $archivo_subido);
 
 		try {
-			$conexion = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore2;','root','');
+			$conexion = new PDO('mysql:host=159.65.185.149 ;port=3306; dbname=cdshopco_ldstore2;','cdshopco_admi','L@_G$J8pvGq,');;
 
 			$sql = "INSERT INTO productos (nombre, descripcion, precio, imagen, Categorias_id) 
 				VALUES ('$nombre', '$descripcion', $precio, '$img', $categoria)";

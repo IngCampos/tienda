@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1F618D;">
 <div>
-<form action="http://localhost/tienda/principal/search" method="get" class="form-inline my-0 my-lg-0"/>
+<form action="http://www.cdshop.com.mx/principal/search" method="get" class="form-inline my-0 my-lg-0"/>
 <input class="mr-sm-1" type="text" name="search" placeholder="Buscar">
 <input class="btn btn-primary my-0 my-sm-0" type="submit" value="Buscar"> 
 </form>
@@ -32,9 +32,9 @@
 		<?php if($this->session->userdata("valid_user")){ ?>
 		<?php $usuario = $this->session->userdata("usuario"); ?>
 		<?php if($usuario->nombre=="admin1"){ ?>
-		<?php echo '<li><a href="http://localhost/tienda/principal/administrar">Administrar<a/></li>'?>
-		<?php echo '<li><a href="http://localhost/tienda/principal/estadisticas">Estadisticas<a/></li>'?>
-		<?php echo '<li><a href="http://localhost/tienda/principal/buzon">Buzon<a/></li>'?>
+		<?php echo '<li><a href="http://www.cdshop.com.mx/principal/administrar">Administrar<a/></li>'?>
+		<?php echo '<li><a href="http://www.cdshop.com.mx/principal/estadisticas">Estadisticas<a/></li>'?>
+		<?php echo '<li><a href="http://www.cdshop.com.mx/principal/buzon">Buzon<a/></li>'?>
 		<?php } }?>
 	</ul>
 </div>
