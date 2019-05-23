@@ -22,10 +22,26 @@
     </form>
 <?php if(isset($_POST['f-inicial']) && isset($_POST['f-final']) && $_POST['f-inicial']<$_POST['f-final']): ?>
 <?php 	
-$inicio = $_POST['f-inicial'];
-$final = $_POST['f-final'];
+$inicio = explode("T", $_POST['f-inicial']);//explode para separar la fecha de la hora, Esa T estorba para la consulta
+$final = explode("T", $_POST['f-final']);
+
+// Conexion a la base de datos para obtener la informacion para las graficas
+$conexion = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore3;','root','');
+$statement18 = $conexion->prepare("SELECT TERMINO, COUNT(TERMINO) AS REPETICIONES FROM busquedas AS a WHERE FECHA BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY TERMINO");
+//Consulta SQL, generando el numero de repeticiones, y  validando que las fechas sean entre las que se pusieron en el form
+$statement18->execute();
+$estadistica18 = $statement18->fetchAll();
+$estadistica18valor = "";
+foreach($estadistica18 as $valor){
+$total= $total+$valor["REPETICIONES"];//obtener el valor total para determinar el porcentaje
+}
+foreach($estadistica18 as $valor){
+  $valor["PORCENTAJE"] =  (round($valor["REPETICIONES"]/($total), 2)*100)."%";//asignacion de porcentaje
+  $estadistica18valor.= "{x: '".$valor["TERMINO"]."(".$valor["PORCENTAJE"].")', y: ".$valor["REPETICIONES"]."},";//valores que iran en el arreglo para la grafica
+}
+$estadistica18valor = substr ($estadistica18valor, 0, -1);//se elimina el ultimo caracter que es una , que marcaria error
 ?>
-    <center><h4>Reporte generado del <?php echo $inicio.' al '.$final;?></h4></center>
+    <center><h4>Reporte generado del <?php echo $inicio[0].' '.$inicio[1].' al '.$final[0].' '.$final[1];?></h4></center>
 <div class="row jumbotron">
     <button class="col-12 btn btn-primary">Sitio web</button>
     <div class="card border-primary col-sm-6 col-md-6 col-lg-6 col-xl-3">
@@ -183,6 +199,7 @@ $final = $_POST['f-final'];
             </p>
         </div>
     </div>
+    <?php if($estadistica18valor!=""): ?>
     <div class="card border-danger col-sm-12 col-md-12 col-lg-12 col-xl-6">
         <div class="card-header">Estadistica 18</div>
         <div class="card-body text-danger">
@@ -192,13 +209,14 @@ $final = $_POST['f-final'];
             </p>
         </div>
     </div>
+    <?php endif; ?>
 </div>
 <?php else:?>
 <div class="row jumbotron">
     <div class='col-12'><h4>La fecha y hora inicial debe ser menor y no igual a la final.</div>
 </div>
 <?php endif; ?>
-
+<!-- Graficas, configuracion y datos -->
 <script>
 Morris.Donut({
   element: 'e1',
@@ -508,24 +526,15 @@ Morris.Bar({
     }
   }
 });
+<?php if($estadistica18valor!=""): ?>
 Morris.Bar({
   element: 'e18',
   data: [
-    {x: 'Beatles(5%)', y: 200},
-    {x: 'Avengers(5%)', y: 111},
-    {x: 'Miedo(5%)', y: 1123},
-    {x: 'Terror(5%)', y: 132},
-    {x: 'Comedia(5%)', y: 13},
-    {x: 'Iron man(5%)', y: 13},
-    {x: 'Hulk(5%)', y: 112},
-    {x: 'Aventura(5%)', y: 961},
-    {x: 'Anabelle(5%)', y: 15},
-    {x: 'Tristeza(5%)', y: 16},
-    {x: 'Felicidad(5%)', y: 13}
+<?php echo  $estadistica18valor;?>
   ],
   xkey: 'x',
   ykeys: ['y'],
-  labels: ['Y'],
+  labels: ['Cantidad'],
   barColors: function (row, series, type) {
     if (type === 'bar') {
       var red = Math.ceil(255 * row.y / this.ymax);
@@ -536,4 +545,5 @@ Morris.Bar({
     }
   }
 });
+<?php endif; ?>
 </script>
