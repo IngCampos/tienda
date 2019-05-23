@@ -43,6 +43,20 @@ foreach($estadistica2 as $valor){
 }
 $estadistica2valor = substr ($estadistica2valor, 0, -1);//se elimina el ultimo caracter que es una , que marcaria error
 //----
+$statement3 = $conexion->prepare("SELECT estad_paginas.NOMBRE_PAGINA, COUNT(estad_paginas.ID_PAGINA) AS REPETICIONES FROM estadisticas_paginas INNER JOIN estad_paginas ON estadisticas_paginas.ID_PAGINA=estad_paginas.ID_PAGINA WHERE FECHA BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY estad_paginas.ID_PAGINA");
+$statement3->execute();
+$estadistica3 = $statement3->fetchAll();
+$estadistica3valor = "";
+$total=0;
+foreach($estadistica3 as $valor){
+$total= $total+$valor["REPETICIONES"];
+}
+foreach($estadistica3 as $valor){
+  $valor["PORCENTAJE"] =  (round($valor["REPETICIONES"]/($total), 2)*100);
+  $estadistica3valor.= "{x: '".$valor["NOMBRE_PAGINA"]."(".$valor["PORCENTAJE"]."%)', y: ".$valor["REPETICIONES"]."},";
+}
+$estadistica3valor = substr ($estadistica3valor, 0, -1);
+//----
 $statement4 = $conexion->prepare("SELECT DATE, COUNT(DATE) AS REPETICIONES FROM datagen AS a WHERE DATE BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY DATE");
 $statement4->execute();
 $estadistica4 = $statement4->fetchAll();
@@ -122,6 +136,7 @@ $estadistica18valor = substr ($estadistica18valor, 0, -1);
           </div>
       </div>
       <?php endif; ?>
+      <?php if($estadistica3valor!=""): ?>
       <div class="card border-primary col-sm-12 col-md-12 col-lg-12 col-xl-6">
         <div class="card-header">Estadistica 3</div>
         <div class="card-body text-primary">
@@ -131,6 +146,7 @@ $estadistica18valor = substr ($estadistica18valor, 0, -1);
             </p>
         </div>
     </div>
+    <?php endif; ?>
     <?php if($estadistica4valor!=""): ?>
     <div class="card border-primary col-12">
         <div class="card-header">Estadistica 4</div>
@@ -317,14 +333,11 @@ Morris.Donut({
   formatter: function (x) { return x + "%"}
 });
 <?php endif; ?>
+<?php if($estadistica3valor!=""): ?>
 Morris.Bar({
   element: 'e3',
   data: [
-    {x: 'Inicio(20%)', y: 200},
-    {x: 'Conocenos(20%)', y: 20},
-    {x: 'Catalogo(20%)', y: 11},
-    {x: 'Contactanos(20%)', y: 30},
-    {x: 'Carrito(20%)', y: 100}
+    <?php echo  $estadistica3valor;?>
   ],
   xkey: 'x',
   ykeys: ['y'],
@@ -339,6 +352,7 @@ Morris.Bar({
     }
   }  
 });
+<?php endif; ?>
 <?php if($estadistica4valor!=""): ?>
 Morris.Area({
   element: 'e4',
