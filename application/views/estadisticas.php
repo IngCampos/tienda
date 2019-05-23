@@ -27,19 +27,64 @@ $final = explode("T", $_POST['f-final']);
 
 // Conexion a la base de datos para obtener la informacion para las graficas
 $conexion = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore3;','root','');
-$statement18 = $conexion->prepare("SELECT TERMINO, COUNT(TERMINO) AS REPETICIONES FROM busquedas AS a WHERE FECHA BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY TERMINO");
+//----
+$statement2 = $conexion->prepare("SELECT MOB_DESK, COUNT(MOB_DESK) AS REPETICIONES FROM datagen AS a WHERE DATE BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY MOB_DESK");
 //Consulta SQL, generando el numero de repeticiones, y  validando que las fechas sean entre las que se pusieron en el form
+$statement2->execute();
+$estadistica2 = $statement2->fetchAll();
+$estadistica2valor = "";
+$total=0;
+foreach($estadistica2 as $valor){
+$total= $total+$valor["REPETICIONES"];//obtener el valor total para determinar el porcentaje
+}
+foreach($estadistica2 as $valor){
+  $valor["PORCENTAJE"] =  (round($valor["REPETICIONES"]/($total), 2)*100);//asignacion de porcentaje
+  $estadistica2valor.= "{label: '".$valor["MOB_DESK"]."(".$valor["REPETICIONES"].")', value: ".$valor["PORCENTAJE"]."},";//valores que iran en el arreglo para la grafica
+}
+$estadistica2valor = substr ($estadistica2valor, 0, -1);//se elimina el ultimo caracter que es una , que marcaria error
+//----
+$statement10 = $conexion->prepare("SELECT OS, COUNT(OS) AS REPETICIONES FROM datagen AS a WHERE DATE BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY OS");
+$statement10->execute();
+$estadistica10 = $statement10->fetchAll();
+$estadistica10valor = "";
+$total=0;
+foreach($estadistica10 as $valor){
+$total= $total+$valor["REPETICIONES"];
+}
+foreach($estadistica10 as $valor){
+  $valor["PORCENTAJE"] =  (round($valor["REPETICIONES"]/($total), 2)*100);
+  $estadistica10valor.= "{label: '".$valor["OS"]."(".$valor["REPETICIONES"].")', value: ".$valor["PORCENTAJE"]."},";
+}
+$estadistica10valor = substr ($estadistica10valor, 0, -1);
+//----
+$statement11 = $conexion->prepare("SELECT BROWSER, COUNT(BROWSER) AS REPETICIONES FROM datagen AS a WHERE DATE BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY BROWSER");
+$statement11->execute();
+$estadistica11 = $statement11->fetchAll();
+$estadistica11valor = "";
+$total=0;
+foreach($estadistica11 as $valor){
+$total= $total+$valor["REPETICIONES"];
+}
+foreach($estadistica11 as $valor){
+  $valor["PORCENTAJE"] =  (round($valor["REPETICIONES"]/($total), 2)*100);
+  $estadistica11valor.= "{label: '".$valor["BROWSER"]."(".$valor["REPETICIONES"].")', value: ".$valor["PORCENTAJE"]."},";
+}
+$estadistica11valor = substr ($estadistica11valor, 0, -1);
+echo $estadistica11valor;
+//----
+$statement18 = $conexion->prepare("SELECT TERMINO, COUNT(TERMINO) AS REPETICIONES FROM busquedas AS a WHERE FECHA BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY TERMINO");
 $statement18->execute();
 $estadistica18 = $statement18->fetchAll();
 $estadistica18valor = "";
+$total=0;
 foreach($estadistica18 as $valor){
-$total= $total+$valor["REPETICIONES"];//obtener el valor total para determinar el porcentaje
+$total= $total+$valor["REPETICIONES"];
 }
 foreach($estadistica18 as $valor){
-  $valor["PORCENTAJE"] =  (round($valor["REPETICIONES"]/($total), 2)*100)."%";//asignacion de porcentaje
-  $estadistica18valor.= "{x: '".$valor["TERMINO"]."(".$valor["PORCENTAJE"].")', y: ".$valor["REPETICIONES"]."},";//valores que iran en el arreglo para la grafica
+  $valor["PORCENTAJE"] =  (round($valor["REPETICIONES"]/($total), 2)*100)."%";
+  $estadistica18valor.= "{x: '".$valor["TERMINO"]."(".$valor["PORCENTAJE"].")', y: ".$valor["REPETICIONES"]."},";
 }
-$estadistica18valor = substr ($estadistica18valor, 0, -1);//se elimina el ultimo caracter que es una , que marcaria error
+$estadistica18valor = substr ($estadistica18valor, 0, -1);
 ?>
     <center><h4>Reporte generado del <?php echo $inicio[0].' '.$inicio[1].' al '.$final[0].' '.$final[1];?></h4></center>
 <div class="row jumbotron">
@@ -53,6 +98,7 @@ $estadistica18valor = substr ($estadistica18valor, 0, -1);//se elimina el ultimo
             </p>
         </div>
     </div>
+    <?php if($estadistica2valor!=""): ?>
     <div class="card border-primary col-sm-6 col-md-6 col-lg-6 col-xl-3">
           <div class="card-header">Estadistica 2</div>
           <div class="card-body text-primary">
@@ -62,6 +108,7 @@ $estadistica18valor = substr ($estadistica18valor, 0, -1);//se elimina el ultimo
               </p>
           </div>
       </div>
+      <?php endif; ?>
       <div class="card border-primary col-sm-12 col-md-12 col-lg-12 col-xl-6">
         <div class="card-header">Estadistica 3</div>
         <div class="card-body text-primary">
@@ -126,6 +173,7 @@ $estadistica18valor = substr ($estadistica18valor, 0, -1);//se elimina el ultimo
             </p>
         </div>
     </div>
+    <?php if($estadistica10valor!=""): ?>
     <div class="card border-success col-sm-6 col-md-4 col-lg-4 col-xl-3">
         <div class="card-header">Estadistica 10</div>
         <div class="card-body text-success">
@@ -135,6 +183,8 @@ $estadistica18valor = substr ($estadistica18valor, 0, -1);//se elimina el ultimo
             </p>
         </div>
     </div>
+    <?php endif; ?>
+    <?php if($estadistica11valor!=""): ?>
     <div class="card border-success col-sm-12 col-md-4 col-lg-4 col-xl-3">
         <div class="card-header">Estadistica 11</div>
         <div class="card-body text-success">
@@ -144,6 +194,7 @@ $estadistica18valor = substr ($estadistica18valor, 0, -1);//se elimina el ultimo
             </p>
         </div>
     </div>
+    <?php endif; ?>
     <button class="col-12 btn btn-danger">Productos</button>
     <div class="card border-danger col-sm-12 col-md-12 col-lg-12 col-xl-6">
         <div class="card-header">Estadistica 12</div>
@@ -234,11 +285,11 @@ Morris.Donut({
   ],
   formatter: function (x) { return x + "%"}
 });
+<?php if($estadistica2valor!=""): ?>
 Morris.Donut({
   element: 'e2',
   data: [
-    {value: 50, label: 'Computadora(50)'},
-    {value: 50, label: 'Celular(50)'}
+    <?php echo  $estadistica2valor;?>
   ],
   backgroundColor: '#ccc',
   labelColor: '#060',
@@ -250,6 +301,7 @@ Morris.Donut({
   ],
   formatter: function (x) { return x + "%"}
 });
+<?php endif; ?>
 Morris.Bar({
   element: 'e3',
   data: [
@@ -367,11 +419,11 @@ Morris.Donut({
   ],
   formatter: function (x) { return x + "%"}
 });
+<?php if($estadistica10valor!=""): ?>
 Morris.Donut({
     element: 'e10',
     data: [
-        {value: 99, label: 'Windows(99)'},
-        {value: 1, label: 'Linux(1)'}
+        <?php echo  $estadistica10valor;?>
     ],
     backgroundColor: '#ccc',
     labelColor: '#060',
@@ -383,12 +435,12 @@ Morris.Donut({
   ],
   formatter: function (x) { return x + "%"}
 });
+<?php endif; ?>
+<?php if($estadistica11valor!=""): ?>
 Morris.Donut({
   element: 'e11',
   data: [
-    {value: 50, label: 'Chrome(50)'},
-    {value: 10, label: 'Explorer(10)'},
-    {value: 40, label: 'Firefox(40)'}
+    <?php echo  $estadistica11valor;?>
   ],
   backgroundColor: '#ccc',
   labelColor: '#060',
@@ -400,6 +452,7 @@ Morris.Donut({
   ],
   formatter: function (x) { return x + "%"}
 });
+<?php endif; ?>
 Morris.Bar({
   element: 'e12',
   data: [
