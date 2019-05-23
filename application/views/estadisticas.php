@@ -1,3 +1,10 @@
+<?php 
+$usuario = $this->session->userdata("usuario");//obtencion del usuario
+if($usuario->usuario!="admin1"){//validacion de que sea el usuario admin1
+        header('Location: '.base_url());
+        //en caso de no serlo se manda al login, sin poder acceder a la pagina
+    }
+?>
 <center>
     <h1>Estadisticas</h1>
 </center>
