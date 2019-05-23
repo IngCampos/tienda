@@ -43,6 +43,20 @@ foreach($estadistica2 as $valor){
 }
 $estadistica2valor = substr ($estadistica2valor, 0, -1);//se elimina el ultimo caracter que es una , que marcaria error
 //----
+$statement4 = $conexion->prepare("SELECT DATE, COUNT(DATE) AS REPETICIONES FROM datagen AS a WHERE DATE BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY DATE");
+$statement4->execute();
+$estadistica4 = $statement4->fetchAll();
+$estadistica4valor = "";
+$total=0;
+foreach($estadistica4 as $valor){
+$total= $total+$valor["REPETICIONES"];
+}
+foreach($estadistica4 as $valor){
+  $valor["PORCENTAJE"] =  (round($valor["REPETICIONES"]/($total), 2)*100);
+  $estadistica4valor.= "{x: '".$valor["DATE"]."', y: ".$valor["REPETICIONES"].",z:".$valor["PORCENTAJE"]."},";
+}
+$estadistica4valor = substr ($estadistica4valor, 0, -1);
+//----
 $statement10 = $conexion->prepare("SELECT OS, COUNT(OS) AS REPETICIONES FROM datagen AS a WHERE DATE BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY OS");
 $statement10->execute();
 $estadistica10 = $statement10->fetchAll();
@@ -70,7 +84,6 @@ foreach($estadistica11 as $valor){
   $estadistica11valor.= "{label: '".$valor["BROWSER"]."(".$valor["REPETICIONES"].")', value: ".$valor["PORCENTAJE"]."},";
 }
 $estadistica11valor = substr ($estadistica11valor, 0, -1);
-echo $estadistica11valor;
 //----
 $statement18 = $conexion->prepare("SELECT TERMINO, COUNT(TERMINO) AS REPETICIONES FROM busquedas AS a WHERE FECHA BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY TERMINO");
 $statement18->execute();
@@ -118,6 +131,7 @@ $estadistica18valor = substr ($estadistica18valor, 0, -1);
             </p>
         </div>
     </div>
+    <?php if($estadistica4valor!=""): ?>
     <div class="card border-primary col-12">
         <div class="card-header">Estadistica 4</div>
         <div class="card-body text-primary">
@@ -127,6 +141,7 @@ $estadistica18valor = substr ($estadistica18valor, 0, -1);
           </p>
         </div>
       </div>
+<?php endif; ?>
 <button class="col-12 btn btn-success">Usuarios</button>
     <div class="card border-success col-sm-6 col-md-6 col-lg-6 col-xl-3">
         <div class="card-header">Estadistica 5</div>
@@ -324,17 +339,17 @@ Morris.Bar({
     }
   }  
 });
+<?php if($estadistica4valor!=""): ?>
 Morris.Area({
   element: 'e4',
   data: [
-      {x: '2018-05-21 20:00:00', y: 10},
-      {x: '2018-05-22 8:00:00', y: 10},
-      {x: '2018-05-23 20:00:00', y: 40}
+    <?php echo  $estadistica4valor;?>
   ],
   xkey: 'x',
-  ykeys: ['y'],
-  labels: ['Conexiones'],
+  ykeys: ['y','z'],
+  labels: ['Conexiones','Porcentaje%'],
 });
+<?php endif; ?>
 Morris.Donut({
   element: 'e5',
   data: [
