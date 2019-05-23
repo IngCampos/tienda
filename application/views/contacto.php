@@ -32,9 +32,25 @@
 	<div  class="form-row">
 	<div class="form-group col-12">
         <label for="titulo">Titulo</label>
-	<input class="form-control" type="text" name="titulo_queja" id='titulo' placeholder="Titulo" <?php if(!$this->session->userdata("usuario")) echo "disabled"; ?> required>
+	<input class="form-control" minlength=3 type="text" name="titulo_queja" id='titulo' placeholder="Titulo" <?php if(!$this->session->userdata("usuario")) echo "disabled"; ?> required>
+	<div class="valid-feedback">
+          Titulo validado!
+        </div>
+        <div class="invalid-feedback">
+            El titulo debe tener mas de 3 caracteres.
+        </div>
+		</div>
+		<div class="form-group col-12">
 	<label for="titulo">Descripción</label>
-	<textarea class="form-control" name="descripcion_queja" id="titulo" placeholder="Descripción" <?php if(!$this->session->userdata("usuario")) echo "disabled"; ?> required></textarea>
+	<textarea class="form-control" minlength=10 name="descripcion_queja" id="descripcion" placeholder="Descripción" <?php if(!$this->session->userdata("usuario")) echo "disabled"; ?> required></textarea>
+	<div class="valid-feedback">
+          Descripcion validado!
+        </div>
+        <div class="invalid-feedback">
+            La descripcion debe tener mas de 10 caracteres.
+        </div>
+		</div>
+		<div class="form-group col-12">
 	<?php if($this->session->userdata("usuario")): ?>
 	<button type="submit" class="form-control btn btn-primary">Enviar</button>
 	<?php else:?>
@@ -45,3 +61,4 @@
 	</form>
 	</div>
 </div>
+<script src="<?php echo base_url();?>/js/validaciones_formularios.js"></script>

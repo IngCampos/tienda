@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1F618D;">
 <div>
 <form action="http://localhost/tienda/principal/search" method="get" class="form-inline my-0 my-lg-0"/>
-<input class="mr-sm-1" type="text" name="search" placeholder="Buscar">
+<input class="mr-sm-1" type="text" name="search" placeholder="Buscar" required>
 <input class="btn btn-primary my-0 my-sm-0" type="submit" value="Buscar"> 
 </form>
 </div>
