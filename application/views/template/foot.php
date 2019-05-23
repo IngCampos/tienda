@@ -1,5 +1,5 @@
 		<footer>
-			&copy; CD Shop Derechos reservados <?php echo date("Y"); ?> v2.0.0
+			&copy; CD Shop Pagina ficticia <?php echo date("Y"); ?> v2.1.0
 		</footer>
 	</div>
 </body>
