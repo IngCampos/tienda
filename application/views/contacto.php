@@ -5,20 +5,14 @@
 		$usuario = $this->session->userdata("usuario");
 		try {
 			$conexion = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore2;','root','');
-			if($usuario){
 				$sql = "INSERT INTO quejas_sugerencias ( usuario, apellidos, correo, titulo, descripcion) 
-				VALUES ( '$usuario->nombre', '$usuario->apellidos', '$usuario->correo', 'malos precios', ' $descripcion')";
-			}
-			else{
-				$sql = "INSERT INTO quejas_sugerencias (titulo, descripcion) 
-				VALUES ('$titulo', ' $descripcion')";	
-			}
+				VALUES ( '$usuario->nombre', '$usuario->apellidos', '$usuario->correo','$titulo', ' $descripcion')";
 			$statement = $conexion->prepare($sql);
 			$statement->execute();
 		} catch (PDOException $e) {
 			echo 'error' . $e;
-			}
 		}
+	}
  ?>
 <div id="content" class="row jumbotron">
 	<div id="map" style="width:100%; height: 340px;" class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
@@ -38,10 +32,14 @@
 	<div  class="form-row">
 	<div class="form-group col-12">
         <label for="titulo">Titulo</label>
-	<input class="form-control" type="text" name="titulo_queja" id='titulo' placeholder="Titulo">
+	<input class="form-control" type="text" name="titulo_queja" id='titulo' placeholder="Titulo" <?php if(!$this->session->userdata("usuario")) echo "disabled"; ?> required>
 	<label for="titulo">Descripción</label>
-	<textarea class="form-control" name="descripcion_queja" id="titulo" placeholder="Descripción"></textarea>
+	<textarea class="form-control" name="descripcion_queja" id="titulo" placeholder="Descripción" <?php if(!$this->session->userdata("usuario")) echo "disabled"; ?> required></textarea>
+	<?php if($this->session->userdata("usuario")): ?>
 	<button type="submit" class="form-control btn btn-primary">Enviar</button>
+	<?php else:?>
+	<a class="form-control btn btn-primary" href="<?php echo base_url(); ?>login">Iniciar sesión</a>
+	<?php endif; ?>
 	</div>
 	</div>
 	</form>
