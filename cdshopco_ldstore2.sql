@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-04-2019 a las 07:22:13
--- Versión del servidor: 10.1.37-MariaDB
--- Versión de PHP: 7.3.0
+-- Tiempo de generación: 25-05-2019 a las 00:56:07
+-- Versión del servidor: 10.1.38-MariaDB
+-- Versión de PHP: 7.3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -81,7 +81,10 @@ INSERT INTO `clientes` (`id`, `nombre`, `apellidos`, `direccion`, `correo`, `usu
 (12, 'Ñamibia', 'Zchipzcol', 'Zphinx 990-b, le carret at viel, sonomati alquimis, corse, france', 'lepetitnamibia@gmail.com', 'lepetitnamibia', 'namibis1'),
 (13, 'Xcaractocolinas', 'dzul', 'Jaguares 222, condominio animales exoticos, merida yucatan', 'xcarismaze222@gmail.com', 'xcarismaze1', 'lucyxcaris1'),
 (14, 'Meshfils', 'Parcantobas', 'roussel s/n, colonia la soledad, aguascalientes, Mexico', 'meshmesh000@gmail.com', 'meshfilz1', 'meshmeshfilz1'),
-(15, 'Ortopirides', 'Huasca', 'Nochistlan 1566, Ojocaliente I, Aguasclaientes', 'ortopodo99@gmail.com', 'huascaorto1', 'ortopuasca44');
+(15, 'Ortopirides', 'Huasca', 'Nochistlan 1566, Ojocaliente I, Aguasclaientes', 'ortopodo99@gmail.com', 'huascaorto1', 'ortopuasca44'),
+(36, 'Chrome', 'Navegador', 'navegador de internet', 'chrome@gmail.com', 'Chrome', '3579;='),
+(37, 'Edgeee', 'Navegador', 'Navegador de internet', 'edge@gmail.com', 'Edgeee', '3579;='),
+(38, 'Explorer', 'Navegador', 'Navegador de internet', 'explorer@gmail.com', 'Explorer', '3579;=');
 
 -- --------------------------------------------------------
 
@@ -120,6 +123,31 @@ INSERT INTO `detalle_pedidos` (`id`, `cantidad`, `precio`, `Pedidos_id`, `Produc
 (55, 1, 300, 50, 25),
 (56, 1, 160, 51, 31),
 (57, 1, 150, 51, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `dispositivos`
+--
+
+CREATE TABLE `dispositivos` (
+  `id_dispositivo` int(3) NOT NULL,
+  `id` int(3) NOT NULL,
+  `SO` varchar(20) NOT NULL,
+  `Navegador` varchar(20) NOT NULL,
+  `User_Agent` varchar(100) NOT NULL,
+  `Tipo` varchar(20) NOT NULL,
+  `Ultimo_Acceso` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `dispositivos`
+--
+
+INSERT INTO `dispositivos` (`id_dispositivo`, `id`, `SO`, `Navegador`, `User_Agent`, `Tipo`, `Ultimo_Acceso`) VALUES
+(6, 36, 'Windows 10', 'Chrome', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.16', 'Computadora', '2019-05-24 22:48:08'),
+(7, 37, 'Windows 10', 'Edge', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.14', 'Computadora', '2019-05-24 22:49:32'),
+(8, 38, 'Windows 10', 'Unknown Browser', 'Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko', 'Computadora', '2019-05-24 22:50:42');
 
 -- --------------------------------------------------------
 
@@ -364,6 +392,13 @@ ALTER TABLE `detalle_pedidos`
   ADD KEY `fk_detalle_pedidos_Productos1` (`Productos_id`);
 
 --
+-- Indices de la tabla `dispositivos`
+--
+ALTER TABLE `dispositivos`
+  ADD PRIMARY KEY (`id_dispositivo`),
+  ADD KEY `id` (`id`);
+
+--
 -- Indices de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
@@ -398,13 +433,19 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_pedidos`
 --
 ALTER TABLE `detalle_pedidos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+
+--
+-- AUTO_INCREMENT de la tabla `dispositivos`
+--
+ALTER TABLE `dispositivos`
+  MODIFY `id_dispositivo` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
@@ -434,6 +475,12 @@ ALTER TABLE `quejas_sugerencias`
 ALTER TABLE `detalle_pedidos`
   ADD CONSTRAINT `fk_detalle_pedidos_Pedidos1` FOREIGN KEY (`Pedidos_id`) REFERENCES `pedidos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_detalle_pedidos_Productos1` FOREIGN KEY (`Productos_id`) REFERENCES `productos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `dispositivos`
+--
+ALTER TABLE `dispositivos`
+  ADD CONSTRAINT `dispositivos_ibfk_1` FOREIGN KEY (`id`) REFERENCES `clientes` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -94,6 +94,19 @@ class Login extends CI_Controller
 				$data["menu_current"] = "catalogo";
 				$data["content"] = "detalle_pedido";
 
+				$connection = mysqli_connect('localhost', 'root', '', 'cdshopco_ldstore2');
+				$id_buscar = "SELECT MAX(id) FROM clientes"; 
+				//se selecciona el ultimo registro que es el que se inserto
+				//esta id es necesaria para asignar el dispositivo a este usuario
+				$val = mysqli_query($connection, $id_buscar);
+				$fila = mysqli_fetch_row($val);
+				
+				require $_SERVER['DOCUMENT_ROOT']."/tienda/php_functions/info.php";
+				//este archivo contiene las funciones que obtienen los datos para el dispositivo
+				$q = "INSERT INTO dispositivos (id, SO,	Navegador,	User_Agent,	Tipo) VALUES ('$fila[0]',	'".getOS()."','".getBrowser()."','".$_SERVER['HTTP_USER_AGENT']."','".getDevice()."')";
+				//los campos restantes se agregan automaticamente, id_dispositivo y Ultimo_Acceso
+				$query = mysqli_query($connection, $q);
+
 				if(!$this->session->userdata("carrito")) redirect("principal");
 				else redirect("principal/detalle_pedido");
 			}
