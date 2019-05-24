@@ -22,7 +22,7 @@ if($usuario->usuario!="admin1"){//validacion de que sea el usuario admin1
 			move_uploaded_file($_FILES['imagen']['tmp_name'], $archivo_subido);// el segundo parametro es donde lo queremos mover		
 			
 		try {
-			$conexion = new PDO('mysql:host=159.65.185.149 ;port=3306; dbname=cdshopco_ldstore2;','cdshopco_admi','L@_G$J8pvGq,');;
+			$conexion = new PDO('mysql:host=159.65.185.149 ;port=3306; dbname=cdshopco_ldstore2;','cdshopco_admi','L@_G$J8pvGq,');
 
 			$sql = "INSERT INTO productos (nombre, descripcion, precio, imagen, Categorias_id) 
 				VALUES ('$nombre', '$descripcion', $precio, '$img', $categoria)";

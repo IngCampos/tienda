@@ -281,7 +281,7 @@ class Principal extends CI_Controller
 		$this->session->unset_userdata('carrito');
 
 		// Redireccionamos hacia el catálogo
-		redirect("principal/catalogo", 'refresh');
+		redirect("http://www.cdshop.com.mx/principal/catalogo", 'refresh');
 	}
 
 }

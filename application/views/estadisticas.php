@@ -33,7 +33,7 @@ $inicio = explode("T", $_POST['f-inicial']);//explode para separar la fecha de l
 $final = explode("T", $_POST['f-final']);
 
 // Conexion a la base de datos para obtener la informacion para las graficas
-$conexion = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore3;','root','');
+$conexion = new PDO('mysql:host=159.65.185.149 ;port=3306; dbname=cdshopco_ldstore3;','cdshopco_admi','L@_G$J8pvGq,');
 //----
 $statement2 = $conexion->prepare("SELECT MOB_DESK, COUNT(MOB_DESK) AS REPETICIONES FROM datagen AS a WHERE DATE BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY MOB_DESK");
 //Consulta SQL, generando el numero de repeticiones, y  validando que las fechas sean entre las que se pusieron en el form
