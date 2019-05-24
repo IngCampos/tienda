@@ -4,21 +4,15 @@
 		$descripcion = $_POST['descripcion_queja'];
 		$usuario = $this->session->userdata("usuario");
 		try {
-			$conexion = new PDO('mysql:host=159.65.185.149 ;port=3306; dbname=cdshopco_ldstore2;','cdshopco_admi','L@_G$J8pvGq,');
-			if($usuario){
+			$conexion = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore2;','root','');
 				$sql = "INSERT INTO quejas_sugerencias ( usuario, apellidos, correo, titulo, descripcion) 
-				VALUES ( '$usuario->nombre', '$usuario->apellidos', '$usuario->correo', 'malos precios', ' $descripcion')";
-			}
-			else{
-				$sql = "INSERT INTO quejas_sugerencias (titulo, descripcion) 
-				VALUES ('$titulo', ' $descripcion')";	
-			}
+				VALUES ( '$usuario->nombre', '$usuario->apellidos', '$usuario->correo','$titulo', ' $descripcion')";
 			$statement = $conexion->prepare($sql);
 			$statement->execute();
 		} catch (PDOException $e) {
 			echo 'error' . $e;
-			}
 		}
+	}
  ?>
 <div id="content" class="row jumbotron">
 	<div id="map" style="width:100%; height: 340px;" class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
@@ -38,12 +32,33 @@
 	<div  class="form-row">
 	<div class="form-group col-12">
         <label for="titulo">Titulo</label>
-	<input class="form-control" type="text" name="titulo_queja" id='titulo' placeholder="Titulo">
+	<input class="form-control" minlength=3 type="text" name="titulo_queja" id='titulo' placeholder="Titulo" <?php if(!$this->session->userdata("usuario")) echo "disabled"; ?> required>
+	<div class="valid-feedback">
+          Titulo validado!
+        </div>
+        <div class="invalid-feedback">
+            El titulo debe tener mas de 3 caracteres.
+        </div>
+		</div>
+		<div class="form-group col-12">
 	<label for="titulo">Descripción</label>
-	<textarea class="form-control" name="descripcion_queja" id="titulo" placeholder="Descripción"></textarea>
+	<textarea class="form-control" minlength=10 name="descripcion_queja" id="descripcion" placeholder="Descripción" <?php if(!$this->session->userdata("usuario")) echo "disabled"; ?> required></textarea>
+	<div class="valid-feedback">
+          Descripcion validado!
+        </div>
+        <div class="invalid-feedback">
+            La descripcion debe tener mas de 10 caracteres.
+        </div>
+		</div>
+		<div class="form-group col-12">
+	<?php if($this->session->userdata("usuario")): ?>
 	<button type="submit" class="form-control btn btn-primary">Enviar</button>
+	<?php else:?>
+	<a class="form-control btn btn-primary" href="<?php echo base_url(); ?>login">Iniciar sesión</a>
+	<?php endif; ?>
 	</div>
 	</div>
 	</form>
 	</div>
 </div>
+<script src="<?php echo base_url();?>/js/validaciones_formularios.js"></script>

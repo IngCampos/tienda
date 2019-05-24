@@ -222,10 +222,10 @@ class Principal extends CI_Controller
 			"comentario" => $comentario,
 			"Clientes_id" => $usuario->id
 		);
-		$id_pedido = $this->Tienda_model->agrega_pedido($datos);
+		// $id_pedido = $this->Tienda_model->agrega_pedido($datos);
 
 		// Agregamos el detalle del pedido a la bd
-		$detalle = $this->Tienda_model->agrega_detalle_pedido($carrito, $id_pedido);
+		// $detalle = $this->Tienda_model->agrega_detalle_pedido($carrito, $id_pedido);
 
 		// Enviamos correo al Admin de la tienda
 		$this->load->library('email');
@@ -261,7 +261,18 @@ class Principal extends CI_Controller
 		// Creamos un mensaje para indicarle al cliente si todo salio bien o no
 		if($this->email->send()) $msg = "Hemos recibido tu pedido, en breve nos pondremos en contacto contigo,
 			gracias por tu preferencia.";
-		else $msg = "Hubo un error al intentar enviar tu pedido, por favor intentalo más tarde.";
+		// else $msg = "Hubo un error al intentar enviar tu pedido, por favor intentalo más tarde";
+		else $msg = $this->session->userdata("usuario")->usuario." gracias por tu compra, se te ha enviado un correo con la confirmacion a".$this->session->userdata("usuario")->correo;
+
+		ini_set( 'display_errors', 1 );
+		error_reporting( E_ALL );
+		$from = "admin@cdshop.com";
+		$to = $this->session->userdata("usuario")->correo;
+		$subject = "Confirmacion de compra";
+		$message = "Estimado(a) ".$this->session->userdata("usuario")->usuario."Gracias por comprar en CDshop";
+		$headers = "From:" . $from;
+		mail($to,$subject,$message, $headers);
+
 
 		// Creamos un flashdata que mostrará dicho mensaje
 		$this->session->set_flashdata('msg', $msg);
