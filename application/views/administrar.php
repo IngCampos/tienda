@@ -17,7 +17,7 @@ if($usuario->usuario!="admin1"){//validacion de que sea el usuario admin1
 		
 		$check = @getimagesize($_FILES['imagen']['tmp_name']);
 		if ($check !== false){// en caso de que si sea una imagen
-			$carpeta_destino = $_SERVER['DOCUMENT_ROOT'].'/tienda/images/';// donde se guardara la foto
+			$carpeta_destino = $_SERVER['DOCUMENT_ROOT'].'/images/';// donde se guardara la foto
 			$archivo_subido = $carpeta_destino . $_FILES['imagen']['name'];// es la ruta del directorio y el archivo
 			move_uploaded_file($_FILES['imagen']['tmp_name'], $archivo_subido);// el segundo parametro es donde lo queremos mover		
 			
