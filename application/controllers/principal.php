@@ -206,70 +206,71 @@ class Principal extends CI_Controller
 		if(!$this->session->userdata("valid_user")) redirect("login");
 		if(!$this->session->userdata("carrito")) redirect("principal/catalogo");
 
-		$total = $this->carrito->get_total();
-		$usuario = $this->session->userdata("usuario");
-		$carrito = $this->session->userdata("carrito");
+		// $total = $this->carrito->get_total();
+		// $usuario = $this->session->userdata("usuario");
+		// $carrito = $this->session->userdata("carrito");
 
-		// Agregamos el pedido a la bd y enviamos correos al cliente y al admin
-		$tipo_pago = trim(strip_tags($this->input->post("tipo_pago")));
-		$comentario = trim(strip_tags($this->input->post("comentario")));
+		// // Agregamos el pedido a la bd y enviamos correos al cliente y al admin
+		// $tipo_pago = trim(strip_tags($this->input->post("tipo_pago")));
+		// $comentario = trim(strip_tags($this->input->post("comentario")));
 
-		// Agregamos el pedido a la bd
-		$datos = array(
-			"fecha" => date("Y-m-d"),
-			"tipo_pago" => $tipo_pago,
-			"total" => $total,
-			"comentario" => $comentario,
-			"Clientes_id" => $usuario->id
-		);
+		// // Agregamos el pedido a la bd
+		// $datos = array(
+		// 	"fecha" => date("Y-m-d"),
+		// 	"tipo_pago" => $tipo_pago,
+		// 	"total" => $total,
+		// 	"comentario" => $comentario,
+		// 	"Clientes_id" => $usuario->id
+		// );
 		// $id_pedido = $this->Tienda_model->agrega_pedido($datos);
 
 		// Agregamos el detalle del pedido a la bd
 		// $detalle = $this->Tienda_model->agrega_detalle_pedido($carrito, $id_pedido);
 
 		// Enviamos correo al Admin de la tienda
-		$this->load->library('email');
+		// $this->load->library('email');
 
-		$config = array(
-			'mailtype' => 'html',
-			'charset' => 'utf-8'
-		);
+		// $config = array(
+		// 	'mailtype' => 'html',
+		// 	'charset' => 'utf-8'
+		// );
 
-		$this->email->initialize($config);
+		// $this->email->initialize($config);
 
-		$this->email->from($usuario->correo, $usuario->nombre . " " . $usuario->apellidos);
-		$this->email->to('cdshopags@gmail.com'); 
+		// $this->email->from($usuario->correo, $usuario->nombre . " " . $usuario->apellidos);
+		// $this->email->to('cdshopags@gmail.com'); 
 
-		$this->email->subject('Pedido de prueba ' . $id_pedido);
-		//$this->email->message("<p>Este es un <strong>pedido de prueba...</strong><p>");
+		// $this->email->subject('Pedido de prueba ' . $id_pedido);
+		// //$this->email->message("<p>Este es un <strong>pedido de prueba...</strong><p>");
 
-		$data["mensaje"] = "Este es un <strong>pedido de prueba...</strong> recibido desde el demo de Tienda online.";
-		$msg = $this->load->view('email', $data, TRUE);
-		$this->email->message($msg);
+		// $data["mensaje"] = "Este es un <strong>pedido de prueba...</strong> recibido desde el demo de Tienda online.";
+		// $msg = $this->load->view('email', $data, TRUE);
+		// $this->email->message($msg);
 
-		$this->email->send();
+		// $this->email->send();
 
-		// Enviamos correo al Cliente
-		$this->email->from('cdshopags@gmail.com', "Demo tienda online");
-		$this->email->to($usuario->correo);
+		// // Enviamos correo al Cliente
+		// $this->email->from('cdshopags@gmail.com', "Demo tienda online");
+		// $this->email->to($usuario->correo);
 
-		$this->email->subject('Pedido de prueba ' . $id_pedido);
-		$data["mensaje"] = "Hemos recibido tu pedido, en breve nos pondremos en contacto contigo.";
-		$msg = $this->load->view('email', $data, TRUE);
-		$this->email->message($msg);
+		// $this->email->subject('Pedido de prueba ' . $id_pedido);
+		// $data["mensaje"] = "Hemos recibido tu pedido, en breve nos pondremos en contacto contigo.";
+		// $msg = $this->load->view('email', $data, TRUE);
+		// $this->email->message($msg);
 
-		// Creamos un mensaje para indicarle al cliente si todo salio bien o no
-		if($this->email->send()) $msg = "Hemos recibido tu pedido, en breve nos pondremos en contacto contigo,
-			gracias por tu preferencia.";
-		// else $msg = "Hubo un error al intentar enviar tu pedido, por favor intentalo más tarde";
-		else $msg = $this->session->userdata("usuario")->usuario." gracias por tu compra, se te ha enviado un correo con la confirmacion a".$this->session->userdata("usuario")->correo;
+		// // Creamos un mensaje para indicarle al cliente si todo salio bien o no
+		// if($this->email->send()) $msg = "Hemos recibido tu pedido, en breve nos pondremos en contacto contigo,
+		// 	gracias por tu preferencia.";
+		// // else $msg = "Hubo un error al intentar enviar tu pedido, por favor intentalo más tarde";
+		// else 
+		 $msg = $this->session->userdata("usuario")->nombre." gracias por tu compra, se te ha enviado un correo de confirmacion a ".$this->session->userdata("usuario")->correo;
 
 		ini_set( 'display_errors', 1 );
 		error_reporting( E_ALL );
 		$from = "admin@cdshop.com";
 		$to = $this->session->userdata("usuario")->correo;
 		$subject = "Confirmacion de compra";
-		$message = "Estimado(a) ".$this->session->userdata("usuario")->usuario."Gracias por comprar en CDshop";
+		$message = "Estimado(a) ".$this->session->userdata("usuario")->nombre." gracias por comprar en CDshop";
 		$headers = "From:" . $from;
 		mail($to,$subject,$message, $headers);
 
