@@ -35,15 +35,34 @@ class Login extends CI_Controller
 				$data["total"] = $this->carrito->get_total();
 				$data["content"] = "login";
 				$this->load->view("template", $data);
-			}else{
-				$this->session->set_userdata("valid_user", TRUE);
-				$this->session->set_userdata("usuario", $usuario);
+			} else {
+				//parte donde la constraseña es correcta y el usuario esta listo para logearse
+				//pero no antes de verificar su dispositivo en la base de datos
 
-				$data["menu_current"] = "catalogo";
-				$data["content"] = "detalle_pedido";
+				$conexion = new PDO('mysql:host=localhost;dbname=cdshopco_ldstore2', 'root', '');
+				$statement = $conexion->prepare('SELECT id FROM clientes WHERE usuario = :usuario');
+				$statement->execute(array(
+					':usuario' => $usuario->usuario
+				));
+				$resultado = $statement->fetch();
+				$id_usuario = $resultado['id']; //determinacion del id del usuario que ingreso
 
-				if(!$this->session->userdata("carrito")) redirect("principal");
-				else redirect("principal/detalle_pedido");
+				require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/info.php";
+				require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_autenticacion.php";
+				//extraccion de los datos del dispositivos y las funciones a utilizar
+
+				if (!Compare_devices($id_usuario))
+					echo "Dispositivo desconocido";
+				else {
+					$this->session->set_userdata("valid_user", TRUE);
+					$this->session->set_userdata("usuario", $usuario);
+
+					$data["menu_current"] = "catalogo";
+					$data["content"] = "detalle_pedido";
+
+					if (!$this->session->userdata("carrito")) redirect("principal");
+					else redirect("principal/detalle_pedido");
+				}
 			}
 		}
 	}
