@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-05-2019 a las 05:31:10
+-- Tiempo de generación: 25-05-2019 a las 18:50:17
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.3
 
@@ -60,31 +60,33 @@ CREATE TABLE `clientes` (
   `correo` varchar(45) DEFAULT NULL,
   `usuario` varchar(15) DEFAULT NULL,
   `password` varchar(32) DEFAULT NULL,
-  `SEXO` varchar(10) NOT NULL,
-  `IDIOMA` varchar(15) NOT NULL,
-  `FECHA_ALTA` datetime NOT NULL
+  `token` int(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `clientes`
 --
 
-INSERT INTO `clientes` (`id`, `nombre`, `apellidos`, `direccion`, `correo`, `usuario`, `password`, `SEXO`, `IDIOMA`, `FECHA_ALTA`) VALUES
-(1, 'admin1', 'admin1', 'admin1', 'admin1@gmail.com', 'admin1', 'j', 'NO ESPEC', 'ESPAÑOL', '2019-03-01 10:16:15'),
-(2, 'Martin', 'Campos', 'aguascalientes', 'admin1@gmail.com', 'Martin', '357', 'HOMBRE', 'ESPAÑOL', '2019-03-01 10:16:15'),
-(3, 'Lolobartiano', 'Pereira', 'Las ciruelas 204, arboles frutales, las huertas, Aguascalientes.', 'lolobarperer@gmail.com', 'lolobartpereira', 'lolobartqwertyuiop1', 'HOMBRE', 'ESPAÑOL', '2019-03-01 10:16:15'),
-(4, 'Atanacio', 'Dorantes Mosco', 'Camelias 221, Las Flores, San Marcos, Aguascalientes.', 'atandormos1@gmal.com', 'atandormos', 'katana221z', 'HOMBRE', 'ESPAÑOL', '2019-03-01 10:16:15'),
-(5, 'Romulo', 'Dorantes Mosco', 'Camelias 221, Las Flores, San Marcos, Aguascalientes.', 'atandormos1@gmal.com', 'romdormos', 'ciclope221z', 'HOMBRE', 'ESPAÑOL', '2019-03-01 10:16:15'),
-(6, 'Zacayouiea', 'komantun', 'Valle de lam uerte Km. 224, carretera Phoenix-El Paso, Phoeniz, Arizona, EUA', 'zacakoma224@gmail.com', 'zayouiea224', '224cuentoyo', 'MUJER', 'INGLÉS', '2019-04-01 10:16:15'),
-(7, 'Geranio', 'del huerto', 'Los rezendiz 98, colonia de los artistas, Silao, Guanajuato', 'elgerashue2@gmail.com', 'gerashue1', 'herasgue1', 'HOMBRE', 'RUSO', '2019-03-03 10:16:15'),
-(8, 'Patrocinio', 'Ledezma', 'Valle de la muerte Km. 243, carretera Phoenix-El Paso, Phoeniz, Arizona, EUA', 'patronledez243@gmail.com', 'PatornLedez122', 'cadaveresenelarmario', 'MUJER', 'INGLÉS', '0000-00-00 00:00:00'),
-(9, 'Caliope', 'Santana', 'Xutaponer 564, col. palabrero, Guadalajara', 'caliopesantana01@gmail.com', 'caliopesanti', 'santicaliope55', 'NO ESPEC', 'ESPAÑOL', '2019-03-01 10:16:15'),
-(10, 'Xochicalcomes', 'nomobitas', 'Antioquia 455, Fracc. los Setos, San Carlos', 'xochixochi33@gmail.com', 'sochixochi1', 'Paquitamiamor1', 'UNICORNIO', 'MAYA', '2019-01-01 10:16:15'),
-(11, 'Lolobartiano', 'Izantopatl', 'Alcatraces 334, Fracc. Flores preciosas, Salamanca, Guanajuato', 'lolololo64@gmail.com', 'lolcito64', 'lolololo1lolo', 'MUXE', 'ZAPOTECO', '2019-03-21 10:16:15'),
-(12, 'Ñamibia', 'Zchipzcol', 'Zphinx 990-b, le carret at viel, sonomati alquimis, corse, france', 'lepetitnamibia@gmail.com', 'lepetitnamibia', 'namibis1', 'MUJER', 'ESPAÑOL', '2019-04-17 13:00:27'),
-(13, 'Xcaractocolinas', 'dzul', 'Jaguares 222, condominio animales exoticos, merida yucatan', 'xcarismaze222@gmail.com', 'xcarismaze1', 'lucyxcaris1', 'MUXE', 'ESPAÑOL', '2019-03-13 06:41:19'),
-(14, 'Meshfils', 'Parcantobas', 'roussel s/n, colonia la soledad, aguascalientes, Mexico', 'meshmesh000@gmail.com', 'meshfilz1', 'meshmeshfilz1', 'MUJER', 'ESPAÑOL', '2019-04-22 06:15:19'),
-(15, 'Ortopirides', 'Huasca', 'Nochistlan 1566, Ojocaliente I, Aguasclaientes', 'ortopodo99@gmail.com', 'huascaorto1', 'ortopuasca44', 'HOMBRE', 'ESPAÑOL', '2019-05-27 07:17:17');
+INSERT INTO `clientes` (`id`, `nombre`, `apellidos`, `direccion`, `correo`, `usuario`, `password`, `token`) VALUES
+(1, 'admin1', 'admin1', 'admin1', 'admin1@gmail.com', 'admin1', 'j', 999999),
+(2, 'Martin', 'Campos', 'aguascalientes', 'admin1@gmail.com', 'Martin', '357', 999999),
+(3, 'Lolobartiano', 'Pereira', 'Las ciruelas 204, arboles frutales, las huertas, Aguascalientes.', 'lolobarperer@gmail.com', 'lolobartpereira', 'lolobartqwertyuiop1', NULL),
+(4, 'Atanacio', 'Dorantes Mosco', 'Camelias 221, Las Flores, San Marcos, Aguascalientes.', 'atandormos1@gmal.com', 'atandormos', 'katana221z', NULL),
+(5, 'Romulo', 'Dorantes Mosco', 'Camelias 221, Las Flores, San Marcos, Aguascalientes.', 'atandormos1@gmal.com', 'romdormos', 'ciclope221z', NULL),
+(6, 'Zacayouiea', 'komantun', 'Valle de lam uerte Km. 224, carretera Phoenix-El Paso, Phoeniz, Arizona, EUA', 'zacakoma224@gmail.com', 'zayouiea224', '224cuentoyo', NULL),
+(7, 'Geranio', 'del huerto', 'Los rezendiz 98, colonia de los artistas, Silao, Guanajuato', 'elgerashue2@gmail.com', 'gerashue1', 'herasgue1', NULL),
+(8, 'Patrocinio', 'Ledezma', 'Valle de la muerte Km. 243, carretera Phoenix-El Paso, Phoeniz, Arizona, EUA', 'patronledez243@gmail.com', 'PatornLedez122', 'cadaveresenelarmario', NULL),
+(9, 'Caliope', 'Santana', 'Xutaponer 564, col. palabrero, Guadalajara', 'caliopesantana01@gmail.com', 'caliopesanti', 'santicaliope55', NULL),
+(10, 'Xochicalcomes', 'nomobitas', 'Antioquia 455, Fracc. los Setos, San Carlos', 'xochixochi33@gmail.com', 'sochixochi1', 'Paquitamiamor1', NULL),
+(11, 'Lolobartiano', 'Izantopatl', 'Alcatraces 334, Fracc. Flores preciosas, Salamanca, Guanajuato', 'lolololo64@gmail.com', 'lolcito64', 'lolololo1lolo', NULL),
+(12, 'Ñamibia', 'Zchipzcol', 'Zphinx 990-b, le carret at viel, sonomati alquimis, corse, france', 'lepetitnamibia@gmail.com', 'lepetitnamibia', 'namibis1', NULL),
+(13, 'Xcaractocolinas', 'dzul', 'Jaguares 222, condominio animales exoticos, merida yucatan', 'xcarismaze222@gmail.com', 'xcarismaze1', 'lucyxcaris1', NULL),
+(14, 'Meshfils', 'Parcantobas', 'roussel s/n, colonia la soledad, aguascalientes, Mexico', 'meshmesh000@gmail.com', 'meshfilz1', 'meshmeshfilz1', NULL),
+(15, 'Ortopirides', 'Huasca', 'Nochistlan 1566, Ojocaliente I, Aguasclaientes', 'ortopodo99@gmail.com', 'huascaorto1', 'ortopuasca44', NULL),
+(36, 'Chrome', 'Navegador', 'navegador de internet', 'chrome@gmail.com', 'Chrome', '3579;=', NULL),
+(37, 'Edgeee', 'Navegador', 'Navegador de internet', 'edge@gmail.com', 'Edgeee', '3579;=', NULL),
+(38, 'Explorer', 'Navegador', 'Navegador de internet', 'explorer@gmail.com', 'Explorer', '3579;=', NULL),
+(39, 'Explorer2', 'Navegador', 'Navegador de internet', 'explorer2@gmail.com', 'Explorer2', '3579;=', 999999);
 
 -- --------------------------------------------------------
 
@@ -123,6 +125,37 @@ INSERT INTO `detalle_pedidos` (`id`, `cantidad`, `precio`, `Pedidos_id`, `Produc
 (55, 1, 300, 50, 25),
 (56, 1, 160, 51, 31),
 (57, 1, 150, 51, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `dispositivos`
+--
+
+CREATE TABLE `dispositivos` (
+  `id_dispositivo` int(3) NOT NULL,
+  `id` int(3) NOT NULL,
+  `SO` varchar(20) NOT NULL,
+  `Navegador` varchar(20) NOT NULL,
+  `User_Agent` varchar(100) NOT NULL,
+  `Tipo` varchar(20) NOT NULL,
+  `Ultimo_Acceso` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `dispositivos`
+--
+
+INSERT INTO `dispositivos` (`id_dispositivo`, `id`, `SO`, `Navegador`, `User_Agent`, `Tipo`, `Ultimo_Acceso`) VALUES
+(6, 36, 'Windows 10', 'Chrome', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.16', 'Computadora', '2019-05-24 22:48:08'),
+(7, 37, 'Windows 10', 'Edge', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.14', 'Computadora', '2019-05-24 22:49:32'),
+(8, 38, 'Windows 10', 'Unknown Browser', 'Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko', 'Computadora', '2019-05-24 22:50:42'),
+(9, 38, 'Windows 10', 'Unknown Browser', 'Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko', 'Computadora', '2019-05-24 22:50:42'),
+(11, 2, 'Windows 10', 'Chrome', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.16', 'Computadora', '2019-05-25 16:33:21'),
+(12, 1, 'Windows 10', 'Chrome', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.16', 'Computadora', '2019-05-25 16:39:51'),
+(13, 1, 'Windows 10', 'Edge', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.14', 'Computadora', '2019-05-25 16:42:07'),
+(14, 39, 'Windows 10', 'Edge', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.14', 'Computadora', '2019-05-25 16:45:03'),
+(15, 39, 'Windows 10', 'Chrome', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.16', 'Computadora', '2019-05-25 16:47:10');
 
 -- --------------------------------------------------------
 
@@ -401,13 +434,19 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_pedidos`
 --
 ALTER TABLE `detalle_pedidos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+
+--
+-- AUTO_INCREMENT de la tabla `dispositivos`
+--
+ALTER TABLE `dispositivos`
+  MODIFY `id_dispositivo` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
