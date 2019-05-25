@@ -37,6 +37,14 @@ class Principal extends CI_Controller
 		$data["content"] = "estadisticas";
 		$this->load->view("template", $data);
 	}
+	
+	public function token()
+	{
+		$data["menu_current"] = "index";
+		$data["total"] = $this->carrito->get_total();
+		$data["content"] = "token";
+		$this->load->view("template", $data);
+	}
 
 	public function buzon()
 	{
