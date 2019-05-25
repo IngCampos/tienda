@@ -46,7 +46,7 @@ function Verify_devices($device){
     return $simility;
 }
 
-function Correo($correo, $token){
+function Correo_token($correo, $token){
     ini_set( 'display_errors', 1 );
     error_reporting( E_ALL );
     $from = "admin@cdshop.com";
@@ -55,4 +55,33 @@ function Correo($correo, $token){
     $message = "Este es tu token de acceso " .$token;
     $headers = "From:" . $from;
     mail($to,$subject,$message, $headers);
+}
+
+function Verify_token($id,$token){//se recibe la id del usuario y el token
+    //se busca el token del usuario que ingreso
+    $conexion = new PDO('mysql:host=localhost;dbname=cdshopco_ldstore2', 'root', '');
+    $statement = $conexion->prepare('SELECT token FROM clientes WHERE id = :id');
+    $statement->execute(array(
+        ':id' => $id
+    ));
+    $resultado = $statement->fetch();
+    $token_usuario = $resultado['token']; //determinacion del token del usuario que ingreso
+   
+    //impresion de los valores a comparar, el token ingresado y el guardado
+    // echo "<br>".$token;
+    // echo "<br>".$token_usuario."<br>";
+    
+    if($token==$token_usuario && $token_usuario!=9999999)//999999 es un token para evitar fallas de seguridad
+    return true;
+    else
+    return false;
+
+}
+
+function Save_device($id){
+    $connection = mysqli_connect('localhost', 'root', '', 'cdshopco_ldstore2');
+				$q = "INSERT INTO dispositivos (id, SO,	Navegador,	User_Agent,	Tipo) VALUES ('$id',	'".getOS()."','".getBrowser()."','".$_SERVER['HTTP_USER_AGENT']."','".getDevice()."')";
+				//los campos restantes se agregan automaticamente, id_dispositivo y Ultimo_Acceso
+				$query = mysqli_query($connection, $q);
+
 }
