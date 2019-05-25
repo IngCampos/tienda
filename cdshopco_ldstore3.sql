@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-05-2019 a las 17:37:50
+-- Tiempo de generación: 25-05-2019 a las 05:30:54
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.3
 
@@ -258,6 +258,31 @@ INSERT INTO `estad_paginas` (`ID_PAGINA`, `NOMBRE_PAGINA`) VALUES
 (2, 'CONOCENOS'),
 (3, 'CATALOGO'),
 (4, 'CONTACTO');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estad_sitios_dir`
+--
+
+CREATE TABLE `estad_sitios_dir` (
+  `ID_EVENTO` int(11) NOT NULL,
+  `FECHA` datetime NOT NULL,
+  `DIRECCION_FUENTE` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estad_tipo_´prod`
+--
+
+CREATE TABLE `estad_tipo_´prod` (
+  `ID_EVENTO` int(11) NOT NULL,
+  `FECHA_EVENTO` datetime NOT NULL,
+  `ID_USUARIO` int(11) NOT NULL,
+  `ID_TIPO_PROD` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -708,6 +733,8 @@ CREATE TABLE `usuarios_atrib` (
   `APELLIDO1` varchar(45) NOT NULL,
   `APELLIDO2` varchar(45) DEFAULT NULL,
   `FECHA_NAC` date NOT NULL,
+  `GENERO` varchar(10) NOT NULL,
+  `IDIOMA` varchar(10) NOT NULL,
   `CALLE` varchar(45) NOT NULL,
   `NUM_EXT` smallint(6) NOT NULL,
   `NUM_INT` smallint(6) NOT NULL,
@@ -716,18 +743,19 @@ CREATE TABLE `usuarios_atrib` (
   `ESTADO` varchar(45) NOT NULL,
   `ID_PAIS` int(11) NOT NULL,
   `EMAIL` varchar(45) NOT NULL,
-  `PASSWORD` text NOT NULL
+  `PASSWORD` text NOT NULL,
+  `FECHA_REGISTRO` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuarios_atrib`
 --
 
-INSERT INTO `usuarios_atrib` (`ID_USUARIO`, `NOMBRE`, `APELLIDO1`, `APELLIDO2`, `FECHA_NAC`, `CALLE`, `NUM_EXT`, `NUM_INT`, `FRACC_COL`, `POBLACION`, `ESTADO`, `ID_PAIS`, `EMAIL`, `PASSWORD`) VALUES
-(1, 'Salvador', 'De Luna', 'Macias', '1990-02-13', 'Modernización', 109, 0, 'Municipio Libre', 'Aguascalientes', 'Aguascalientes', 1, 'slm_y_bmv@hotmail.com', ''),
-(2, 'Rosalía', 'Anaya', 'Loera', '2001-03-15', 'Camelias', 554, 2, 'Las Flores', 'Aguascalientes', 'Aguascalientes', 1, 'rosianayalo1@gmail.com', ''),
-(3, 'Jonas', 'Vega', 'Lara', '1981-05-22', 'Los mangos', 789, 1, 'Las huertas', 'Aguascalientes', 'Aguascalientes', 1, 'nomo3s@outlook.es', ''),
-(4, 'Kilimanjaro', 'Dzul', 'Baarz', '1878-02-01', '18th St.', 3321, 7, 'Downtown', 'Pala', 'California', 2, 'kbaarznom@aol.com', '');
+INSERT INTO `usuarios_atrib` (`ID_USUARIO`, `NOMBRE`, `APELLIDO1`, `APELLIDO2`, `FECHA_NAC`, `GENERO`, `IDIOMA`, `CALLE`, `NUM_EXT`, `NUM_INT`, `FRACC_COL`, `POBLACION`, `ESTADO`, `ID_PAIS`, `EMAIL`, `PASSWORD`, `FECHA_REGISTRO`) VALUES
+(1, 'Salvador', 'De Luna', 'Macias', '1990-02-13', 'HOMBRE', 'ESPAÑOL', 'Modernización', 109, 0, 'Municipio Libre', 'Aguascalientes', 'Aguascalientes', 1, 'slm_y_bmv@hotmail.com', '', '2019-03-03 12:22:16'),
+(2, 'Rosalía', 'Anaya', 'Loera', '2001-03-15', 'MUJER', 'INGLÉS', 'Camelias', 554, 2, 'Las Flores', 'Aguascalientes', 'Aguascalientes', 1, 'rosianayalo1@gmail.com', '', '2019-03-28 04:44:23'),
+(3, 'Jonas', 'Vega', 'Lara', '1981-05-22', 'HOMBRE', 'ESPAÑOL', 'Los mangos', 789, 1, 'Las huertas', 'Aguascalientes', 'Aguascalientes', 1, 'nomo3s@outlook.es', '', '2019-03-31 16:50:54'),
+(4, 'Kilimanjaro', 'Dzul', 'Baarz', '1878-02-01', 'NO ESPEC', 'INGLÉS', '18th St.', 3321, 7, 'Downtown', 'Pala', 'California', 2, 'kbaarznom@aol.com', '', '2019-04-01 20:27:29');
 
 -- --------------------------------------------------------
 
