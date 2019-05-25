@@ -2,8 +2,8 @@
 function Compare_devices($id){
     //extrae los dispositivos del usuario atravez de su id.
     try {
-		$conexion = new PDO('mysql:host=localhost;dbname=cdshopco_ldstore2', 'root', '');
-	} catch (PDOException $e) {
+        $conexion = new PDO('mysql:host=159.65.185.149 ;port=3306; dbname=cdshopco_ldstore2;','cdshopco_admi','L@_G$J8pvGq,');
+    } catch (PDOException $e) {
 		echo "Error:" . $e->getMessage();
 	}
 
@@ -59,7 +59,7 @@ function Correo_token($correo, $token){
 
 function Verify_token($id,$token){//se recibe la id del usuario y el token
     //se busca el token del usuario que ingreso
-    $conexion = new PDO('mysql:host=localhost;dbname=cdshopco_ldstore2', 'root', '');
+    $conexion = new PDO('mysql:host=159.65.185.149 ;port=3306; dbname=cdshopco_ldstore2;','cdshopco_admi','L@_G$J8pvGq,');
     $statement = $conexion->prepare('SELECT token FROM clientes WHERE id = :id');
     $statement->execute(array(
         ':id' => $id
@@ -79,7 +79,7 @@ function Verify_token($id,$token){//se recibe la id del usuario y el token
 }
 
 function Save_device($id){
-    $connection = mysqli_connect('localhost', 'root', '', 'cdshopco_ldstore2');
+    $connection = mysqli_connect('159.65.185.149', 'cdshopco_admi', 'L@_G$J8pvGq,', 'cdshopco_ldstore2','3306');
 				$q = "INSERT INTO dispositivos (id, SO,	Navegador,	User_Agent,	Tipo) VALUES ('$id',	'".getOS()."','".getBrowser()."','".$_SERVER['HTTP_USER_AGENT']."','".getDevice()."')";
 				//los campos restantes se agregan automaticamente, id_dispositivo y Ultimo_Acceso
 				$query = mysqli_query($connection, $q);

@@ -39,7 +39,7 @@ class Login extends CI_Controller
 				//parte donde la constraseña es correcta y el usuario esta listo para logearse
 				//pero no antes de verificar su dispositivo en la base de datos
 
-				$conexion = new PDO('mysql:host=localhost;dbname=cdshopco_ldstore2', 'root', '');
+				$conexion = new PDO('mysql:host=159.65.185.149 ;port=3306; dbname=cdshopco_ldstore2;','cdshopco_admi','L@_G$J8pvGq,');
 				$statement = $conexion->prepare('SELECT id FROM clientes WHERE usuario = :usuario');
 				$statement->execute(array(
 					':usuario' => $usuario->usuario
@@ -47,8 +47,8 @@ class Login extends CI_Controller
 				$resultado = $statement->fetch();
 				$id_usuario = $resultado['id']; //determinacion del id del usuario que ingreso
 
-				require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/info.php";
-				require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_autenticacion.php";
+				require $_SERVER['DOCUMENT_ROOT'] . "/php_functions/info.php";
+				require $_SERVER['DOCUMENT_ROOT'] . "/php_functions/functions_autenticacion.php";
 				//extraccion de los datos del dispositivos y las funciones a utilizar
 
 				if (!Compare_devices($id_usuario)){
@@ -161,14 +161,14 @@ class Login extends CI_Controller
 				$data["menu_current"] = "catalogo";
 				$data["content"] = "detalle_pedido";
 
-				$connection = mysqli_connect('localhost', 'root', '', 'cdshopco_ldstore2');
+				$connection = mysqli_connect('159.65.185.149', 'cdshopco_admi', 'L@_G$J8pvGq,', 'cdshopco_ldstore2','3306');
 				$id_buscar = "SELECT MAX(id) FROM clientes"; 
 				//se selecciona el ultimo registro que es el que se inserto
 				//esta id es necesaria para asignar el dispositivo a este usuario
 				$val = mysqli_query($connection, $id_buscar);
 				$fila = mysqli_fetch_row($val);
 				
-				require $_SERVER['DOCUMENT_ROOT']."/tienda/php_functions/info.php";
+				require $_SERVER['DOCUMENT_ROOT']."/php_functions/info.php";
 				//este archivo contiene las funciones que obtienen los datos para el dispositivo
 				$q = "INSERT INTO dispositivos (id, SO,	Navegador,	User_Agent,	Tipo) VALUES ('$fila[0]',	'".getOS()."','".getBrowser()."','".$_SERVER['HTTP_USER_AGENT']."','".getDevice()."')";
 				//los campos restantes se agregan automaticamente, id_dispositivo y Ultimo_Acceso
