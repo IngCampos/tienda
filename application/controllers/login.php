@@ -97,7 +97,7 @@ class Login extends CI_Controller
 								'token' => $token,
 								':usuario' => $usuario->usuario
 							));
-						Correo_token($usuario->correo,$token);//se envia el token
+						Correo_token($usuario->correo,$token,$usuario->usuario);//se envia el token
 					redirect("principal/token");
 				} 
 				}

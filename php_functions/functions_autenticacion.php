@@ -46,14 +46,13 @@ function Verify_devices($device){
     return $simility;
 }
 
-function Correo_token($correo, $token){
+function Correo_token($correo, $token,$nombre){
     ini_set( 'display_errors', 1 );
     error_reporting( E_ALL );
-    $from = "admin@cdshop.com";
     $to = $correo;
     $subject = "Confirma tu cuenta";
-    $message = "Este es tu token de acceso " .$token;
-    $headers = "From:" . $from;
+    $message = "Estimado(a) ".$nombre.", un dispositivo desconocido a ingresado a tu cuenta de www.cdshop.com.mx, por seguridad ingresa este token " .$token;
+    $headers = "From:admin@cdshop.com";
     mail($to,$subject,$message, $headers);
 }
 
