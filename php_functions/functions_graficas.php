@@ -3,8 +3,7 @@
 Morris.Donut({
   element: 'e1',
   data: [
-    {value: 70, label: 'Facebook(700)'},
-    {value: 30, label: 'Twitter(300)'}
+    <?php echo  $estadistica1valor;?>
   ],
   backgroundColor: '#ccc',
   labelColor: '#060',
@@ -69,7 +68,7 @@ Morris.Area({
 Morris.Donut({
   element: 'e5',
   data: [
-    {value: 100, label: 'Español(50)'}
+    <?php echo  $estadistica5valor;?>
   ],
   backgroundColor: '#ccc',
   labelColor: '#060',
@@ -86,8 +85,7 @@ Morris.Donut({
 Morris.Donut({
   element: 'e6',
   data: [
-    {value: 50, label: 'Hombre(50)'},
-    {value: 50, label: 'Mujer(50)'}
+    <?php echo  $estadistica6valor;?>
   ],
   backgroundColor: '#ccc',
   labelColor: '#060',
@@ -125,8 +123,7 @@ Morris.Bar({
 Morris.Bar({
   element: 'e8',
   data: [
-    {x: 'Aguascalientes(66%)', y: 20},
-    {x: 'Jesus Maria(34%)', y: 10}
+    <?php echo  $estadistica8valor;?>
   ],
   xkey: 'x',
   ykeys: ['y'],
@@ -146,7 +143,7 @@ Morris.Bar({
 Morris.Donut({
   element: 'e9',
   data: [
-    {value: 100, label: 'Mexico(50)'}
+    <?php echo  $estadistica9valor;?>
   ],
   backgroundColor: '#ccc',
   labelColor: '#060',

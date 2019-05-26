@@ -97,7 +97,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_estadistica
     <div class="card border-success col-sm-6 col-md-6 col-lg-6 col-xl-3">
         <div class="card-header">Estadistica 6</div>
         <div class="card-body text-success">
-            <h5 class="card-title">Sexo que tienen</h5>
+            <h5 class="card-title">Genero que tienen</h5>
             <p class="card-text">
                 <div id="e6" class="grafica"></div>
             </p>
@@ -119,7 +119,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_estadistica
     <div class="card border-success col-sm-12 col-md-12 col-lg-12 col-xl-6">
         <div class="card-header">Estadistica 8</div>
         <div class="card-body text-success">
-            <h5 class="card-title">Cuidad que son</h5>
+            <h5 class="card-title">Estado del que son</h5>
             <p class="card-text">
                 <div id="e8" class="grafica"></div>
             </p>

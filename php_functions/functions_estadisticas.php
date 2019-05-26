@@ -21,6 +21,20 @@ $estadistica18valor = "";
 $conexion2 = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore2;','root','');
 $conexion3 = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore3;','root','');
 //----
+$statement1 = $conexion3->prepare("SELECT DIRECCION_FUENTE, COUNT(DIRECCION_FUENTE) AS REPETICIONES FROM estad_sitios_dir AS a WHERE FECHA BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY DIRECCION_FUENTE");
+//Consulta SQL, generando el numero de repeticiones, y  validando que las fechas sean entre las que se pusieron en el form
+$statement1->execute();
+$estadistica1 = $statement1->fetchAll();
+$total=0;
+foreach($estadistica1 as $valor){
+$total= $total+$valor["REPETICIONES"];//obtener el valor total para determinar el porcentaje
+}
+foreach($estadistica1 as $valor){
+  $valor["PORCENTAJE"] =  (round($valor["REPETICIONES"]/($total), 2)*100);//asignacion de porcentaje
+  $estadistica1valor.= "{label: '".$valor["DIRECCION_FUENTE"]."(".$valor["REPETICIONES"].")', value: ".$valor["PORCENTAJE"]."},";//valores que iran en el arreglo para la grafica
+}
+$estadistica1valor = substr ($estadistica1valor, 0, -1);//se elimina el ultimo caracter que es una , que marcaria error
+//----
 $statement2 = $conexion2->prepare("SELECT Tipo, COUNT(Tipo) AS REPETICIONES FROM dispositivos AS a WHERE Ultimo_Acceso BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY Tipo");
 //Consulta SQL, generando el numero de repeticiones, y  validando que las fechas sean entre las que se pusieron en el form
 $statement2->execute();
@@ -60,6 +74,58 @@ foreach($estadistica4 as $valor){
   $estadistica4valor.= "{x: '".$valor["Ultimo_Acceso"]."', y: ".$valor["REPETICIONES"].",z:".$valor["PORCENTAJE"]."},";
 }
 $estadistica4valor = substr ($estadistica4valor, 0, -1);
+//----
+$statement5 = $conexion3->prepare("SELECT IDIOMA, COUNT(IDIOMA) AS REPETICIONES FROM usuarios_atrib AS a WHERE FECHA_REGISTRO BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY IDIOMA");
+$statement5->execute();
+$estadistica5 = $statement5->fetchAll();
+$total=0;
+foreach($estadistica5 as $valor){
+$total= $total+$valor["REPETICIONES"];
+}
+foreach($estadistica5 as $valor){
+  $valor["PORCENTAJE"] =  (round($valor["REPETICIONES"]/($total), 2)*100);
+  $estadistica5valor.= "{label: '".$valor["IDIOMA"]."', y: ".$valor["REPETICIONES"].",value:".$valor["PORCENTAJE"]."},";
+}
+$estadistica5valor = substr ($estadistica5valor, 0, -1);
+//----
+$statement6 = $conexion3->prepare("SELECT GENERO, COUNT(GENERO) AS REPETICIONES FROM usuarios_atrib AS a WHERE FECHA_REGISTRO BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY GENERO");
+$statement6->execute();
+$estadistica6 = $statement6->fetchAll();
+$total=0;
+foreach($estadistica6 as $valor){
+$total= $total+$valor["REPETICIONES"];
+}
+foreach($estadistica6 as $valor){
+  $valor["PORCENTAJE"] =  (round($valor["REPETICIONES"]/($total), 2)*100);
+  $estadistica6valor.= "{label: '".$valor["GENERO"]."', y: ".$valor["REPETICIONES"].",value:".$valor["PORCENTAJE"]."},";
+}
+$estadistica6valor = substr ($estadistica6valor, 0, -1);
+//----
+$statement8 = $conexion3->prepare("SELECT ESTADO, COUNT(ESTADO) AS REPETICIONES FROM usuarios_atrib AS a WHERE FECHA_REGISTRO BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY ESTADO");
+$statement8->execute();
+$estadistica8 = $statement8->fetchAll();
+$total=0;
+foreach($estadistica8 as $valor){
+$total= $total+$valor["REPETICIONES"];
+}
+foreach($estadistica8 as $valor){
+  $valor["PORCENTAJE"] =  (round($valor["REPETICIONES"]/($total), 2)*100);
+  $estadistica8valor.= "{x: '".$valor["ESTADO"]."(".$valor["PORCENTAJE"]."%)',y:".$valor["REPETICIONES"]."},";
+}
+$estadistica8valor = substr ($estadistica8valor, 0, -1);
+//----
+$statement9 = $conexion3->prepare("SELECT pais.PAIS, COUNT(pais.PAIS) AS REPETICIONES FROM usuarios_atrib INNER JOIN pais ON usuarios_atrib.ID_PAIS=pais.ID_PAIS WHERE FECHA_REGISTRO BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY pais.PAIS");
+$statement9->execute();
+$estadistica9 = $statement9->fetchAll();
+$total=0;
+foreach($estadistica9 as $valor){
+$total= $total+$valor["REPETICIONES"];
+}
+foreach($estadistica9 as $valor){
+  $valor["PORCENTAJE"] =  (round($valor["REPETICIONES"]/($total), 2)*100);
+  $estadistica9valor.= "{label: '".$valor["PAIS"]."(".$valor["REPETICIONES"].")',value:".$valor["PORCENTAJE"]."},";
+}
+$estadistica9valor = substr ($estadistica9valor, 0, -1);
 //----
 $statement10 = $conexion2->prepare("SELECT SO, COUNT(SO) AS REPETICIONES FROM dispositivos AS a WHERE Ultimo_Acceso BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY SO");
 $statement10->execute();
