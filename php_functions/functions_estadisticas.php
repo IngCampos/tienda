@@ -101,6 +101,21 @@ foreach($estadistica6 as $valor){
 }
 $estadistica6valor = substr ($estadistica6valor, 0, -1);
 //----
+$statement7 = $conexion3->prepare("SELECT YEAR(FECHA_NAC), COUNT(YEAR(FECHA_NAC)) AS REPETICIONES FROM usuarios_atrib AS a GROUP BY YEAR(FECHA_NAC)");
+$statement7->execute();
+$estadistica7 = $statement7->fetchAll();
+$total=0;
+foreach($estadistica7 as $valor){
+$total= $total+$valor["REPETICIONES"];
+}
+foreach($estadistica7 as $valor){
+  $valor["PORCENTAJE"] =  (round($valor["REPETICIONES"]/($total), 2)*100);
+  $estadistica7valor.= "{x: '".(2019-$valor["YEAR(FECHA_NAC)"])."años(".$valor["PORCENTAJE"]."%)',y:".$valor["REPETICIONES"]."},";
+}
+$estadistica7valor = substr ($estadistica7valor, 0, -1);
+// #SELECT ROUND(datediff('2020-05-10 10:00:00',FECHA_NAC)/365) as AÑOS,COUNT(ROUND(datediff('2020-05-10 10:00:00',FECHA_NAC)/365)) as REPETICIONES FROM usuarios_atrib GROUP BY ROUND(datediff('2020-05-10 10:00:00',FECHA_NAC)/365)
+// Consulta que no funciono, mas que desde phpmyadmi
+//----
 $statement8 = $conexion3->prepare("SELECT ESTADO, COUNT(ESTADO) AS REPETICIONES FROM usuarios_atrib AS a WHERE FECHA_REGISTRO BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY ESTADO");
 $statement8->execute();
 $estadistica8 = $statement8->fetchAll();

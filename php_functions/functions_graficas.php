@@ -102,8 +102,7 @@ Morris.Donut({
 Morris.Bar({
   element: 'e7',
   data: [
-    {x: '20 años(66%)', y: 10},
-    {x: '31 años(34%)', y: 20}
+    <?php echo  $estadistica7valor;?>
   ],
   xkey: 'x',
   ykeys: ['y'],
