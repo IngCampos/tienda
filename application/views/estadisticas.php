@@ -37,6 +37,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_estadistica
     <center><h4>Reporte generado del <?php echo $inicio[0].' '.$inicio[1].' al '.$final[0].' '.$final[1];?></h4></center>
 <div class="row jumbotron">
     <button class="col-12 btn btn-primary">Sitio web</button>
+    <?php if($estadistica1valor!=""): ?>
     <div class="card border-primary col-sm-6 col-md-6 col-lg-6 col-xl-3">
         <div class="card-header">Estadistica 1</div>
         <div class="card-body text-primary">
@@ -46,6 +47,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_estadistica
             </p>
         </div>
     </div>
+        <?php endif; ?>
     <?php if($estadistica2valor!=""): ?>
     <div class="card border-primary col-sm-6 col-md-6 col-lg-6 col-xl-3">
           <div class="card-header">Estadistica 2</div>
@@ -80,6 +82,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_estadistica
       </div>
 <?php endif; ?>
 <button class="col-12 btn btn-success">Usuarios</button>
+    <?php if($estadistica5valor!=""): ?>
     <div class="card border-success col-sm-6 col-md-6 col-lg-6 col-xl-3">
         <div class="card-header">Estadistica 5</div>
         <div class="card-body text-success">
@@ -89,6 +92,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_estadistica
             </p>
         </div>
     </div>
+        <?php endif; ?>
+        <?php if($estadistica6valor!=""): ?>
     <div class="card border-success col-sm-6 col-md-6 col-lg-6 col-xl-3">
         <div class="card-header">Estadistica 6</div>
         <div class="card-body text-success">
@@ -98,6 +103,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_estadistica
             </p>
         </div>
     </div>
+        <?php endif; ?>
+        <?php if($estadistica7valor!=""): ?>
     <div class="card border-success col-sm-12 col-md-12 col-lg-12 col-xl-6">
         <div class="card-header">Estadistica 7</div>
         <div class="card-body text-success">
@@ -107,6 +114,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_estadistica
             </p>
         </div>
     </div>
+        <?php endif; ?>
+        <?php if($estadistica8valor!=""): ?>
     <div class="card border-success col-sm-12 col-md-12 col-lg-12 col-xl-6">
         <div class="card-header">Estadistica 8</div>
         <div class="card-body text-success">
@@ -116,6 +125,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_estadistica
             </p>
         </div>
     </div>
+        <?php endif; ?>
+        <?php if($estadistica9valor!=""): ?>
     <div class="card border-success col-sm-6 col-md-4 col-lg-4 col-xl-3">
         <div class="card-header">Estadistica 9</div>
         <div class="card-body text-success">
@@ -125,6 +136,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_estadistica
             </p>
         </div>
     </div>
+        <?php endif; ?>
     <?php if($estadistica10valor!=""): ?>
     <div class="card border-success col-sm-6 col-md-4 col-lg-4 col-xl-3">
         <div class="card-header">Estadistica 10</div>
@@ -148,6 +160,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_estadistica
     </div>
     <?php endif; ?>
     <button class="col-12 btn btn-danger">Productos</button>
+        <?php if($estadistica12valor!=""): ?>
     <div class="card border-danger col-sm-12 col-md-12 col-lg-12 col-xl-6">
         <div class="card-header">Estadistica 12</div>
         <div class="card-body text-danger">
@@ -157,6 +170,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_estadistica
             </p>
         </div>
     </div>
+        <?php endif; ?>
+        <?php if($estadistica13valor!=""): ?>
     <div class="card border-danger col-sm-12 col-md-12 col-lg-12 col-xl-6">
         <div class="card-header">Estadistica 13</div>
         <div class="card-body text-danger">
@@ -166,6 +181,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_estadistica
             </p>
         </div>
     </div>
+        <?php endif; ?>
+        <?php if($estadistica14valor!=""): ?>
     <div class="card border-danger col-sm-6 col-md-6 col-lg-6 col-xl-3">
         <div class="card-header">Estadistica 14</div>
         <div class="card-body text-danger">
@@ -175,6 +192,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_estadistica
             </p>
         </div>
     </div>
+        <?php endif; ?>
+        <?php if($estadistica15valor!=""): ?>
     <div class="card border-danger col-sm-6 col-md-6 col-lg-6 col-xl-3">
         <div class="card-header">Estadistica 15</div>
         <div class="card-body text-danger">
@@ -184,6 +203,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_estadistica
             </p>
         </div>
     </div>
+        <?php endif; ?>
+        <?php if($estadistica16valor!=""): ?>
     <div class="card border-danger col-sm-12 col-md-12 col-lg-12 col-xl-6">
         <div class="card-header">Estadistica 16</div>
         <div class="card-body text-danger">
@@ -193,6 +214,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_estadistica
             </p>
         </div>
     </div>
+        <?php endif; ?>
+        <?php if($estadistica17valor!=""): ?>
     <div class="card border-danger col-sm-12 col-md-12 col-lg-12 col-xl-6">
         <div class="card-header">Estadistica 17</div>
         <div class="card-body text-danger">
@@ -202,6 +225,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_estadistica
             </p>
         </div>
     </div>
+        <?php endif; ?>
     <?php if($estadistica18valor!=""): ?>
     <div class="card border-danger col-sm-12 col-md-12 col-lg-12 col-xl-6">
         <div class="card-header">Estadistica 18</div>

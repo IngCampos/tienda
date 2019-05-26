@@ -1,4 +1,5 @@
 <script>
+  <?php if($estadistica1valor!=""): ?>
 Morris.Donut({
   element: 'e1',
   data: [
@@ -15,6 +16,7 @@ Morris.Donut({
   ],
   formatter: function (x) { return x + "%"}
 });
+<?php endif; ?>
 <?php if($estadistica2valor!=""): ?>
 Morris.Donut({
   element: 'e2',
@@ -63,6 +65,7 @@ Morris.Area({
   labels: ['Conexiones','Porcentaje%'],
 });
 <?php endif; ?>
+<?php if($estadistica5valor!=""): ?>
 Morris.Donut({
   element: 'e5',
   data: [
@@ -78,6 +81,8 @@ Morris.Donut({
   ],
   formatter: function (x) { return x + "%"}
 });
+<?php endif; ?>
+<?php if($estadistica6valor!=""): ?>
 Morris.Donut({
   element: 'e6',
   data: [
@@ -94,6 +99,8 @@ Morris.Donut({
   ],
   formatter: function (x) { return x + "%"}
 });
+<?php endif; ?>
+<?php if($estadistica7valor!=""): ?>
 Morris.Bar({
   element: 'e7',
   data: [
@@ -113,6 +120,8 @@ Morris.Bar({
     }
   }
 });
+<?php endif; ?>
+<?php if($estadistica8valor!=""): ?>
 Morris.Bar({
   element: 'e8',
   data: [
@@ -132,6 +141,8 @@ Morris.Bar({
     }
   }
 });
+<?php endif; ?>
+<?php if($estadistica9valor!=""): ?>
 Morris.Donut({
   element: 'e9',
   data: [
@@ -147,6 +158,7 @@ Morris.Donut({
   ],
   formatter: function (x) { return x + "%"}
 });
+<?php endif; ?>
 <?php if($estadistica10valor!=""): ?>
 Morris.Donut({
     element: 'e10',
@@ -181,6 +193,7 @@ Morris.Donut({
   formatter: function (x) { return x + "%"}
 });
 <?php endif; ?>
+<?php if($estadistica12valor!=""): ?>
 Morris.Bar({
   element: 'e12',
   data: [
@@ -204,6 +217,8 @@ Morris.Bar({
     }
   }
 });
+<?php endif; ?>
+<?php if($estadistica13valor!=""): ?>
 Morris.Bar({
   element: 'e13',
   data: [
@@ -227,6 +242,8 @@ Morris.Bar({
     }
   }
 });
+<?php endif; ?>
+<?php if($estadistica14valor!=""): ?>
 Morris.Donut({
   element: 'e14',
   data: [
@@ -244,6 +261,8 @@ Morris.Donut({
   ],
   formatter: function (x) { return x + "%"}
 });
+<?php endif; ?>
+<?php if($estadistica15valor!=""): ?>
 Morris.Donut({
   element: 'e15',
   data: [
@@ -261,6 +280,8 @@ Morris.Donut({
   ],
   formatter: function (x) { return x + "%"}
 });
+<?php endif; ?>
+<?php if($estadistica16valor!=""): ?>
 Morris.Bar({
   element: 'e16',
   data: [
@@ -284,6 +305,8 @@ Morris.Bar({
     }
   }
 });
+<?php endif; ?>
+<?php if($estadistica17valor!=""): ?>
 Morris.Bar({
   element: 'e17',
   data: [
@@ -307,6 +330,7 @@ Morris.Bar({
     }
   }
 });
+<?php endif; ?>
 <?php if($estadistica18valor!=""): ?>
 Morris.Bar({
   element: 'e18',
