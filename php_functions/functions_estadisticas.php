@@ -62,7 +62,7 @@ foreach($estadistica3 as $valor){
 }
 $estadistica3valor = substr ($estadistica3valor, 0, -1);
 //----
-$statement4 = $conexion2->prepare("SELECT Ultimo_Acceso, COUNT(Ultimo_Acceso) AS REPETICIONES FROM dispositivos AS a WHERE Ultimo_Acceso BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY Ultimo_Acceso");
+$statement4 = $conexion2->prepare("SELECT SUBSTRING(Ultimo_Acceso, 1, 13) as Ultimo_Acceso, COUNT(SUBSTRING(Ultimo_Acceso, 1, 13)) AS REPETICIONES FROM dispositivos AS a WHERE Ultimo_Acceso BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY SUBSTRING(Ultimo_Acceso, 1, 13)");
 $statement4->execute();
 $estadistica4 = $statement4->fetchAll();
 $total=0;
@@ -71,7 +71,7 @@ $total= $total+$valor["REPETICIONES"];
 }
 foreach($estadistica4 as $valor){
   $valor["PORCENTAJE"] =  (round($valor["REPETICIONES"]/($total), 2)*100);
-  $estadistica4valor.= "{x: '".$valor["Ultimo_Acceso"]."', y: ".$valor["REPETICIONES"].",z:".$valor["PORCENTAJE"]."},";
+  $estadistica4valor.= "{x: '".$valor["Ultimo_Acceso"].":00:00', y: ".$valor["REPETICIONES"].",z:".$valor["PORCENTAJE"]."},";
 }
 $estadistica4valor = substr ($estadistica4valor, 0, -1);
 //----
@@ -84,7 +84,7 @@ $total= $total+$valor["REPETICIONES"];
 }
 foreach($estadistica5 as $valor){
   $valor["PORCENTAJE"] =  (round($valor["REPETICIONES"]/($total), 2)*100);
-  $estadistica5valor.= "{label: '".$valor["IDIOMA"]."', y: ".$valor["REPETICIONES"].",value:".$valor["PORCENTAJE"]."},";
+  $estadistica5valor.= "{label: '".$valor["IDIOMA"]."(".$valor["REPETICIONES"].")',value:".$valor["PORCENTAJE"]."},";
 }
 $estadistica5valor = substr ($estadistica5valor, 0, -1);
 //----
@@ -97,7 +97,7 @@ $total= $total+$valor["REPETICIONES"];
 }
 foreach($estadistica6 as $valor){
   $valor["PORCENTAJE"] =  (round($valor["REPETICIONES"]/($total), 2)*100);
-  $estadistica6valor.= "{label: '".$valor["GENERO"]."', y: ".$valor["REPETICIONES"].",value:".$valor["PORCENTAJE"]."},";
+  $estadistica6valor.= "{label: '".$valor["GENERO"]."(".$valor["REPETICIONES"].")',value:".$valor["PORCENTAJE"]."},";
 }
 $estadistica6valor = substr ($estadistica6valor, 0, -1);
 //----
@@ -110,7 +110,7 @@ $total= $total+$valor["REPETICIONES"];
 }
 foreach($estadistica7 as $valor){
   $valor["PORCENTAJE"] =  (round($valor["REPETICIONES"]/($total), 2)*100);
-  $estadistica7valor.= "{x: '".(2019-$valor["YEAR(FECHA_NAC)"])."años(".$valor["PORCENTAJE"]."%)',y:".$valor["REPETICIONES"]."},";
+  $estadistica7valor.= "{x: '".(2019-$valor["YEAR(FECHA_NAC)"])."(".$valor["PORCENTAJE"]."%)',y:".$valor["REPETICIONES"]."},";
 }
 $estadistica7valor = substr ($estadistica7valor, 0, -1);
 // #SELECT ROUND(datediff('2020-05-10 10:00:00',FECHA_NAC)/365) as AÑOS,COUNT(ROUND(datediff('2020-05-10 10:00:00',FECHA_NAC)/365)) as REPETICIONES FROM usuarios_atrib GROUP BY ROUND(datediff('2020-05-10 10:00:00',FECHA_NAC)/365)

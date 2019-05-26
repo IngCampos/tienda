@@ -60,8 +60,8 @@ Morris.Area({
     <?php echo  $estadistica4valor;?>
   ],
   xkey: 'x',
-  ykeys: ['y','z'],
-  labels: ['Conexiones','Porcentaje%'],
+  ykeys: ['y'],
+  labels: ['Conexiones'],
 });
 <?php endif; ?>
 <?php if($estadistica5valor!=""): ?>
