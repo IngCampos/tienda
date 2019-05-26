@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-05-2019 a las 18:50:17
+-- Tiempo de generación: 26-05-2019 a las 03:12:50
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.4
 
@@ -21,6 +21,29 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `cdshopco_ldstore2`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `buzon`
+--
+
+CREATE TABLE `buzon` (
+  `id_buzon` int(3) NOT NULL,
+  `id` int(3) NOT NULL,
+  `Titulo` varchar(20) NOT NULL,
+  `Descripcion` varchar(200) NOT NULL,
+  `Fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `buzon`
+--
+
+INSERT INTO `buzon` (`id_buzon`, `id`, `Titulo`, `Descripcion`, `Fecha`) VALUES
+(6, 36, 'Pocos productos', ' Deberian tener productos clasicos, viejos, no solo nuevos', '2019-05-26 01:08:01'),
+(7, 2, 'Falta de informacion', ' No dicen a que hora abre el local', '2019-05-26 01:08:44'),
+(9, 1, 'Prueba', ' Prueba de admi', '2019-05-26 01:12:29');
 
 -- --------------------------------------------------------
 
@@ -350,33 +373,16 @@ INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `imagen`, `Cat
 (108, 'John Wick Sin control', 'Pelicula de ficcion en la cual un hombre que es esposo de una esposa asesinada, padre de un hijo asesinado y amo de un perro asesinado busca venganza de manera desenfrenada', 540, '108.png', 2),
 (109, 'Hancock', 'Pelicula de ficcion en la cual se analiza la historia de un soldado negro ne el desierto atacando Kabul en afghanistan', 36, '109.png', 2);
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `quejas_sugerencias`
---
-
-CREATE TABLE `quejas_sugerencias` (
-  `id` int(11) NOT NULL,
-  `usuario` varchar(50) DEFAULT NULL,
-  `apellidos` varchar(50) DEFAULT NULL,
-  `correo` varchar(50) DEFAULT NULL,
-  `titulo` varchar(50) NOT NULL,
-  `descripcion` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `quejas_sugerencias`
---
-
-INSERT INTO `quejas_sugerencias` (`id`, `usuario`, `apellidos`, `correo`, `titulo`, `descripcion`) VALUES
-(9, 'Martin', 'Campos', 'admin1@gmail.com', 'Buenos precios', 'Solo hace falta dar ofertas'),
-(16, 'admin1', 'admin1', 'admin1@gmail.com', 'Malos precios', ' Muchos bugs'),
-(17, 'Martin', 'Campos', 'admin1@gmail.com', 'malos precios', ' myt caros');
-
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `buzon`
+--
+ALTER TABLE `buzon`
+  ADD PRIMARY KEY (`id_buzon`),
+  ADD KEY `id` (`id`);
 
 --
 -- Indices de la tabla `categorias`
@@ -422,14 +428,14 @@ ALTER TABLE `productos`
   ADD KEY `fk_Productos_Categorias` (`Categorias_id`);
 
 --
--- Indices de la tabla `quejas_sugerencias`
---
-ALTER TABLE `quejas_sugerencias`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `buzon`
+--
+ALTER TABLE `buzon`
+  MODIFY `id_buzon` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
@@ -468,14 +474,14 @@ ALTER TABLE `productos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
--- AUTO_INCREMENT de la tabla `quejas_sugerencias`
---
-ALTER TABLE `quejas_sugerencias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `buzon`
+--
+ALTER TABLE `buzon`
+  ADD CONSTRAINT `buzon_ibfk_1` FOREIGN KEY (`id`) REFERENCES `clientes` (`id`);
 
 --
 -- Filtros para la tabla `detalle_pedidos`

@@ -5,8 +5,8 @@
 		$usuario = $this->session->userdata("usuario");
 		try {
 			$conexion = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore2;','root','');
-				$sql = "INSERT INTO quejas_sugerencias ( usuario, apellidos, correo, titulo, descripcion) 
-				VALUES ( '$usuario->nombre', '$usuario->apellidos', '$usuario->correo','$titulo', ' $descripcion')";
+				$sql = "INSERT INTO buzon ( id, Titulo, Descripcion) 
+				VALUES ( '$usuario->id','$titulo', ' $descripcion')";
 			$statement = $conexion->prepare($sql);
 			$statement->execute();
 		} catch (PDOException $e) {
