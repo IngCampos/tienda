@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-05-2019 a las 05:30:54
+-- Tiempo de generación: 26-05-2019 a las 23:03:20
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.3
 
@@ -119,7 +119,19 @@ CREATE TABLE `busquedas` (
 
 INSERT INTO `busquedas` (`ID_BUSQUEDA`, `ID_USUARIO`, `TERMINO`, `FECHA`) VALUES
 (1, 3, 'Katy Perry', '2019-05-14 02:10:06'),
-(2, 1, 'Hakunah', '2019-05-14 02:10:06');
+(2, 1, 'Hakunah', '2019-05-14 02:10:06'),
+(3, 2, 'Lucy', '2019-05-26 17:44:45'),
+(4, 1, 'Play', '2019-05-01 11:14:33'),
+(5, 1, 'Playa', '2019-05-01 11:14:33'),
+(6, 1, 'Oreja de Van Gogh', '2019-05-02 11:14:33'),
+(7, 2, 'Nazareth', '2019-05-02 12:14:33'),
+(8, 1, 'Cachita', '2019-04-01 18:14:33'),
+(9, 4, 'Play', '2019-05-01 11:14:33'),
+(10, 1, 'Playa', '2019-05-01 11:14:33'),
+(11, 1, 'Oreja de Van Gogh', '2019-05-02 11:14:33'),
+(12, 2, 'Nazareth', '2019-05-02 12:14:33'),
+(13, 1, 'Cachita', '2019-04-01 18:14:33'),
+(14, 4, 'Play', '2019-05-01 11:14:33');
 
 -- --------------------------------------------------------
 
@@ -128,7 +140,7 @@ INSERT INTO `busquedas` (`ID_BUSQUEDA`, `ID_USUARIO`, `TERMINO`, `FECHA`) VALUES
 --
 
 CREATE TABLE `cancion_atrib` (
-  `ID_CANCION` int(11) NOT NULL,  
+  `ID_CANCION` int(11) NOT NULL,
   `NOMBRE_CANCION` varchar(100) NOT NULL,
   `ID_ARTISTA` int(11) NOT NULL,
   `ID_COMPOSITOR` int(11) NOT NULL,
@@ -747,7 +759,7 @@ INSERT INTO `pais` (`ID_PAIS`, `PAIS`) VALUES
 (9, 'Francia'),
 (10, 'Portugal'),
 (11, 'Canada'),
-(12, 'Reino Unido de Gran Bretaña e Irlanda del Norte'),
+(12, 'Reino Unido de Gran Bretaña e Irlanda del Nor'),
 (13, 'Alemania'),
 (14, 'Brasil'),
 (15, 'Argentina'),
@@ -1345,8 +1357,6 @@ INSERT INTO `personas_atrib` (`ID_PERSONA`, `NOMBRE`, `APELLIDO`, `FECHA_NAC`, `
 
 -- --------------------------------------------------------
 
-
-
 --
 -- Estructura de tabla para la tabla `quejas`
 --
@@ -1509,7 +1519,105 @@ INSERT INTO `usuarios_atrib` (`ID_USUARIO`, `NOMBRE`, `APELLIDO1`, `APELLIDO2`, 
 (1, 'Salvador', 'De Luna', 'Macias', '1990-02-13', 'HOMBRE', 'ESPAÑOL', 'Modernización', 109, 0, 'Municipio Libre', 'Aguascalientes', 'Aguascalientes', 1, 'slm_y_bmv@hotmail.com', '', '2019-03-03 12:22:16'),
 (2, 'Rosalía', 'Anaya', 'Loera', '2001-03-15', 'MUJER', 'INGLÉS', 'Camelias', 554, 2, 'Las Flores', 'Aguascalientes', 'Aguascalientes', 1, 'rosianayalo1@gmail.com', '', '2019-03-28 04:44:23'),
 (3, 'Jonas', 'Vega', 'Lara', '1981-05-22', 'HOMBRE', 'ESPAÑOL', 'Los mangos', 789, 1, 'Las huertas', 'Aguascalientes', 'Aguascalientes', 1, 'nomo3s@outlook.es', '', '2019-03-31 16:50:54'),
-(4, 'Kilimanjaro', 'Dzul', 'Baarz', '1878-02-01', 'NO ESPEC', 'INGLÉS', '18th St.', 3321, 7, 'Downtown', 'Pala', 'California', 2, 'kbaarznom@aol.com', '', '2019-04-01 20:27:29');
+(4, 'Kilimanjaro', 'Dzul', 'Baarz', '1878-02-01', 'NO ESPEC', 'INGLÉS', '18th St.', 3321, 7, 'Downtown', 'Pala', 'California', 2, 'kbaarznom@aol.com', '', '2019-04-01 20:27:29'),
+(5, 'Louis', 'Handell', 'Wentz', '1975-02-01', 'MUJER', 'INGLES', '1st Ave.', 233, 1, 'Downtown', 'Los Angeles', 'Californa', 2, 'llac1@outlook.es', '342325AC:', '2019-02-25 00:00:00'),
+(6, 'Nash', 'Handell', 'Novell', '1976-02-21', 'HOMBRE', 'INGLES', '1st Ave.', 233, 1, 'Downtown', 'Los Angeles', 'California', 2, 'llac1@outlook.es', '342325AC:', '2019-02-27 00:00:00'),
+(7, 'Caliope', 'Santana', 'Loera', '1987-03-22', 'MUJER', 'ESPAÑOL', 'LOS CONOS', 123, 0, 'OJOCALIENTE 1', 'AGUASCALIENTES', 'AGUASCALIENTES', 1, 'CALIOPE23@outlook.es', '342325AC:', '2019-02-25 00:00:00'),
+(8, 'Remy', 'Sarz', 'Nolev', '1990-02-01', 'HOMBRE', 'ESPAÑOL', 'CAMELIAS', 553, 1, 'LAS FLORES', 'AGUASCALIENTES', 'AGUASCALIENTES', 2, 'REMY@outlook.es', '342325AC:', '2019-02-25 00:00:00'),
+(9, 'Ozzie', 'Pereira', 'Wentz', '1976-02-21', 'HOMBRE', 'INGLES', '1st Ave.', 233, 1, 'Downtown', 'Los Angeles', 'California', 2, 'llac1@outlook.es', '342325AC:', '2019-02-27 00:00:00'),
+(10, 'Norway', 'Handball', 'Willis', '1976-02-21', 'HOMBRE', 'INGLES', 'Cross Blvd.', 1553, 1, 'Downtown', 'CHICAGO', 'ILLINOIS', 2, 'NORWAXA1@outlook.es', '342325AC:', '2019-02-28 00:00:00'),
+(11, 'Cecil', 'Spencer', 'Nunes', '1987-03-22', 'MUJER', 'ESPAÑOL', 'ST. PATRICK', 1232, 0, 'CHICKASHA', 'OKLAHOMA', 'OKLAHOMA', 2, 'CEC09WS@outlook.es', '342325AC:', '2019-02-28 00:00:00'),
+(12, 'Hedda', 'Wong', 'Nolev', '1994-02-01', 'MUJER', 'ESPAÑOL', 'JOSE MA NAPOLEON', 553, 1, 'CANTANTES ILUSTRES', 'GUADALAJARA', 'JALISCO', 1, 'HEDDA46@outlook.es', '342325AC:', '2019-05-11 00:00:00'),
+(13, 'Esmeralda', 'Pereira', 'Oz', '1989-07-24', 'MUJER', 'ESPAÑOL', 'Jose Ma Chavez', 1665, 1, 'Centro', 'Aguascalientes', 'Aguascalientes', 1, 'esme321@outlook.es', '342325AC:', '2019-02-12 00:00:00'),
+(14, 'Nasim', 'Foreman', 'Wells', '1970-06-28', 'HOMBRE', 'INGLES', 'CocoJambo', 445, 1, 'ChinaTown', 'Los Angeles', 'California', 2, 'nassimvvx@outlook.es', '342325AC:', '2019-03-22 00:00:00'),
+(15, 'Tania', 'Ramirez', 'Loera', '1983-03-01', 'MUJER', 'ESPAÑOL', 'Independencia', 983, 0, 'Liberalismo', 'Hermosillo', 'Sonora', 1, 'tanyazz3@outlook.es', '342325AC:', '2019-02-01 00:00:00'),
+(16, 'Walter', 'Burris', 'Zchellev', '1978-11-22', 'HOMBRE', 'INGLES', 'Abbey Rd', 223, 1, 'Highlands', 'London', 'London', 12, 'waltavvxw@outlook.es', '342325AC:', '2019-01-11 00:00:00'),
+(17, 'Brynn', 'Johnson', 'Butter', '1999-10-10', 'HOMBRE', 'INGLES', 'Cursus Av.', 988, 102, 'Firenze', 'Cape Town', 'Oregon', 2, 'brynnes12@outlook.es', '342325AC:', '2019-02-27 00:00:00'),
+(18, 'Kelly', 'Lee', 'Fuzz', '1987-03-10', 'MUJER', 'ESPAÑOL', 'Barcelona', 655, 0, 'Peninsula Iberica', 'San Cristobal', 'Chiapas', 1, 'kellerbaxter111@outlook.es', '342325AC:', '2019-01-02 00:00:00'),
+(19, 'Jeremy', 'Carson', 'Maglev', '1965-03-30', 'HOMBRE', 'INGLES', 'North Rd', 8893, 927, 'CAPE DESIREE', 'CORSAIR', 'NORTH CAROLINA', 2, 'JEREMAIAHLONDON11@outlook.es', '342325AC:', '2019-01-20 00:00:00'),
+(20, 'Lance', 'Case', 'Sachs', '2010-04-05', 'HOMBRE', 'INGLES', 'Sit Av.', 99, 1, 'Nivelles', 'Muno', 'Wyoming', 2, 'lancecaseo@outlook.es', '342325AC:', '2019-04-28 00:00:00'),
+(21, 'Colton', 'White', '', '1976-02-21', 'HOMBRE', 'INGLES', '8th Ave.', 234, 1, 'North Creek', 'Chattanooga', 'Tennessee', 2, 'colwafew3@outlook.es', '342325AC:', '2019-02-27 00:00:00'),
+(22, 'Cecilia', 'Cortés', 'López', '1963-10-11', '', 'ESPAÑOL', 'Paris', 876, 0, 'Capital', 'Ciudad del Cabo', 'Baja California', 1, 'ceciliacecilia12@outlook.es', '342325AC:', '2019-03-09 00:00:00'),
+(23, 'Aidan', 'Atkins', '', '2000-02-23', 'HOMBRE', 'INGLES', 'Vitae Rd', 553, 332, 'Nevelinn', 'Manhattan', 'New York', 2, 'atkinsaid445@outlook.es', '342325AC:', '2019-01-22 00:00:00'),
+(24, 'Kibo', 'Kim', '', '1987-04-24', 'HOMBRE', 'INGLES', ' 15th Ave.', 23, 102, 'Downtown', 'Las Vegas', 'Nevada', 2, 'kibokimkibo5@outlook.es', '342325AC:', '2019-01-13 00:00:00'),
+(25, 'Hashim', 'Hurst', '', '2001-01-27', 'HOMBRE', 'INGLES', '21st Ave.', 233, 1, 'East Compton', 'Los Angeles', 'California', 2, 'HASRSINMM1@outlook.es', '342325AC:', '2019-03-27 00:00:00'),
+(26, 'Maris', 'Raymond', '', '1994-02-19', 'MUJER', 'ESPAÑOL', 'Iturbide', 443, 201, 'Personajes Ilustres', 'San Miguel de Allende', 'Guanajuato', 1, 'marisray88@outlook.es', '342325AC:', '2019-01-10 00:00:00'),
+(27, 'Romelia', 'López', 'Aguayo', '1976-02-21', 'MUJER', 'ESPAÑOL', 'Olivos', 100, 1, 'Arborada Residencial', 'AGUASCALIENTES', 'AGUASCALIENTES', 1, 'corocoro9802@outlook.es', '342325AC:', '2019-01-31 00:00:00'),
+(28, 'Norma', 'Santacruz', 'Loera', '1964-01-21', 'MUJER', 'ESPAÑOL', 'Avellanos', 123, 0, 'Arborada Residencial', 'AGUASCALIENTES', 'AGUASCALIENTES', 1, 'marmeax2@outlook.es', '342325AC:', '2019-02-09 00:00:00'),
+(29, 'Orquídea', 'Anaya', 'Heredia', '1980-02-01', 'MUJER', 'ESPAÑOL', 'Cotorinas', 521, 1, 'Ojocaliente I', 'AGUASCALIENTES', 'AGUASCALIENTES', 1, 'merrycrismas13@outlook.es', '342325AC:', '2019-01-21 00:00:00'),
+(30, 'Maciel', 'Pereira', ' ', '1979-09-21', 'HOMBRE', 'ESPAÑOL', 'Nogales', 2332, 133, 'Arboledas Norte', 'AGUASCALIENTES', 'AGUASCALIENTES', 2, 'cardibpoop2@outlook.es', '342325AC:', '2019-02-11 00:00:00'),
+(31, 'Fatima', 'Hernandez', ' ', '1990-02-13', 'MUJER', 'ESPAÑOL', 'Blvd Colosio', 1553, 1, 'Residencial Norte', 'Aguascalientes', 'Aguascalientes', 2, 'byefelicia21@outlook.es', '342325AC:', '2019-02-01 00:00:00'),
+(32, 'Moreira', 'Reyes', 'Nuñez', '1987-03-22', 'MUJER', 'ESPAÑOL', 'Tigres', 1232, 0, 'Zoologico', 'Torreon', 'Coahuila', 1, 'fetishclub01@outlook.es', '342325AC:', '2019-03-15 00:00:00'),
+(33, 'Polonia', 'Wong', 'Arteaga', '1994-02-02', 'MUJER', 'ESPAÑOL', 'JOSE Luis Pereira', 125, 1, 'PERSONAJES ILUSTRES', 'GUADALAJARA', 'JALISCO', 1, 'hebdofun6@outlook.es', '342325AC:', '2019-03-11 00:00:00'),
+(34, 'Natividad', 'Naranjo', 'Oz', '1975-04-24', 'MUJER', 'ESPAÑOL', 'Miguel de la Madrid', 1665, 1, 'Loma Alta', 'Figueras', 'Figueras', 7, 'marcalanla@outlook.es', '342325AC:', '2019-02-12 00:00:00'),
+(35, 'Mérida', 'José', 'Antares', '1970-06-28', 'MUJER', 'ESPAÑOL', 'Antropoidal', 445, 1, 'Ortográfica', 'Ciudad Cuauhtemoc', 'Ciudad de México', 1, 'vdsa2x1@outlook.es', '342325AC:', '2019-01-22 00:00:00'),
+(36, 'Shaylla', 'Rentería', 'Loera', '1973-03-01', 'MUJER', 'ESPAÑOL', 'Zaragoza', 983, 0, 'Heroes', 'Tepic', 'Nayarit', 1, 'shayllabeautyface@outlook.es', '342325AC:', '2019-01-01 00:00:00'),
+(37, 'Aleksandr', 'Ivanovich', 'Zchellev', '1978-11-22', 'HOMBRE', 'RUSO', 'Lenin Krasovsky', 223, 1, 'Romanov Falls', 'Kracovia', 'Munich', 47, 'aleksandromanov11@outlook.es', '342325AC:', '2019-01-31 00:00:00'),
+(38, 'Marc', 'Cavazos', 'Carrera', '1999-10-10', 'HOMBRE', 'ESPAÑOL', 'Gran Vía', 121, 102, 'Centro', 'Barcelona', 'Barcelona', 7, 'marcvaz@outlook.es', '342325AC:', '2019-02-11 00:00:00'),
+(39, 'Mason', 'Valenzuela', 'Castro', '1987-03-10', 'HOMBRE', 'ESPAÑOL', 'Barcelona', 622, 0, 'Peninsula Iberica', 'San Cristobal', 'Chiapas', 1, 'masonmas2@outlook.es', '342325AC:', '2019-01-02 00:00:00'),
+(40, 'Kevin', 'Baars', 'Mercy', '1965-03-30', 'HOMBRE', 'INGLES', 'North Abbey Rd', 8893, 927, 'Zchech town', 'CORSAIR', 'NORTH CAROLINA', 2, 'kevinmax@outlook.es', '342325AC:', '2019-01-20 00:00:00'),
+(41, 'Brayan', 'Maries', 'Snoozes', '1980-04-05', 'HOMBRE', 'INGLES', 'St. Anne Av.', 99, 1, 'Nivola', 'Muno', 'Wyoming', 2, 'brayannavajas12@outlook.es', '342325AC:', '2019-04-28 00:00:00'),
+(42, 'Nevel', 'White', 'Jr.', '1996-02-21', 'HOMBRE', 'INGLES', '8th Ave.', 234, 1, 'North Creek', 'Chattanooga', 'Tennessee', 2, 'nevelflawless@outlook.es', '342325AC:', '2019-02-27 00:00:00'),
+(43, 'Cassandra', 'Llamas', 'Llamas', '1963-10-11', 'MUJER', 'ESPAÑOL', 'Roma', 876, 0, 'Capital', 'Ciudad del Cabo', 'Baja California', 1, 'cassandrajones12@outlook.es', '342325AC:', '2019-02-09 00:00:00'),
+(44, 'Will', 'Albert', ' ', '2001-02-23', 'HOMBRE', 'INGLES', 'Vitae Rd', 553, 332, 'North Valley', 'Vancouver', 'Vancouver', 11, 'williwall1@outlook.es', '342325AC:', '2019-01-22 00:00:00'),
+(45, 'Killie', 'Nash', ' ', '1987-04-01', 'HOMBRE', 'INGLES', ' 7th Ave.', 23, 102, 'Revello', 'Louisville', 'Nevada', 2, 'killikillie@outlook.es', '342325AC:', '2019-02-13 00:00:00'),
+(46, 'Mercy', 'Hurry', ' ', '1965-01-27', 'MUJER', 'INGLES', '21st Ave.', 233, 1, 'East Compton', 'Los Angeles', 'California', 2, 'mercyq11@outlook.es', '342325AC:', '2019-03-17 00:00:00'),
+(47, 'Candida', 'Allende', 'Pérez', '2000-02-23', 'MUJER', 'ESPAÑOL', 'La Gran Vía', 553, 332, 'Liberal', 'Monterrey', 'Nuevo Leon', 1, 'candy2@outlook.es', '342325AC:', '2019-01-15 00:00:00'),
+(48, 'Caledonia', 'López', 'Aguayo', '1976-02-21', 'MUJER', 'ESPAÑOL', 'Olivos', 100, 1, 'Arborada Residencial', 'AGUASCALIENTES', 'AGUASCALIENTES', 1, 'caly9802@outlook.es', '342325AC:', '2019-01-31 00:00:00'),
+(49, 'Marisol', 'Santacruz', 'Loera', '1964-01-21', 'MUJER', 'ESPAÑOL', 'Avellanos', 123, 0, 'Arborada Residencial', 'AGUASCALIENTES', 'AGUASCALIENTES', 1, 'marysantacruz12@outlook.es', '342325AC:', '2019-02-09 00:00:00'),
+(50, 'Marisol', 'Anaya', 'Heredia', '1980-02-01', 'MUJER', 'ESPAÑOL', 'Cotorinas', 521, 1, 'Ojocaliente I', 'AGUASCALIENTES', 'AGUASCALIENTES', 1, 'marisolanayarocktars@outlook.es', '342325AC:', '2019-01-21 00:00:00'),
+(51, 'Ociel', 'Pereira', ' ', '1979-09-21', 'HOMBRE', 'ESPAÑOL', 'Nogales', 2332, 133, 'Arboledas Norte', 'AGUASCALIENTES', 'AGUASCALIENTES', 2, 'lzzzcd22@outlook.es', '342325AC:', '2019-02-11 00:00:00'),
+(52, 'Felicia', 'Hernandez', ' ', '1990-02-13', 'MUJER', 'ESPAÑOL', 'Blvd Colosio', 1553, 1, 'Residencial Norte', 'Aguascalientes', 'Aguascalientes', 2, 'felicia9021@outlook.es', '342325AC:', '2019-02-01 00:00:00'),
+(53, 'Nieves', 'Reyes', 'Nuñez', '1987-03-22', 'MUJER', 'ESPAÑOL', 'Tigres', 1232, 0, 'Zoologico', 'Torreon', 'Coahuila', 1, 'icecreams001@outlook.es', '342325AC:', '2019-03-15 00:00:00'),
+(54, 'Perla', 'Wong', 'Arteaga', '1994-02-02', 'MUJER', 'ESPAÑOL', 'JOSE Luis Pereira', 125, 1, 'PERSONAJES ILUSTRES', 'GUADALAJARA', 'JALISCO', 1, 'HE21aA46@outlook.es', '342325AC:', '2019-03-11 00:00:00'),
+(55, 'Monica', 'Naranjo', 'Oz', '1975-04-24', 'MUJER', 'ESPAÑOL', 'Miguel de la Madrid', 1665, 1, 'Loma Alta', 'Figueras', 'Figueras', 7, 'mntarantula@outlook.es', '342325AC:', '2019-02-12 00:00:00'),
+(56, 'María', 'José', 'Antares', '1970-06-28', 'MUJER', 'ESPAÑOL', 'Antropoidal', 445, 1, 'Ortográfica', 'Ciudad Cuauhtemoc', 'Ciudad de México', 1, 'nvxiiix1@outlook.es', '342325AC:', '2019-01-22 00:00:00'),
+(57, 'Tania', 'Rentería', 'Loera', '1973-03-01', 'MUJER', 'ESPAÑOL', 'Zaragoza', 983, 0, 'Heroes', 'Tepic', 'Nayarit', 1, 'tantaniabella@outlook.es', '342325AC:', '2019-01-01 00:00:00'),
+(58, 'Illya', 'Ivanovich', 'Zchellev', '1978-11-22', 'HOMBRE', 'RUSO', 'Lenin Krasovsky', 223, 1, 'Romanov Falls', 'Kracovia', 'Munich', 47, 'illyaromanov11@outlook.es', '342325AC:', '2019-01-31 00:00:00'),
+(59, 'Calos', 'Cavazos', 'Carrera', '1999-10-10', 'HOMBRE', 'ESPAÑOL', 'Gran Vía', 121, 102, 'Centro', 'Barcelona', 'Barcelona', 7, 'calosvaz@outlook.es', '342325AC:', '2019-02-11 00:00:00'),
+(60, 'Martin', 'Valenzuela', 'Castro', '1987-03-10', 'HOMBRE', 'ESPAÑOL', 'Barcelona', 622, 0, 'Peninsula Iberica', 'San Cristobal', 'Chiapas', 1, 'martinvalcal12@outlook.es', '342325AC:', '2019-01-02 00:00:00'),
+(61, 'Martin', 'Baars', 'Mercy', '1965-03-30', 'HOMBRE', 'INGLES', 'North Abbey Rd', 8893, 927, 'Zchech town', 'CORSAIR', 'NORTH CAROLINA', 2, 'baarsmmax@outlook.es', '342325AC:', '2019-01-20 00:00:00'),
+(62, 'Lance', 'Maries', 'Snoozes', '1980-04-05', 'HOMBRE', 'INGLES', 'St. Anne Av.', 99, 1, 'Nivola', 'Muno', 'Wyoming', 2, 'lanzwarem@outlook.es', '342325AC:', '2019-04-28 00:00:00'),
+(63, 'Colton', 'White', 'Jr.', '1996-02-21', 'HOMBRE', 'INGLES', '8th Ave.', 234, 1, 'North Creek', 'Chattanooga', 'Tennessee', 2, 'colwafew3@outlook.es', '342325AC:', '2019-02-27 00:00:00'),
+(64, 'Cecilia', 'Llamas', 'Llamas', '1963-10-11', 'MUJER', 'ESPAÑOL', 'Roma', 876, 0, 'Capital', 'Ciudad del Cabo', 'Baja California', 1, 'lamascecilia2@outlook.es', '342325AC:', '2019-02-09 00:00:00'),
+(65, 'Jayden', 'Albert', '', '2001-02-23', 'HOMBRE', 'INGLES', 'Vitae Rd', 553, 332, 'North Valley', 'Vancouver', 'Vancouver', 11, 'jayzwannaparty1@outlook.es', '342325AC:', '2019-01-22 00:00:00'),
+(66, 'Keih', 'Nash', '', '1987-04-01', 'HOMBRE', 'INGLES', ' 7th Ave.', 23, 102, 'Revello', 'Louisville', 'Nevada', 2, 'kimbox12345@outlook.es', '342325AC:', '2019-02-13 00:00:00'),
+(67, 'Masha', 'Hurry', '', '1965-01-27', 'MUJER', 'INGLES', '21st Ave.', 233, 1, 'East Compton', 'Los Angeles', 'California', 2, 'mashamitzu11@outlook.es', '342325AC:', '2019-03-17 00:00:00'),
+(68, 'Coriola', 'Allende', 'Pérez', '2000-02-23', 'MUJER', 'ESPAÑOL', 'La Gran Vía', 553, 332, 'Liberal', 'Monterrey', 'Nuevo Leon', 1, 'coriola112@outlook.es', '342325AC:', '2019-01-15 00:00:00'),
+(69, 'Eduardo', 'Martinez', 'Luna', '1990-04-24', 'HOMBRE', 'ESPAÑOL', '5 de Mayo', 23, 102, 'La Nopalera', 'Ciudad Obregón', 'Ciudad de México', 1, 'santoenprision12@outlook.es', '342325AC:', '2019-01-13 00:00:00'),
+(70, 'Marietta', 'Franco', 'Santoro', '2001-01-27', 'MUJER', 'ESPAÑOL', 'Paseo de la Revolución', 445, 1, 'Senecú', 'Ciudad Juárez', 'Chihuahua', 1, 'marietta1ojos@outlook.es', '342325AC:', '2019-02-27 00:00:00'),
+(71, 'Marisa', 'Paleta', 'Marqués', '1994-02-11', 'MUJER', 'ESPAÑOL', 'Aragón', 443, 201, 'Personajes Ilustres', 'San Miguel de Allende', 'Guanajuato', 1, 'marisalollipop1@outlook.es', '342325AC:', '2019-01-10 00:00:00'),
+(72, 'Camila', 'López', 'Aguayo', '1976-02-21', 'MUJER', 'ESPAÑOL', 'Olivos', 100, 1, 'Arborada Residencial', 'AGUASCALIENTES', 'AGUASCALIENTES', 1, 'corocaleido02@outlook.es', '342325AC:', '2019-01-31 00:00:00'),
+(73, 'Nora', 'Santacruz', 'Loera', '1964-01-21', 'MUJER', 'ESPAÑOL', 'Avellanos', 123, 0, 'Arborada Residencial', 'AGUASCALIENTES', 'AGUASCALIENTES', 1, 'mamornow@outlook.es', '342325AC:', '2019-02-09 00:00:00'),
+(74, 'Olga', 'Anaya', 'Heredia', '1980-02-01', 'MUJER', 'ESPAÑOL', 'Cotorinas', 521, 1, 'Ojocaliente I', 'AGUASCALIENTES', 'AGUASCALIENTES', 1, 'mnoamtterswhy@outlook.es', '342325AC:', '2019-01-21 00:00:00'),
+(75, 'Marcos', 'Pereira', ' ', '1979-09-21', 'HOMBRE', 'ESPAÑOL', 'Nogales', 2332, 133, 'Arboledas Norte', 'AGUASCALIENTES', 'AGUASCALIENTES', 2, 'karaokesang@outlook.es', '342325AC:', '2019-02-11 00:00:00'),
+(76, 'Fernanda', 'Hernandez', ' ', '1990-02-13', 'MUJER', 'ESPAÑOL', 'Blvd Colosio', 1553, 1, 'Residencial Norte', 'Aguascalientes', 'Aguascalientes', 2, 'imnotfetish@outlook.es', '342325AC:', '2019-02-01 00:00:00'),
+(77, 'Morai', 'Reyes', 'Nuñez', '1987-03-22', 'MUJER', 'ESPAÑOL', 'Tigres', 1232, 0, 'Zoologico', 'Torreon', 'Coahuila', 1, 'puppetfan22@outlook.es', '342325AC:', '2019-03-15 00:00:00'),
+(78, 'Irlanda', 'Wong', 'Arteaga', '1994-02-02', 'MUJER', 'ESPAÑOL', 'JOSE Luis Pereira', 125, 1, 'PERSONAJES ILUSTRES', 'GUADALAJARA', 'JALISCO', 1, 'snippet@outlook.es', '342325AC:', '2019-03-11 00:00:00'),
+(79, 'Natalia', 'Naranjo', 'Oz', '1975-04-24', 'MUJER', 'ESPAÑOL', 'Miguel de la Madrid', 1665, 1, 'Loma Alta', 'Figueras', 'Figueras', 7, 'sphintztsa@outlook.es', '342325AC:', '2019-02-12 00:00:00'),
+(80, 'Marcia', 'José', 'Antares', '1970-06-28', 'MUJER', 'ESPAÑOL', 'Antropoidal', 445, 1, 'Ortográfica', 'Ciudad Cuauhtemoc', 'Ciudad de México', 1, 'cascosazules22@outlook.es', '342325AC:', '2019-01-22 00:00:00'),
+(81, 'Sheila', 'Rentería', 'Loera', '1973-03-01', 'MUJER', 'ESPAÑOL', 'Zaragoza', 983, 0, 'Heroes', 'Tepic', 'Nayarit', 1, 'sharematyface@outlook.es', '342325AC:', '2019-01-01 00:00:00'),
+(82, 'Allan', 'Ivanovich', 'Zchellev', '1978-11-22', 'HOMBRE', 'RUSO', 'Lenin Krasovsky', 223, 1, 'Romanov Falls', 'Kracovia', 'Munich', 47, 'svetlanalove11@outlook.es', '342325AC:', '2019-01-31 00:00:00'),
+(83, 'Mario', 'Cavazos', 'Carrera', '1999-10-10', 'HOMBRE', 'ESPAÑOL', 'Gran Vía', 121, 102, 'Centro', 'Barcelona', 'Barcelona', 7, 'carussoz@outlook.es', '342325AC:', '2019-02-11 00:00:00'),
+(84, 'Meital', 'Valenzuela', 'Castro', '1987-03-10', 'HOMBRE', 'ESPAÑOL', 'Barcelona', 622, 0, 'Peninsula Iberica', 'San Cristobal', 'Chiapas', 1, 'masesmas2@outlook.es', '342325AC:', '2019-01-02 00:00:00'),
+(85, 'Karim', 'Baars', 'Mercy', '1965-03-30', 'HOMBRE', 'INGLES', 'North Abbey Rd', 8893, 927, 'Zchech town', 'CORSAIR', 'NORTH CAROLINA', 2, 'noledarenada24@outlook.es', '342325AC:', '2019-01-20 00:00:00'),
+(86, 'Bremen', 'Maries', 'Snoozes', '1980-04-05', 'HOMBRE', 'INGLES', 'St. Anne Av.', 99, 1, 'Nivola', 'Muno', 'Wyoming', 2, 'sheetafaca12@outlook.es', '342325AC:', '2019-04-28 00:00:00'),
+(87, 'Nordic', 'White', 'Jr.', '1996-02-21', 'HOMBRE', 'INGLES', '8th Ave.', 234, 1, 'North Creek', 'Chattanooga', 'Tennessee', 2, 'brezzess@outlook.es', '342325AC:', '2019-02-27 00:00:00'),
+(88, 'Camelia', 'Llamas', 'Llamas', '1963-10-11', 'MUJER', 'ESPAÑOL', 'Roma', 876, 0, 'Capital', 'Ciudad del Cabo', 'Baja California', 1, '14vr42@outlook.es', '342325AC:', '2019-02-09 00:00:00'),
+(89, 'Wong', 'Albert', ' ', '2001-02-23', 'HOMBRE', 'INGLES', 'Vitae Rd', 553, 332, 'North Valley', 'Vancouver', 'Vancouver', 11, 'paupalinafan@outlook.es', '342325AC:', '2019-01-22 00:00:00'),
+(90, 'Kendall', 'Nash', ' ', '1987-04-01', 'HOMBRE', 'INGLES', ' 7th Ave.', 23, 102, 'Revello', 'Louisville', 'Nevada', 2, 'breffea1@outlook.es', '342325AC:', '2019-02-13 00:00:00'),
+(91, 'Malala', 'Hurry', ' ', '1965-01-27', 'MUJER', 'INGLES', '21st Ave.', 233, 1, 'East Compton', 'Los Angeles', 'California', 2, 'marncq11@outlook.es', '342325AC:', '2019-03-17 00:00:00'),
+(92, 'Corina', 'Allende', 'Pérez', '2000-02-23', 'MUJER', 'ESPAÑOL', 'La Gran Vía', 553, 332, 'Liberal', 'Monterrey', 'Nuevo Leon', 1, 'zzzwdy2@outlook.es', '342325AC:', '2019-01-15 00:00:00'),
+(93, 'Oliver', 'Cavazos', 'Carrera', '1999-10-10', 'HOMBRE', 'ESPAÑOL', 'Gran Vía', 121, 102, 'Centro', 'Barcelona', 'Barcelona', 7, 'looneavaz@outlook.es', '342325AC:', '2019-02-11 00:00:00'),
+(94, 'Norad', 'Valenzuela', 'Castro', '1987-03-10', 'HOMBRE', 'ESPAÑOL', 'Barcelona', 622, 0, 'Peninsula Iberica', 'San Cristobal', 'Chiapas', 1, 'mimas02@outlook.es', '342325AC:', '2019-01-02 00:00:00'),
+(95, 'Clark', 'Baars', 'Mercy', '1965-03-30', 'HOMBRE', 'INGLES', 'North Abbey Rd', 8893, 927, 'Zchech town', 'CORSAIR', 'NORTH CAROLINA', 2, 'eferctiv@outlook.es', '342325AC:', '2019-01-20 00:00:00'),
+(96, 'Maurice', 'Maries', 'Snoozes', '1980-04-05', 'HOMBRE', 'INGLES', 'St. Anne Av.', 99, 1, 'Nivola', 'Muno', 'Wyoming', 2, 'bravar12@outlook.es', '342325AC:', '2019-04-28 00:00:00'),
+(97, 'Carlo', 'White', 'Jr.', '1996-02-21', 'HOMBRE', 'INGLES', '8th Ave.', 234, 1, 'North Creek', 'Chattanooga', 'Tennessee', 2, 'reneterless@outlook.es', '342325AC:', '2019-02-27 00:00:00'),
+(98, 'Carolina', 'Llamas', 'Llamas', '1963-10-11', 'MUJER', 'ESPAÑOL', 'Roma', 876, 0, 'Capital', 'Ciudad del Cabo', 'Baja California', 1, 'jobexesones12@outlook.es', '342325AC:', '2019-02-09 00:00:00'),
+(99, 'Yahel', 'Albert', ' ', '2001-02-23', 'HOMBRE', 'INGLES', 'Vitae Rd', 553, 332, 'North Valley', 'Vancouver', 'Vancouver', 11, 'woszieall1@outlook.es', '342325AC:', '2019-01-22 00:00:00'),
+(100, 'Jonah', 'Nash', ' ', '1987-04-01', 'HOMBRE', 'INGLES', ' 7th Ave.', 23, 102, 'Revello', 'Louisville', 'Nevada', 2, '34235fa1@outlook.es', '342325AC:', '2019-02-13 00:00:00'),
+(101, 'Yahaira', 'Hurry', ' ', '1965-01-27', 'MUJER', 'INGLES', '21st Ave.', 233, 1, 'East Compton', 'Los Angeles', 'California', 2, 'm43yq34311@outlook.es', '342325AC:', '2019-03-17 00:00:00'),
+(102, 'Yarma', 'Allende', 'Pérez', '2000-02-23', 'MUJER', 'ESPAÑOL', 'La Gran Vía', 553, 332, 'Liberal', 'Monterrey', 'Nuevo Leon', 1, 'fea22@outlook.es', '342325AC:', '2019-01-15 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1532,7 +1640,8 @@ CREATE TABLE `val_album` (
 
 INSERT INTO `val_album` (`ID_VAL_ALBUM`, `ID_USUARIO`, `ID_ALBUM`, `VALORACION_ALBUM`, `COMENTARIOS`, `DATE`) VALUES
 (1, 3, 8, 0, 'Me cae mal Pésimo álbum', '2019-05-07 11:14:14'),
-(2, 4, 8, 0, 'No me agrada', '2019-05-02 00:14:14');
+(2, 4, 8, 0, 'No me agrada', '2019-05-02 00:14:14'),
+(3, 24, 20, 5, 'Los Amo', '2019-05-15 05:26:13');
 
 -- --------------------------------------------------------
 
@@ -1751,25 +1860,25 @@ ALTER TABLE `val_peliculas`
 -- AUTO_INCREMENT de la tabla `album_atrib`
 --
 ALTER TABLE `album_atrib`
-  MODIFY `ID_ALBUM` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `ID_ALBUM` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de la tabla `busquedas`
 --
 ALTER TABLE `busquedas`
-  MODIFY `ID_BUSQUEDA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `ID_BUSQUEDA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `cancion_atrib`
 --
 ALTER TABLE `cancion_atrib`
-  MODIFY `ID_CANCION` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_CANCION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
 
 --
 -- AUTO_INCREMENT de la tabla `casa_productora_atrib`
 --
 ALTER TABLE `casa_productora_atrib`
-  MODIFY `ID_CASA_PRODUCTORA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `ID_CASA_PRODUCTORA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `datagen`
@@ -1781,13 +1890,13 @@ ALTER TABLE `datagen`
 -- AUTO_INCREMENT de la tabla `disquera_atrib`
 --
 ALTER TABLE `disquera_atrib`
-  MODIFY `ID_DISQUERA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `ID_DISQUERA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `estadisticas_paginas`
 --
 ALTER TABLE `estadisticas_paginas`
-  MODIFY `ID_VISITA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `ID_VISITA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `estad_catalogo`
@@ -1799,67 +1908,67 @@ ALTER TABLE `estad_catalogo`
 -- AUTO_INCREMENT de la tabla `estad_paginas`
 --
 ALTER TABLE `estad_paginas`
-  MODIFY `ID_PAGINA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `ID_PAGINA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `estilo`
 --
 ALTER TABLE `estilo`
-  MODIFY `ID_ESTILO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `ID_ESTILO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `formato`
 --
 ALTER TABLE `formato`
-  MODIFY `ID_FORMATO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `ID_FORMATO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `genero`
 --
 ALTER TABLE `genero`
-  MODIFY `ID_GENERO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `ID_GENERO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `pais`
 --
 ALTER TABLE `pais`
-  MODIFY `ID_PAIS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `ID_PAIS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=197;
 
 --
 -- AUTO_INCREMENT de la tabla `pelicula_atrib`
 --
 ALTER TABLE `pelicula_atrib`
-  MODIFY `ID_PELICULA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `ID_PELICULA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT de la tabla `personas_atrib`
 --
 ALTER TABLE `personas_atrib`
-  MODIFY `ID_PERSONA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `ID_PERSONA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
 
 --
 -- AUTO_INCREMENT de la tabla `relacion_roles_personas`
 --
 ALTER TABLE `relacion_roles_personas`
-  MODIFY `ID_RELACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `ID_RELACION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `ID_ROL` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `ID_ROL` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios_atrib`
 --
 ALTER TABLE `usuarios_atrib`
-  MODIFY `ID_USUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `ID_USUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT de la tabla `val_album`
 --
 ALTER TABLE `val_album`
-  MODIFY `ID_VAL_ALBUM` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `ID_VAL_ALBUM` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas

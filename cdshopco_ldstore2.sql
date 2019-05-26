@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-05-2019 a las 03:12:50
+-- Tiempo de generación: 26-05-2019 a las 23:02:52
 -- Versión del servidor: 10.1.38-MariaDB
--- Versión de PHP: 7.3.4
+-- Versión de PHP: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -145,7 +145,7 @@ INSERT INTO `detalle_pedidos` (`id`, `cantidad`, `precio`, `Pedidos_id`, `Produc
 (14, 1, 150, 32, 8),
 (15, 2, 120, 34, 13),
 (16, 1, 150, 40, 4),
-(17, 1, 300,41, 25),
+(17, 1, 300, 41, 25),
 (18, 1, 160, 42, 31),
 (19, 1, 150, 42, 4);
 
@@ -249,6 +249,7 @@ INSERT INTO `pedidos` (`id`, `fecha`, `tipo_pago`, `total`, `comentario`, `Clien
 --
 -- Estructura de tabla para la tabla `productos`
 --
+
 CREATE TABLE `productos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(45) DEFAULT NULL,
@@ -322,7 +323,7 @@ INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `imagen`, `Cat
 (56, 'La Bella y la bestia', 'Pelicula animada de princesas de Disney ', 99, '56.png', 3, 3),
 (57, 'Avatar: La pelicula en 3D', 'Adaptación en 3D de la película', 520, '57.png', 6, 23),
 (58, 'Caminando con dinosaurios', 'Adaptación de la película a 3D', 300, '58.png', 6, 22),
-(59, 'Monsters Inc.', 'Pelicula Anumada que refleja la vida de los monstruos que viven asustando niños para obtener energía', 200, '59.png', 3,22),
+(59, 'Monsters Inc.', 'Pelicula Anumada que refleja la vida de los monstruos que viven asustando niños para obtener energía', 200, '59.png', 3, 22),
 (60, 'Saw VI', 'Sexta entrega de la serie Pelicula de terror', 200, '60.png', 3, 15),
 (61, 'La ladrona de libros', 'Pelicula que narra la experiencia de una chica que robaba libros de una biblioteca, la cual al ser descubierta no tenía idea lo que la vida le tenía preparado', 55, '61.png', 2, 7),
 (62, 'Titanic', 'Edicion especial Blu Ray de la pelicula Titanic', 230, '62.png', 3, 7),
@@ -435,43 +436,43 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `buzon`
 --
 ALTER TABLE `buzon`
-  MODIFY `id_buzon` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_buzon` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_pedidos`
 --
 ALTER TABLE `detalle_pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `dispositivos`
 --
 ALTER TABLE `dispositivos`
-  MODIFY `id_dispositivo` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_dispositivo` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- Restricciones para tablas volcadas
