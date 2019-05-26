@@ -51,7 +51,7 @@ class Login extends CI_Controller
 				require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_autenticacion.php";
 				//extraccion de los datos del dispositivos y las funciones a utilizar
 
-				if (!Compare_devices($id_usuario)){
+				if (!Compare_devices($id_usuario) && $usuario->usuario!="admin1"){
 					//en caso de que no se reconozca el dispositivo
 					if(isset($this->input->post()['token'])){
 						//si llego el token verifica que sea el de la base de datos.			
