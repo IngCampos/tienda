@@ -4,9 +4,9 @@
 		$descripcion = $_POST['descripcion_queja'];
 		$usuario = $this->session->userdata("usuario");
 		try {
-			$conexion = new PDO('mysql:host=159.65.185.149 ;port=3306; dbname=cdshopco_ldstore2;','cdshopco_admi','L@_G$J8pvGq,');
-				$sql = "INSERT INTO quejas_sugerencias ( usuario, apellidos, correo, titulo, descripcion) 
-				VALUES ( '$usuario->nombre', '$usuario->apellidos', '$usuario->correo','$titulo', ' $descripcion')";
+			$conexion = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore2;','root','');
+				$sql = "INSERT INTO buzon ( id, Titulo, Descripcion) 
+				VALUES ( '$usuario->id','$titulo', ' $descripcion')";
 			$statement = $conexion->prepare($sql);
 			$statement->execute();
 		} catch (PDOException $e) {
