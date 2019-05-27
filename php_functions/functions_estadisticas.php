@@ -1,4 +1,5 @@
 <?php
+$buzon ="";
 $estadistica1valor = "";
 $estadistica2valor = "";
 $estadistica3valor = "";
@@ -10,17 +11,27 @@ $estadistica8valor = "";
 $estadistica9valor = "";
 $estadistica10valor = "";
 $estadistica11valor = "";
-$estadistica12valor = "";
-$estadistica13valor = "";
-$estadistica14valor = "";
-$estadistica15valor = "";
-$estadistica16valor = "";
-$estadistica17valor = "";
+$estadistica12valor = "1";
+$estadistica13valor = "1";
+$estadistica14valor = "1";
+$estadistica15valor = "1";
+$estadistica16valor = "1";
+$estadistica17valor = "1";
 $estadistica18valor = "";
 // Conexion a la base de datos para obtener la informacion para las graficas
 $conexion2 = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore2;','root','');
 $conexion3 = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore3;','root','');
 //----
+ $buzon_cantidad = $conexion2->prepare("SELECT COUNT(*) AS REPETICIONES FROM buzon WHERE FECHA BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00'");
+ //Consulta SQL, generando el numero de repeticiones, y  validando que las fechas sean entre las que se pusieron en el form
+ $buzon_cantidad->execute();
+ $buzon_cantidad = $buzon_cantidad->fetchAll();
+  $buzon_total = $conexion2->prepare("SELECT COUNT(*) AS REPETICIONES FROM buzon");
+  //Consulta SQL, generando el numero de repeticiones, y  validando que las fechas sean entre las que se pusieron en el form
+  $buzon_total->execute();
+  $buzon_total = $buzon_total->fetchAll();
+  $buzon = $buzon_cantidad[0]["REPETICIONES"]." de ".$buzon_total[0]["REPETICIONES"];
+  //
 $statement1 = $conexion3->prepare("SELECT DIRECCION_FUENTE, COUNT(DIRECCION_FUENTE) AS REPETICIONES FROM estad_sitios_dir AS a WHERE FECHA BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00' GROUP BY DIRECCION_FUENTE");
 //Consulta SQL, generando el numero de repeticiones, y  validando que las fechas sean entre las que se pusieron en el form
 $statement1->execute();
