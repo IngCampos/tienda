@@ -36,6 +36,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_estadistica
 ?>
     <center><h4>Reporte generado del <?php echo $inicio[0].' '.$inicio[1].' al '.$final[0].' '.$final[1];?></h4></center>
 <div class="row jumbotron">
+    <p>Numero de quejas: <?php echo $buzon;?> <progress value="<?php echo $buzon_cantidad[0]["REPETICIONES"];?>" max="<?php echo $buzon_total[0]["REPETICIONES"];?>"><?php echo $buzon_cantidad[0]["REPETICIONES"];?> %</progress></p>
     <button class="col-12 btn btn-primary">Sitio web</button>
     <?php if($estadistica1valor!=""): ?>
     <div class="card border-primary col-sm-6 col-md-6 col-lg-6 col-xl-3">
