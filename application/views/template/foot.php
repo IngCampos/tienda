@@ -1,5 +1,5 @@
 		<footer>
-			&copy; CD Shop Pagina ficticia <?php echo date("Y"); ?> v2.3.0
+			&copy; CD Shop Pagina ficticia <?php echo date("Y"); ?> v2.4.0
 		</footer>
 	</div>
 </body>
