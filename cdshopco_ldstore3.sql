@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-05-2019 a las 06:04:36
+-- Tiempo de generación: 27-05-2019 a las 06:14:47
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.3
 
@@ -126,12 +126,96 @@ INSERT INTO `busquedas` (`ID_BUSQUEDA`, `ID_USUARIO`, `TERMINO`, `FECHA`) VALUES
 (6, 1, 'Oreja de Van Gogh', '2019-05-02 11:14:33'),
 (7, 2, 'Nazareth', '2019-05-02 12:14:33'),
 (8, 1, 'Cachita', '2019-04-01 18:14:33'),
-(9, 4, 'Play', '2019-05-01 11:14:33'),
-(10, 1, 'Playa', '2019-05-01 11:14:33'),
-(11, 1, 'Oreja de Van Gogh', '2019-05-02 11:14:33'),
-(12, 2, 'Nazareth', '2019-05-02 12:14:33'),
-(13, 1, 'Cachita', '2019-04-01 18:14:33'),
-(14, 4, 'Play', '2019-05-01 11:14:33');
+(9, 4, 'Pedro Infante', '2019-05-27 04:07:54'),
+(10, 1, 'a toda maquina', '2019-05-27 04:07:54'),
+(11, 1, 'los polivoces', '2019-05-27 04:07:54'),
+(12, 2, 'Jesus', '2019-05-27 04:07:54'),
+(13, 1, 'chachita', '2019-05-27 04:07:54'),
+(14, 4, 'los simspsons', '2019-05-27 04:07:54'),
+(15, 3, 'Katy Olsen', '2019-05-14 07:10:06'),
+(16, 1, 'Veronica', '2019-05-14 07:10:06'),
+(17, 2, 'Luci', '2019-05-26 22:44:45'),
+(18, 1, 'Pambo', '2019-05-01 16:14:33'),
+(19, 1, 'Avengers', '2019-05-01 16:14:33'),
+(20, 1, 'Thanos', '2019-05-02 16:14:33'),
+(21, 2, 'chivita', '2019-05-02 17:14:33'),
+(22, 1, 'heidi', '2019-04-02 00:14:33'),
+(23, 4, 'clara', '2019-05-27 09:07:54'),
+(24, 1, 'Wick', '2019-05-27 09:07:54'),
+(25, 1, 'john', '2019-05-27 09:07:54'),
+(26, 2, 'jarabe', '2019-05-27 09:07:54'),
+(27, 1, 'Larry Hdz', '2019-05-27 09:07:54'),
+(28, 4, 'los simspsons', '2019-05-27 09:07:54'),
+(29, 3, 'Katy Perry', '2019-05-14 07:10:06'),
+(30, 1, 'Mowgli', '2019-05-14 07:10:06'),
+(31, 2, 'Libro selva', '2019-05-26 22:44:45'),
+(32, 1, 'Play', '2019-05-01 16:14:33'),
+(33, 1, 'Playa', '2019-05-01 16:14:33'),
+(34, 1, 'Oreja de Van Gogh', '2019-05-02 16:14:33'),
+(35, 2, 'Nazareth', '2019-05-02 17:14:33'),
+(36, 1, 'Cachita', '2019-04-02 00:14:33'),
+(37, 4, 'Pedro Infante', '2019-05-27 09:07:54'),
+(38, 1, 'a toda maquina', '2019-05-27 09:07:54'),
+(39, 1, 'los polivoces', '2019-05-27 09:07:54'),
+(40, 2, 'Jesus', '2019-05-27 09:07:54'),
+(41, 1, 'chachita', '2019-05-27 09:07:54'),
+(42, 4, 'los simspsons', '2019-05-27 09:07:54'),
+(43, 3, 'Katy Perry', '2019-05-14 07:10:06'),
+(44, 1, 'Hakunah', '2019-05-14 07:10:06'),
+(45, 2, 'Lucy', '2019-05-26 22:44:45'),
+(46, 1, 'Play', '2019-05-01 16:14:33'),
+(47, 1, 'Playa', '2019-05-01 16:14:33'),
+(48, 1, 'Oreja de Van Gogh', '2019-05-02 16:14:33'),
+(49, 2, 'Nazareth', '2019-05-02 17:14:33'),
+(50, 1, 'Cachita', '2019-04-02 00:14:33'),
+(51, 4, 'Pedro Infante', '2019-05-27 09:07:54'),
+(52, 1, 'a toda maquina', '2019-05-27 09:07:54'),
+(53, 1, 'los polivoces', '2019-05-27 09:07:54'),
+(54, 2, 'Jesus', '2019-05-27 09:07:54'),
+(55, 1, 'chachita', '2019-05-27 09:07:54'),
+(56, 4, 'los simspsons', '2019-05-27 09:07:54'),
+(57, 3, 'Katy Olsen', '2019-05-14 07:10:06'),
+(58, 1, 'Veronica', '2019-05-14 07:10:06'),
+(59, 2, 'Luci', '2019-05-26 22:44:45'),
+(60, 1, 'Pambo', '2019-05-01 16:14:33'),
+(61, 1, 'Avengers', '2019-05-01 16:14:33'),
+(62, 1, 'Thanos', '2019-05-02 16:14:33'),
+(63, 2, 'chivita', '2019-05-02 17:14:33'),
+(64, 1, 'heidi', '2019-04-02 00:14:33'),
+(65, 4, 'clara', '2019-05-27 09:07:54'),
+(66, 1, 'Wick', '2019-05-27 09:07:54'),
+(67, 1, 'john', '2019-05-27 09:07:54'),
+(68, 2, 'jarabe', '2019-05-27 09:07:54'),
+(69, 1, 'Larry Hdz', '2019-05-27 09:07:54'),
+(70, 4, 'los simspsons', '2019-05-27 09:07:54'),
+(71, 3, 'Katy Perry', '2019-05-14 07:10:06'),
+(72, 1, 'Mowgli', '2019-05-14 07:10:06'),
+(73, 2, 'Libro selva', '2019-05-26 22:44:45'),
+(74, 1, 'Play', '2019-05-01 16:14:33'),
+(75, 1, 'Playa', '2019-05-01 16:14:33'),
+(76, 1, 'Oreja de Van Gogh', '2019-05-02 16:14:33'),
+(77, 2, 'Nazareth', '2019-05-02 17:14:33'),
+(78, 1, 'Cachita', '2019-04-02 00:14:33'),
+(79, 4, 'Pedro Infante', '2019-05-27 09:07:54'),
+(80, 1, 'a toda maquina', '2019-05-27 09:07:54'),
+(81, 1, 'los polivoces', '2019-05-27 09:07:54'),
+(82, 2, 'Jesus', '2019-05-27 09:07:54'),
+(83, 1, 'chachita', '2019-05-27 09:07:54'),
+(84, 4, 'los simspsons', '2019-05-27 09:07:54'),
+(85, 3, 'Katy Perry', '2019-05-14 07:10:06'),
+(86, 1, 'Hakunah', '2019-05-14 07:10:06'),
+(87, 2, 'Lucy', '2019-05-26 22:44:45'),
+(88, 1, 'Play', '2019-05-01 16:14:33'),
+(89, 1, 'Playa', '2019-05-01 16:14:33'),
+(90, 1, 'Oreja de Van Gogh', '2019-05-02 16:14:33'),
+(91, 2, 'Nazareth', '2019-05-02 17:14:33'),
+(92, 1, 'Cachita', '2019-04-02 00:14:33'),
+(93, 4, 'Pedro Infante', '2019-05-27 09:07:54'),
+(94, 1, 'a toda maquina', '2019-05-27 09:07:54'),
+(95, 1, 'los polivoces', '2019-05-27 09:07:54'),
+(96, 2, 'Jesus', '2019-05-27 09:07:54'),
+(97, 1, 'chachita', '2019-05-27 09:07:54'),
+(98, 4, 'los simspsons', '2019-05-27 09:07:54');
 
 -- --------------------------------------------------------
 
@@ -2232,7 +2316,8 @@ CREATE TABLE `val_peliculas` (
   `ID_USUARIO` int(11) NOT NULL,
   `ID_PELICULA` int(11) NOT NULL,
   `VALORACION_PELICULA` smallint(6) NOT NULL,
-  `COMENTARIOS` text NOT NULL
+  `COMENTARIOS` text NOT NULL,
+  `DATE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -2479,7 +2564,7 @@ ALTER TABLE `album_atrib`
 -- AUTO_INCREMENT de la tabla `busquedas`
 --
 ALTER TABLE `busquedas`
-  MODIFY `ID_BUSQUEDA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `ID_BUSQUEDA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT de la tabla `cancion_atrib`
@@ -2700,8 +2785,7 @@ ALTER TABLE `val_album`
 -- Filtros para la tabla `val_peliculas`
 --
 ALTER TABLE `val_peliculas`
-  ADD CONSTRAINT `val_peliculas_ibfk_1` FOREIGN KEY (`ID_USUARIO`) REFERENCES `usuarios_atrib` (`ID_USUARIO`),
-  ADD CONSTRAINT `val_peliculas_ibfk_2` FOREIGN KEY (`ID_PELICULA`) REFERENCES `pelicula_atrib` (`ID_PELICULA`);
+  ADD CONSTRAINT `val_peliculas_ibfk_1` FOREIGN KEY (`ID_USUARIO`) REFERENCES `usuarios_atrib` (`ID_USUARIO`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
