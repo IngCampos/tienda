@@ -11,12 +11,12 @@ $estadistica8valor = "";
 $estadistica9valor = "";
 $estadistica10valor = "";
 $estadistica11valor = "";
-$estadistica12valor = "";
-$estadistica13valor = "";
-$estadistica14valor = "";
-$estadistica15valor = "";
-$estadistica16valor = "";
-$estadistica17valor = "";
+$estadistica12valor = "1";
+$estadistica13valor = "1";
+$estadistica14valor = "1";
+$estadistica15valor = "1";
+$estadistica16valor = "1";
+$estadistica17valor = "1";
 $estadistica18valor = "";
 // Conexion a la base de datos para obtener la informacion para las graficas
 $conexion2 = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore2;','root','');
