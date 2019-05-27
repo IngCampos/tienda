@@ -19,8 +19,8 @@ $estadistica16valor = "1";
 $estadistica17valor = "1";
 $estadistica18valor = "";
 // Conexion a la base de datos para obtener la informacion para las graficas
-$conexion2 = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore2;','root','');
-$conexion3 = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore3;','root','');
+$conexion2 = new PDO('mysql:host=159.65.185.149 ;port=3306; dbname=cdshopco_ldstore2;','cdshopco_admi','L@_G$J8pvGq,');
+$conexion3 = new PDO('mysql:host=159.65.185.149 ;port=3306; dbname=cdshopco_ldstore3;','cdshopco_admi','L@_G$J8pvGq,');
 //----
  $buzon_cantidad = $conexion2->prepare("SELECT COUNT(*) AS REPETICIONES FROM buzon WHERE FECHA BETWEEN '$inicio[0] $inicio[1]:00' AND '$final[0] $final[1]:00'");
  //Consulta SQL, generando el numero de repeticiones, y  validando que las fechas sean entre las que se pusieron en el form

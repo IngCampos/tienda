@@ -8,11 +8,11 @@ if($usuario->usuario!="admin1"){//validacion de que sea el usuario admin1
 ?>
 <?php 
 if(isset($_GET["id_delete"])){// en caso de que se elimine una registro, aqui se recibo por get
-	$conexion2 = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore2;','root','');
+    $conexion2 = new PDO('mysql:host=159.65.185.149 ;port=3306; dbname=cdshopco_ldstore2;','cdshopco_admi','L@_G$J8pvGq,');
 	$statement2 = $conexion2->prepare("DELETE FROM buzon where id_buzon='".$_GET["id_delete"]."'");
 	$statement2->execute();	
 }
-$conexion2 = new PDO('mysql:host=localhost; dbname=cdshopco_ldstore2;','root','');
+$conexion2 = new PDO('mysql:host=159.65.185.149 ;port=3306; dbname=cdshopco_ldstore2;','cdshopco_admi','L@_G$J8pvGq,');
 $statement2 = $conexion2->prepare("SELECT clientes.usuario,clientes.correo,clientes.usuario, buzon.id_buzon,buzon.Titulo,buzon.Descripcion,buzon.Fecha FROM buzon INNER JOIN clientes ON buzon.id=clientes.id");
 $statement2->execute();
 $quejasSugerencias = $statement2->fetchAll();

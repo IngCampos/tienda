@@ -32,7 +32,7 @@ if($usuario->usuario!="admin1"){//validacion de que sea el usuario admin1
 $inicio = explode("T", $_POST['f-inicial']);//explode para separar la fecha de la hora, Esa T estorba para la consulta
 $final = explode("T", $_POST['f-final']);
 
-require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_estadisticas.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/php_functions/functions_estadisticas.php";
 ?>
     <center><h4>Reporte generado del <?php echo $inicio[0].' '.$inicio[1].' al '.$final[0].' '.$final[1];?></h4></center>
 <div class="row jumbotron">
@@ -246,5 +246,5 @@ require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_estadistica
 <?php endif; ?>
 <!-- Graficas, configuracion y datos -->
 <?php 
-require $_SERVER['DOCUMENT_ROOT'] . "/tienda/php_functions/functions_graficas.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/php_functions/functions_graficas.php";
 ?>
